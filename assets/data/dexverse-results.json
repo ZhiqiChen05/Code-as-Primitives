@@ -1,0 +1,311 @@
+{
+  "title": "DexVerse: A0 and L3+papers on 75 shared valid tasks",
+  "model": {
+    "name": "claude-opus-5-5",
+    "reasoning": "max"
+  },
+  "arm_labels": {
+    "A0": "A0",
+    "L3P": "L3+papers"
+  },
+  "metric": "Mean per-task held-out success rate; unaccepted tasks count as zero.",
+  "protocol": {
+    "training_start_positions": 10,
+    "heldout_start_positions": 50,
+    "heldout_repeats": 2,
+    "heldout_seeds": "9000\u20139049; the same 50 starts are used in both repeats",
+    "independent_training_chains_per_task_per_arm": 1
+  },
+  "overall": {
+    "A0": {
+      "accepted": 73,
+      "tasks": 75,
+      "mean_heldout_percent": 94.52,
+      "display_percent": "94.5%",
+      "successes_across_repeats": 7089,
+      "scored_episode_slots_with_unaccepted_counted_zero": 7500
+    },
+    "L3P": {
+      "accepted": 73,
+      "tasks": 75,
+      "mean_heldout_percent": 94.32,
+      "display_percent": "94.3%",
+      "successes_across_repeats": 7074,
+      "scored_episode_slots_with_unaccepted_counted_zero": 7500
+    }
+  },
+  "categories": [
+    {
+      "category": "Primitive",
+      "tasks": 8,
+      "arms": {
+        "A0": {
+          "accepted": 8,
+          "tasks": 8,
+          "mean_heldout_percent": 96.125,
+          "display_percent": "96.1%",
+          "successes_across_repeats": 769,
+          "scored_episode_slots_with_unaccepted_counted_zero": 800,
+          "search_cost": {
+            "total_search_rollouts": 41,
+            "mean_search_rollouts_per_task": 5.125,
+            "median_search_rollouts_per_task": 0.0,
+            "tasks_with_fewer_than_150_search_rollouts": 8,
+            "tasks": 8,
+            "total_learning_resets": 49,
+            "total_evaluation_submissions": 42
+          }
+        },
+        "L3P": {
+          "accepted": 8,
+          "tasks": 8,
+          "mean_heldout_percent": 95.0,
+          "display_percent": "95.0%",
+          "successes_across_repeats": 760,
+          "scored_episode_slots_with_unaccepted_counted_zero": 800,
+          "search_cost": {
+            "total_search_rollouts": 671,
+            "mean_search_rollouts_per_task": 83.875,
+            "median_search_rollouts_per_task": 56.5,
+            "tasks_with_fewer_than_150_search_rollouts": 7,
+            "tasks": 8,
+            "total_learning_resets": 8,
+            "total_evaluation_submissions": 11
+          }
+        }
+      }
+    },
+    {
+      "category": "Functional",
+      "tasks": 10,
+      "arms": {
+        "A0": {
+          "accepted": 10,
+          "tasks": 10,
+          "mean_heldout_percent": 98.7,
+          "display_percent": "98.7%",
+          "successes_across_repeats": 987,
+          "scored_episode_slots_with_unaccepted_counted_zero": 1000,
+          "search_cost": {
+            "total_search_rollouts": 839,
+            "mean_search_rollouts_per_task": 83.9,
+            "median_search_rollouts_per_task": 0.0,
+            "tasks_with_fewer_than_150_search_rollouts": 9,
+            "tasks": 10,
+            "total_learning_resets": 153,
+            "total_evaluation_submissions": 26
+          }
+        },
+        "L3P": {
+          "accepted": 10,
+          "tasks": 10,
+          "mean_heldout_percent": 99.3,
+          "display_percent": "99.3%",
+          "successes_across_repeats": 993,
+          "scored_episode_slots_with_unaccepted_counted_zero": 1000,
+          "search_cost": {
+            "total_search_rollouts": 1222,
+            "mean_search_rollouts_per_task": 122.2,
+            "median_search_rollouts_per_task": 114.0,
+            "tasks_with_fewer_than_150_search_rollouts": 7,
+            "tasks": 10,
+            "total_learning_resets": 23,
+            "total_evaluation_submissions": 16
+          }
+        }
+      }
+    },
+    {
+      "category": "Articulation",
+      "tasks": 14,
+      "arms": {
+        "A0": {
+          "accepted": 13,
+          "tasks": 14,
+          "mean_heldout_percent": 87.64285714285714,
+          "display_percent": "87.6%",
+          "successes_across_repeats": 1227,
+          "scored_episode_slots_with_unaccepted_counted_zero": 1400,
+          "search_cost": {
+            "total_search_rollouts": 2502,
+            "mean_search_rollouts_per_task": 178.71428571428572,
+            "median_search_rollouts_per_task": 0.0,
+            "tasks_with_fewer_than_150_search_rollouts": 11,
+            "tasks": 14,
+            "total_learning_resets": 323,
+            "total_evaluation_submissions": 236
+          }
+        },
+        "L3P": {
+          "accepted": 13,
+          "tasks": 14,
+          "mean_heldout_percent": 87.57142857142857,
+          "display_percent": "87.6%",
+          "successes_across_repeats": 1226,
+          "scored_episode_slots_with_unaccepted_counted_zero": 1400,
+          "search_cost": {
+            "total_search_rollouts": 5916,
+            "mean_search_rollouts_per_task": 422.57142857142856,
+            "median_search_rollouts_per_task": 177.0,
+            "tasks_with_fewer_than_150_search_rollouts": 7,
+            "tasks": 14,
+            "total_learning_resets": 61,
+            "total_evaluation_submissions": 250
+          }
+        }
+      }
+    },
+    {
+      "category": "Bimanual",
+      "tasks": 4,
+      "arms": {
+        "A0": {
+          "accepted": 4,
+          "tasks": 4,
+          "mean_heldout_percent": 97.75,
+          "display_percent": "97.8%",
+          "successes_across_repeats": 391,
+          "scored_episode_slots_with_unaccepted_counted_zero": 400,
+          "search_cost": {
+            "total_search_rollouts": 0,
+            "mean_search_rollouts_per_task": 0,
+            "median_search_rollouts_per_task": 0.0,
+            "tasks_with_fewer_than_150_search_rollouts": 4,
+            "tasks": 4,
+            "total_learning_resets": 31,
+            "total_evaluation_submissions": 7
+          }
+        },
+        "L3P": {
+          "accepted": 4,
+          "tasks": 4,
+          "mean_heldout_percent": 98.0,
+          "display_percent": "98.0%",
+          "successes_across_repeats": 392,
+          "scored_episode_slots_with_unaccepted_counted_zero": 400,
+          "search_cost": {
+            "total_search_rollouts": 332,
+            "mean_search_rollouts_per_task": 83,
+            "median_search_rollouts_per_task": 80.0,
+            "tasks_with_fewer_than_150_search_rollouts": 4,
+            "tasks": 4,
+            "total_learning_resets": 1,
+            "total_evaluation_submissions": 4
+          }
+        }
+      }
+    },
+    {
+      "category": "Multi-goal",
+      "tasks": 35,
+      "arms": {
+        "A0": {
+          "accepted": 35,
+          "tasks": 35,
+          "mean_heldout_percent": 98.91428571428571,
+          "display_percent": "98.9%",
+          "successes_across_repeats": 3462,
+          "scored_episode_slots_with_unaccepted_counted_zero": 3500,
+          "search_cost": {
+            "total_search_rollouts": 244,
+            "mean_search_rollouts_per_task": 6.9714285714285715,
+            "median_search_rollouts_per_task": 0,
+            "tasks_with_fewer_than_150_search_rollouts": 34,
+            "tasks": 35,
+            "total_learning_resets": 188,
+            "total_evaluation_submissions": 49
+          }
+        },
+        "L3P": {
+          "accepted": 35,
+          "tasks": 35,
+          "mean_heldout_percent": 98.85714285714286,
+          "display_percent": "98.9%",
+          "successes_across_repeats": 3460,
+          "scored_episode_slots_with_unaccepted_counted_zero": 3500,
+          "search_cost": {
+            "total_search_rollouts": 3543,
+            "mean_search_rollouts_per_task": 101.22857142857143,
+            "median_search_rollouts_per_task": 80,
+            "tasks_with_fewer_than_150_search_rollouts": 29,
+            "tasks": 35,
+            "total_learning_resets": 46,
+            "total_evaluation_submissions": 61
+          }
+        }
+      }
+    },
+    {
+      "category": "Long-horizon",
+      "tasks": 4,
+      "arms": {
+        "A0": {
+          "accepted": 3,
+          "tasks": 4,
+          "mean_heldout_percent": 63.25,
+          "display_percent": "63.2%",
+          "successes_across_repeats": 253,
+          "scored_episode_slots_with_unaccepted_counted_zero": 400,
+          "search_cost": {
+            "total_search_rollouts": 2256,
+            "mean_search_rollouts_per_task": 564,
+            "median_search_rollouts_per_task": 521.0,
+            "tasks_with_fewer_than_150_search_rollouts": 2,
+            "tasks": 4,
+            "total_learning_resets": 312,
+            "total_evaluation_submissions": 172
+          }
+        },
+        "L3P": {
+          "accepted": 3,
+          "tasks": 4,
+          "mean_heldout_percent": 60.75,
+          "display_percent": "60.8%",
+          "successes_across_repeats": 243,
+          "scored_episode_slots_with_unaccepted_counted_zero": 400,
+          "search_cost": {
+            "total_search_rollouts": 5536,
+            "mean_search_rollouts_per_task": 1384,
+            "median_search_rollouts_per_task": 1454.5,
+            "tasks_with_fewer_than_150_search_rollouts": 0,
+            "tasks": 4,
+            "total_learning_resets": 165,
+            "total_evaluation_submissions": 151
+          }
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "repository": "dexverse-llm-policy-search",
+    "repository_url": "https://github.com/DjengoFang/dexverse-llm-policy-search",
+    "sources": [
+      {
+        "path": "results/opus-5.5/summary/A0.json",
+        "sha256": "3244bd16cd2b2bd9d34aa6e49fdc556b62faa1fe9fc7a16c1b6d23efcfb74e1a"
+      },
+      {
+        "path": "results/opus-5.5/summary/L3P.json",
+        "sha256": "288b744d2f773b50c54f513c21edf1a049b4a06c6d8d7f2525305c4eee7a4858"
+      }
+    ],
+    "aggregation_reference": "scripts/compare_arms.py",
+    "crosscheck_report": "results/opus-5.5/comparison_all75_a0_l3p.md",
+    "aggregation": "Drop invalid_task rows; intersect task names between arms. Average both held-out success counts for each task and divide by 50. Missing held-out results count as zero. Take the unweighted mean across tasks in each category. Category counts total 75.",
+    "excluded_invalid_tasks": [
+      "Dexverse-CabinetDoubleDoor-v0",
+      "Dexverse-OpenStapler-v0"
+    ]
+  },
+  "caveats": [
+    "Two held-out repeats are not two independent training runs or 100 distinct initial positions.",
+    "One training chain per task per arm; no independent training-run variance is estimated.",
+    "75 valid tasks are a filtered subset of the 100 registered DexVerse tasks: 94 build with released assets, 17 lack object pose in state observations, and 2 fail reset checks.",
+    "Policies use simulator state observations, including object state; these are not vision-only or real-robot results.",
+    "L3PG is excluded from this 75-task table because it was run on the 69 E2 tasks only.",
+    "The numerical denominator includes zero-valued scores for unaccepted tasks; it is not a count of simulator episodes actually executed.",
+    "The two arms differ in tool access: A0 has built-in CEM search, while L3+papers has model-directed search, numerical compute and papers."
+  ],
+  "search_cost_definition": "Recorded search_rollouts counter, averaged over all valid tasks in each category, including unaccepted tasks. Excludes learning episodes, frozen training evaluations, held-out tests, and any uncounted interrupted work.",
+  "search_cost_claim": "Mean search rollouts per task are below 150 in four of the six categories in each arm. This is a category mean, not an upper bound for every task or total simulator interaction."
+}

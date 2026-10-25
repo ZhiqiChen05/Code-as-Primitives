@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" role="img" aria-labelledby="figure-title figure-desc">
+<title id="figure-title">A model learns to write a controller; a frozen program executes it.</title>
+<desc id="figure-desc">During learning, a foundation model writes and revises policy.py with a PARAMS vector, executes the policy in a simulator, and inspects trajectories, scores, and errors. Optional tools support batched parameter search and NumPy/SciPy analysis. During deployment, a frozen Python policy maps state observations to native actuator targets at each control step without calls to the foundation model. This figure makes no claim about the number of simulator interactions required for learning.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#276451"/></marker></defs>
+<rect width="1100" height="720" fill="#f6f3eb"/>
+<text x="50" y="46" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="start" letter-spacing="2">01  /  LEARNING</text>
+<text x="50" y="86" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#242620" text-anchor="start" >The model writes the controller.</text>
+<rect x="50" y="130" width="250" height="132" rx="8" fill="#f6f3eb" stroke="#d7d6ca" stroke-width="1.4"/>
+<rect x="425" y="130" width="250" height="132" rx="8" fill="#e8eee5" stroke="#276451" stroke-width="1.4"/>
+<rect x="800" y="130" width="250" height="132" rx="8" fill="#f6f3eb" stroke="#d7d6ca" stroke-width="1.4"/>
+<text x="175" y="177" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#242620" text-anchor="middle" >Foundation model</text>
+<text x="175" y="211" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Reason about the task</text>
+<text x="175" y="238" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Design and revise code</text>
+<text x="550" y="177" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#276451" text-anchor="middle" >Python policy</text>
+<text x="550" y="211" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#276451" text-anchor="middle" >policy.py + PARAMS</text>
+<text x="550" y="238" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Logic + tunable numbers</text>
+<text x="925" y="177" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#242620" text-anchor="middle" >Simulator</text>
+<text x="925" y="211" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Execute native actions</text>
+<text x="925" y="238" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Collect task feedback</text>
+<line x1="312" y1="199" x2="413" y2="199" stroke="#276451" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="362" y="185" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="middle" >write / revise</text>
+<line x1="687" y1="199" x2="788" y2="199" stroke="#276451" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="737" y="185" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="middle" >roll out</text>
+<path d="M 925 276 V 311 H 175 V 276" fill="none" stroke="#276451" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="340" y="294" width="420" height="32" fill="#f6f3eb"/>
+<text x="550" y="316" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="middle" >Inspect trajectories, scores, and errors</text>
+<rect x="50" y="355" width="1000" height="63" rx="8" fill="#f6f3eb" stroke="#d7d6ca" stroke-width="1.4"/>
+<text x="73" y="394" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#242620" text-anchor="start" >Optional tools</text>
+<line x1="230" y1="370" x2="230" y2="403" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="252" y="394" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#242620" text-anchor="start" >Batched parameter search</text>
+<text x="535" y="394" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="start" >+</text>
+<text x="578" y="394" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#242620" text-anchor="start" >NumPy / SciPy analysis</text>
+<text x="1027" y="394" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#63675d" text-anchor="end" >during learning</text>
+<line x1="50" y1="455" x2="1050" y2="455" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="50" y="498" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="start" letter-spacing="2">02  /  DEPLOYMENT</text>
+<text x="1050" y="498" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="end" >Selected policy is frozen. No model calls.</text>
+<rect x="50" y="539" width="250" height="105" rx="8" fill="#f6f3eb" stroke="#d7d6ca" stroke-width="1.4"/>
+<rect x="425" y="539" width="250" height="105" rx="8" fill="#e8eee5" stroke="#276451" stroke-width="1.4"/>
+<rect x="800" y="539" width="250" height="105" rx="8" fill="#f6f3eb" stroke="#d7d6ca" stroke-width="1.4"/>
+<text x="175" y="581" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#242620" text-anchor="middle" >State observation</text>
+<text x="175" y="614" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Read the current state</text>
+<text x="550" y="581" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#276451" text-anchor="middle" >Frozen Python policy</text>
+<text x="550" y="614" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Execute feedback rules</text>
+<text x="925" y="581" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#242620" text-anchor="middle" >Actuator targets</text>
+<text x="925" y="614" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Native low-level control</text>
+<line x1="312" y1="592" x2="413" y2="592" stroke="#276451" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="687" y1="592" x2="788" y2="592" stroke="#276451" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="550" y="687" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#63675d" text-anchor="middle" >The program runs at every control step; the foundation model does not.</text>
+</svg>

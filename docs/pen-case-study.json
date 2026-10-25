@@ -1,0 +1,230 @@
+{
+  "model": "GPT-6 Astra",
+  "model_id": "gpt-6-astra",
+  "reasoning": "max",
+  "campaign": "adroit_seq10_l3pr",
+  "attribution_caveat": "The requested Opus step-by-step trace is unavailable in the supplied repository. This case study instead describes verifiable Astra tool actions, authored policies, saved notes and simulator outcomes. Opus aggregate results are separate and must not be substituted for this history.",
+  "task": "Adroit Pen: 45 public observation values; 24 normalized actuator targets; 200 steps at native 100 Hz. Episode success requires more than 20 frames with position error <0.075 m and orientation dot product >0.95.",
+  "source_events": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/case-01/attempt_01/events.jsonl",
+  "source_events_sha256": "011a719606df34cdd126d6eba380965ec33e696db09e96aa9cf8f40dceae0403",
+  "iterations": [
+    {
+      "number": 1,
+      "title": "Probe a neutral grasp",
+      "description": "Write normalized actuator targets, execute 30 steps and then the remaining 170 steps, and inspect the pen's equilibrium. The recorded initial policy produces zero actuator commands and never meets the target success condition.",
+      "event_lines": [
+        44,
+        47,
+        86
+      ],
+      "evidence": "learning/episode_0000/history.jsonl",
+      "media": "assets/videos/adroit-pen-neutral.mp4"
+    },
+    {
+      "number": 2,
+      "title": "Search finger and wrist structure",
+      "description": "Try grouped finger targets, independent-finger grasps and orientation-feedback controllers. Saved notes report that thumb-only rotation ejects the pen, while a flexed wrist helps retain a raised grasp. Candidate search provides measurements for these structural choices.",
+      "event_lines": [
+        293,
+        313,
+        374,
+        439,
+        1234,
+        1674
+      ],
+      "evidence": [
+        "search/search_0002/result.json",
+        "search/search_0004/result.json",
+        "search/search_0027/result.json"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Gate transitions on observed orientation",
+      "description": "Combine a raised BASE grasp and a more vertical VERT grasp using the current pen axis, with phase = clip((0.75 - axis_x) * 6). Add another orientation gate to reach targets beyond vertical. These transitions use observed state rather than a playback clock.",
+      "event_lines": [
+        1271,
+        1323,
+        1524,
+        1674,
+        1777
+      ],
+      "evidence": [
+        "search/search_0027/result.json",
+        "search/search_0030/result.json"
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Select by target, then challenge the frozen policy",
+      "description": "Select a grasp by alignment between its measured endpoint and the target axis. The first library succeeds on 10/16 fresh adaptive-search starts, then fails its first frozen submission. Reverse-tilt and position-compensation revisions expand the library: 21/32 adaptive-search starts succeed and the second frozen stage-1 submission passes.",
+      "event_lines": [
+        1698,
+        1701,
+        1777,
+        1780,
+        1802,
+        1827,
+        1857,
+        1895,
+        1905
+      ],
+      "evidence": [
+        "search/search_0039/result.json",
+        "search/search_0044/result.json",
+        "submissions.json"
+      ]
+    }
+  ],
+  "search_batches": {
+    "search_0001": {
+      "rollouts": 4,
+      "successes": 0,
+      "source": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/case-01/attempt_01/search/search_0001/result.json",
+      "sha256": "d91232780dd11a5a93be2ad4e0d7d89d9ad5df0e80ac8e872ce65a9c3d82cade"
+    },
+    "search_0002": {
+      "rollouts": 128,
+      "successes": 1,
+      "source": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/case-01/attempt_01/search/search_0002/result.json",
+      "sha256": "26f68b1c20ed85e81626876f1c957465b9faffc9f43cc9c2be943ac85e43dc04"
+    },
+    "search_0004": {
+      "rollouts": 128,
+      "successes": 2,
+      "source": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/case-01/attempt_01/search/search_0004/result.json",
+      "sha256": "fb4a52b78708e7f5a240c38d4bdf00b35ad537d6b3ef01d5e89c07718b8b7cb7"
+    },
+    "search_0027": {
+      "rollouts": 128,
+      "successes": 3,
+      "source": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/case-01/attempt_01/search/search_0027/result.json",
+      "sha256": "f64d5bc7ed74735bd6e47d82dd04f7f320fb301cfff2bc56b961b4b27ae3923a"
+    },
+    "search_0030": {
+      "rollouts": 128,
+      "successes": 10,
+      "source": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/case-01/attempt_01/search/search_0030/result.json",
+      "sha256": "0b45b55bbfc908ad75f370a1382ae3d758ebcda656db4309c11303ae30cd91a8"
+    },
+    "search_0039": {
+      "rollouts": 16,
+      "successes": 10,
+      "source": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/case-01/attempt_01/search/search_0039/result.json",
+      "sha256": "1f128fe56c88e5313a0cc8f4b2dd81d9d063e5ebb7b44500fbac6925f14abea6"
+    },
+    "search_0044": {
+      "rollouts": 32,
+      "successes": 21,
+      "source": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/case-01/attempt_01/search/search_0044/result.json",
+      "sha256": "fcd93ded97d5f9e48e629ff7aa060d0fa37e8a00093014d405547b06b04be752"
+    }
+  },
+  "stage1_submissions": [
+    {
+      "success": false,
+      "seed": 1985019971,
+      "success_steps": 0
+    },
+    {
+      "success": true,
+      "seed": 927043592,
+      "success_steps": 119
+    }
+  ],
+  "final_outcome": {
+    "description": "After further refinement through stage 10, the final frozen Pen policy passes 30/30 separately reserved held-out starts. This is not the stage-1 library's held-out score.",
+    "successes": 30,
+    "episodes": 30,
+    "source": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/heldout/pen_po_seq10_L3PR/evaluation.json",
+    "source_sha256": "66c9f96561a8e0691bdfab5d63e5c3562998affad374bf64ea78b69e446ee1b7",
+    "media": "assets/videos/adroit-pen.mp4"
+  },
+  "earlier_prototype": {
+    "description": "An earlier fixed-start black-box search prototype blends two hard-coded 24-action vectors using the observed pen-axis z component. It passes the official aggregate criterion on training seed 8300, but drops the pen at step 69. Foundation-model authorship is not recorded.",
+    "source": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v6-c1/experiment_results/pen_search_verified",
+    "training_seed": 8300,
+    "training_success_steps": 35,
+    "first_drop_step": 69,
+    "final_success_frame": false,
+    "heldout_successes": 2,
+    "heldout_episodes": 9,
+    "media": "assets/videos/adroit-pen-earlier.mp4",
+    "caveat": "Different training protocols, seeds and evaluation sample sizes; descriptive illustration, not a controlled ablation or causal improvement estimate."
+  },
+  "media": [
+    {
+      "video": "assets/videos/adroit-pen-earlier.mp4",
+      "poster": "assets/images/adroit-pen-earlier-poster.jpg",
+      "label": "Earlier fixed-start search prototype \u00b7 training-seed replay \u00b7 0.25\u00d7 speed",
+      "attribution": "No foundation-model author attribution is recorded for this prototype.",
+      "source_trajectory": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v6-c1/experiment_results/pen_search_verified/frozen-8300/trajectory.jsonl",
+      "source_sha256": "555fd021e0f02cdeb3663d3063e84a509aea086971fc2330e38013ad4fa81a78",
+      "seed": 8300,
+      "steps": 200,
+      "native_control_hz": 100,
+      "playback_fps": 25,
+      "playback_speed": 0.25,
+      "duration_seconds": 8.0,
+      "replay_max_absolute_state_error": 0.0,
+      "replay_states_bitwise_equal": true,
+      "replay_metrics_equal_every_step": true,
+      "final_metrics": {
+        "reward": -0.1,
+        "episode_return": 333.49999999999676,
+        "episode_steps": 200,
+        "current_success": false,
+        "success_steps": 35,
+        "success_fraction": 0.175,
+        "ever_success": true,
+        "first_success_step": 23,
+        "success": true,
+        "failure_reason": null
+      },
+      "video_sha256": "dafa7cb0a71991812e6fe2a2faff35bb141f0805f1fe9eaa30bd9e3c51794fc4"
+    },
+    {
+      "video": "assets/videos/adroit-pen-neutral.mp4",
+      "poster": "assets/images/adroit-pen-neutral-poster.jpg",
+      "label": "Astra stage 1 \u00b7 neutral-grasp learning probe \u00b7 0.25\u00d7 speed",
+      "attribution": "Initial learning probe from the GPT-6 Astra / max-reasoning random-reset campaign; not held-out evaluation.",
+      "source_trajectory": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1/experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/case-01/attempt_01/learning/episode_0000/history.jsonl",
+      "source_sha256": "0cb731786fc002c7ca5f7b5809aae8ce59b90300a6c3bca83f964a248c720d61",
+      "seed": 165518035,
+      "steps": 200,
+      "native_control_hz": 100,
+      "playback_fps": 25,
+      "playback_speed": 0.25,
+      "duration_seconds": 8.0,
+      "replay_max_absolute_state_error": 0.0,
+      "replay_states_bitwise_equal": true,
+      "replay_metrics_equal_every_step": true,
+      "final_metrics": {
+        "reward": -0.1,
+        "episode_return": -20.000000000000014,
+        "episode_steps": 200,
+        "current_success": false,
+        "success_steps": 0,
+        "success_fraction": 0.0,
+        "ever_success": false,
+        "first_success_step": null,
+        "success": false,
+        "failure_reason": "time_limit"
+      },
+      "video_sha256": "7b2fc06f250c3a1b6f39ac98c49eec3feb6b2057bb87c96776dc5fccc919138e"
+    }
+  ],
+  "current_clip_diagnostics": {
+    "seed": 823495863,
+    "success_steps": 121,
+    "final_success_run": 121,
+    "final_current_success": true,
+    "minimum_recorded_pen_height_m": 0.20183066103755137,
+    "all_30_heldout_final_frames_successful": true
+  },
+  "source_code_excerpts": {
+    "orientation_gates": "phase = max(0.0, min(1.0, (0.75 - v[33]) * 6))\nthird = max(0.0, min(1.0, (0.5 - v[33]) * 5))",
+    "target_selection": "t = v[36:39]\nbest = max(LIB, key=lambda r: sum((r[0][i] * t[i] for i in range(3))))",
+    "source": "search/search_0039/result.json: best_source"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "title": "Adroit fixed-start versus random-reset training: descriptive campaign comparison",
+  "model": {
+    "name": "gpt-6-astra",
+    "reasoning": "max"
+  },
+  "rows": [
+    {
+      "task": "Door",
+      "fixed": {
+        "successes": 14,
+        "episodes": 30,
+        "search_rollouts": 247,
+        "adaptation_env_steps": 80800,
+        "provider_requests": 134
+      },
+      "random": {
+        "successes": 29,
+        "episodes": 30,
+        "search_rollouts": 8858,
+        "adaptation_env_steps": 1789920,
+        "provider_requests": 671,
+        "sampled_episodes_by_purpose": {
+          "heldout": 30,
+          "learning": 16,
+          "search": 8858,
+          "validation": 85
+        }
+      }
+    },
+    {
+      "task": "Hammer",
+      "fixed": {
+        "successes": 25,
+        "episodes": 30,
+        "search_rollouts": 638,
+        "adaptation_env_steps": 149200,
+        "provider_requests": 124
+      },
+      "random": {
+        "successes": 30,
+        "episodes": 30,
+        "search_rollouts": 875,
+        "adaptation_env_steps": 186910,
+        "provider_requests": 165,
+        "sampled_episodes_by_purpose": {
+          "heldout": 30,
+          "learning": 15,
+          "search": 875,
+          "validation": 55
+        }
+      }
+    },
+    {
+      "task": "Pen",
+      "fixed": {
+        "successes": 7,
+        "episodes": 30,
+        "search_rollouts": 1250,
+        "adaptation_env_steps": 269400,
+        "provider_requests": 248
+      },
+      "random": {
+        "successes": 30,
+        "episodes": 30,
+        "search_rollouts": 6095,
+        "adaptation_env_steps": 1233120,
+        "provider_requests": 822,
+        "sampled_episodes_by_purpose": {
+          "heldout": 30,
+          "learning": 14,
+          "search": 6095,
+          "validation": 68
+        }
+      }
+    },
+    {
+      "task": "Relocate",
+      "fixed": {
+        "successes": 12,
+        "episodes": 30,
+        "search_rollouts": 394,
+        "adaptation_env_steps": 115570,
+        "provider_requests": 199
+      },
+      "random": {
+        "successes": 30,
+        "episodes": 30,
+        "search_rollouts": 1312,
+        "adaptation_env_steps": 275225,
+        "provider_requests": 229,
+        "sampled_episodes_by_purpose": {
+          "heldout": 30,
+          "learning": 18,
+          "search": 1312,
+          "validation": 55
+        }
+      }
+    }
+  ],
+  "protocols": {
+    "fixed": "seq10 L3+papers: learn each of 10 fixed starts in order and pass the cumulative fixed prefix.",
+    "random": "adroit_seq10_l3pr: fresh starts for learning, search, and evaluation; stage k needs k successes in one frozen-policy evaluation. This archived campaign predates incoming-transfer tests."
+  },
+  "nominal_limits_per_stage": {
+    "provider_requests": 300,
+    "tool_calls": 1000,
+    "learning_resets": 100,
+    "evaluation_submissions": 250,
+    "search_rollouts": 20000,
+    "wall_hours": 12
+  },
+  "caveats": [
+    "One training chain per task and protocol; this is not a replicated causal ablation.",
+    "Training guidance, reset protocol, held-out seed sets, and actual interaction costs differ.",
+    "Nominal stage limits match, but actual search and adaptation costs are greater for the random-reset campaign.",
+    "Both protocols increase the evaluation batch size across stages; the fixed condition reuses a growing fixed prefix and the random condition samples fresh starts.",
+    "The random-reset data have only a final held-out test; no held-out learning curve for stages 1\u20139 is implied.",
+    "Outcomes concern native simulator reset distributions, not real-world or arbitrary perturbation robustness."
+  ],
+  "provenance": {
+    "repository": "Schema-Robo-v7-r1",
+    "sources": [
+      {
+        "path": "docs/data/astra_vs_opus.json",
+        "sha256": "6adfa4050b93b69b5646da34534d7325aade8daff6e7385186754cf5fa977af1"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/report.json",
+        "sha256": "48c88acbb9d130aad72909833bb9d12443d8a8b7d3e1d86ee7a6567ac3c7a64c"
+      }
+    ],
+    "fixed_crosscheck": "docs/research.md section 5.2",
+    "random_crosscheck": "docs/figures/adroit_seq10_l3pr/REPORT.md",
+    "random_protocol_source": "experiment_results/adroit_seq10_l3pr/inputs/door_po_seq10_L3PR.json",
+    "fixed_protocol_source": "configs/c4/seq10/door_po_L3P_model_driven_papers.json"
+  }
+}

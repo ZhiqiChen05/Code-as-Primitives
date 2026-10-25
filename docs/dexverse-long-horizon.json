@@ -1,0 +1,135 @@
+{
+  "tasks": [
+    {
+      "task": "LongHorizon-CookFoods",
+      "action_dimensions": 28,
+      "horizon_control_steps": 1200,
+      "control_rate_hz": 60,
+      "composition": "Move pot to burner; put all ingredients in pot; pour water and pour can into pot; activate stove knob while pot and ingredients remain correctly placed. Pour events are latched, while the terminal stage tests current knob, pot and ingredient conditions. Prerequisites may be completed in any order.",
+      "source_task_card": "https://huggingface.co/datasets/b09501048/dexverse-opus-5.5-runs/resolve/main/e2_wave1_A0/chains/LongHorizon-CookFoods_A0/stage_01/work/task_card.md",
+      "description_note": "The source task card concatenates an older two-stage base description with the more complete current StageGraph description; this summary uses the latter."
+    },
+    {
+      "task": "LongHorizon-OvenBakeSalmon",
+      "action_dimensions": 56,
+      "horizon_control_steps": 3000,
+      "control_rate_hz": 60,
+      "composition": "Pour salt and pepper over salmon (either order); open oven and move tray with salmon into cavity; close door while salmon remains inside; rotate control knob while salmon remains inside.",
+      "source_task_card": "https://huggingface.co/datasets/b09501048/dexverse-opus-5.5-runs/resolve/main/e2_wave1_A0/chains/LongHorizon-OvenBakeSalmon_A0/stage_01/work/task_card.md"
+    }
+  ],
+  "metrics": [
+    {
+      "task": "Dexverse-LongHorizon-CookFoods-v0",
+      "arm": "A0",
+      "campaign": "e2_wave1_A0",
+      "status": "accepted",
+      "stop_reason": [
+        "success"
+      ],
+      "heldout": [
+        37,
+        47
+      ],
+      "heldout_last_submission": null,
+      "requests": 485,
+      "resets": 98,
+      "submissions": 1,
+      "search_rollouts": 906
+    },
+    {
+      "task": "Dexverse-LongHorizon-OvenBakeSalmon-v0",
+      "arm": "A0",
+      "campaign": "e2_wave1_A0",
+      "status": "not_accepted",
+      "stop_reason": [
+        "case_time_limit"
+      ],
+      "heldout": null,
+      "heldout_last_submission": [
+        28,
+        27
+      ],
+      "requests": 904,
+      "resets": 104,
+      "submissions": 138,
+      "search_rollouts": 136
+    },
+    {
+      "task": "Dexverse-LongHorizon-CookFoods-v0",
+      "arm": "L3P",
+      "campaign": "e2_wave1_L3P",
+      "status": "not_accepted",
+      "stop_reason": [
+        "no_progress"
+      ],
+      "heldout": null,
+      "heldout_last_submission": [
+        11,
+        11
+      ],
+      "requests": 989,
+      "resets": 44,
+      "submissions": 97,
+      "search_rollouts": 1994
+    },
+    {
+      "task": "Dexverse-LongHorizon-OvenBakeSalmon-v0",
+      "arm": "L3P",
+      "campaign": "e2_wave1_L3P",
+      "status": "accepted",
+      "stop_reason": [
+        "success"
+      ],
+      "heldout": [
+        32,
+        38
+      ],
+      "heldout_last_submission": null,
+      "requests": 610,
+      "resets": 68,
+      "submissions": 15,
+      "search_rollouts": 633
+    },
+    {
+      "task": "Dexverse-LongHorizon-CookFoods-v0",
+      "arm": "L3PG",
+      "campaign": "e2_L3PG",
+      "status": "not_accepted",
+      "stop_reason": [
+        "no_progress"
+      ],
+      "heldout": null,
+      "heldout_last_submission": [
+        0,
+        0
+      ],
+      "requests": 901,
+      "resets": 52,
+      "submissions": 5,
+      "search_rollouts": 908
+    },
+    {
+      "task": "Dexverse-LongHorizon-OvenBakeSalmon-v0",
+      "arm": "L3PG",
+      "campaign": "e2_L3PG",
+      "status": "not_accepted",
+      "stop_reason": [
+        "case_time_limit"
+      ],
+      "heldout": null,
+      "heldout_last_submission": [
+        7,
+        6
+      ],
+      "requests": 537,
+      "resets": 17,
+      "submissions": 5,
+      "search_rollouts": 827
+    }
+  ],
+  "metrics_source": "https://github.com/DjengoFang/dexverse-llm-policy-search/tree/main/results/opus-5.5/summary",
+  "cost_definition": "search_rollouts counts numerical-search simulator episodes only. Learning resets, model requests and ten-start evaluation submissions are separate costs; these numbers must not be labeled total rollouts.",
+  "heldout_definition": "Two repeats of 50 unseen start positions. A null heldout value means the policy was not accepted; heldout_last_submission is diagnostic only and is excluded from reported accepted-policy performance.",
+  "replay_caution": "Oven A0 succeeds in the selected seed9029 replay but its overall policy was not accepted. CookFoods seed9002 fails in every panel. See dexverse-media.json for exact labels."
+}

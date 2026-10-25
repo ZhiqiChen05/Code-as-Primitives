@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650" role="img" aria-labelledby="figure-title figure-desc">
+<title id="figure-title">Adroit frozen policies succeeded in 119 of 120 held-out episodes.</title>
+<desc id="figure-desc">Door: 29 of 30 episodes, 96.7 percent success, 95 percent Wilson interval 83.3 to 99.4 percent. Hammer, Pen, and Relocate: 30 of 30 episodes each, 100 percent success, interval 88.6 to 100.0 percent. The horizontal success-rate axis spans 0 to 100 percent. There was one training chain per task. Intervals quantify variation across held-out seeds for each frozen policy, not independent training runs. Source: the adroit_seq10_l3pr campaign report.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#276451"/></marker></defs>
+<rect width="1100" height="650" fill="#f6f3eb"/>
+<text x="50" y="46" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="start" letter-spacing="2">ADROIT  /  FROZEN-POLICY EVALUATION</text>
+<text x="50" y="92" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#242620" text-anchor="start" >119 successes in 120 held-out episodes</text>
+<text x="50" y="126" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="start" >30 unseen starts per task · one training chain per task</text>
+<text x="50" y="179" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#63675d" text-anchor="start" letter-spacing="1">TASK</text>
+<text x="1050" y="179" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#63675d" text-anchor="end" letter-spacing="1">SUCCESSES</text>
+<line x1="235.0" y1="199" x2="235.0" y2="438" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="235.0" y="469" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >0</text>
+<line x1="401.25" y1="199" x2="401.25" y2="438" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="401.25" y="469" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >25</text>
+<line x1="567.5" y1="199" x2="567.5" y2="438" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="567.5" y="469" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >50</text>
+<line x1="733.75" y1="199" x2="733.75" y2="438" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="733.75" y="469" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >75</text>
+<line x1="900.0" y1="199" x2="900.0" y2="438" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="900.0" y="469" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >100</text>
+<text x="50" y="229" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#242620" text-anchor="start" >Door</text>
+<line x1="235" y1="222" x2="900" y2="222" stroke="#d7d6ca" stroke-width="1" stroke-dasharray="3 5"/>
+<line x1="788.945" y1="222" x2="896.01" y2="222" stroke="#be5d39" stroke-width="3" />
+<line x1="788.945" y1="214" x2="788.945" y2="230" stroke="#be5d39" stroke-width="2" />
+<line x1="896.01" y1="214" x2="896.01" y2="230" stroke="#be5d39" stroke-width="2" />
+<circle cx="877.8333333333334" cy="222" r="7" fill="#be5d39" stroke="#f6f3eb" stroke-width="2"/>
+<text x="1050" y="229" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#be5d39" text-anchor="end" >29 / 30</text>
+<text x="50" y="295" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#242620" text-anchor="start" >Hammer</text>
+<line x1="235" y1="288" x2="900" y2="288" stroke="#d7d6ca" stroke-width="1" stroke-dasharray="3 5"/>
+<line x1="824.1899999999999" y1="288" x2="900.0" y2="288" stroke="#276451" stroke-width="3" />
+<line x1="824.1899999999999" y1="280" x2="824.1899999999999" y2="296" stroke="#276451" stroke-width="2" />
+<line x1="900.0" y1="280" x2="900.0" y2="296" stroke="#276451" stroke-width="2" />
+<circle cx="900.0" cy="288" r="7" fill="#276451" stroke="#f6f3eb" stroke-width="2"/>
+<text x="1050" y="295" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#276451" text-anchor="end" >30 / 30</text>
+<text x="50" y="361" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#242620" text-anchor="start" >Pen</text>
+<line x1="235" y1="354" x2="900" y2="354" stroke="#d7d6ca" stroke-width="1" stroke-dasharray="3 5"/>
+<line x1="824.1899999999999" y1="354" x2="900.0" y2="354" stroke="#276451" stroke-width="3" />
+<line x1="824.1899999999999" y1="346" x2="824.1899999999999" y2="362" stroke="#276451" stroke-width="2" />
+<line x1="900.0" y1="346" x2="900.0" y2="362" stroke="#276451" stroke-width="2" />
+<circle cx="900.0" cy="354" r="7" fill="#276451" stroke="#f6f3eb" stroke-width="2"/>
+<text x="1050" y="361" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#276451" text-anchor="end" >30 / 30</text>
+<text x="50" y="427" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#242620" text-anchor="start" >Relocate</text>
+<line x1="235" y1="420" x2="900" y2="420" stroke="#d7d6ca" stroke-width="1" stroke-dasharray="3 5"/>
+<line x1="824.1899999999999" y1="420" x2="900.0" y2="420" stroke="#276451" stroke-width="3" />
+<line x1="824.1899999999999" y1="412" x2="824.1899999999999" y2="428" stroke="#276451" stroke-width="2" />
+<line x1="900.0" y1="412" x2="900.0" y2="428" stroke="#276451" stroke-width="2" />
+<circle cx="900.0" cy="420" r="7" fill="#276451" stroke="#f6f3eb" stroke-width="2"/>
+<text x="1050" y="427" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#276451" text-anchor="end" >30 / 30</text>
+<text x="567.5" y="508" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="middle" >Held-out success rate (%)</text>
+<line x1="50" y1="544" x2="1050" y2="544" stroke="#d7d6ca" stroke-width="1.4" />
+<line x1="52" y1="579" x2="100" y2="579" stroke="#276451" stroke-width="3" />
+<circle cx="76" cy="579" r="6" fill="#276451" stroke="#f6f3eb" stroke-width="2"/>
+<text x="116" y="585" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#242620" text-anchor="start" >Point: observed rate. Whisker: 95% Wilson interval over held-out seeds.</text>
+<text x="50" y="620" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="start" >Intervals describe these frozen policies, not variability across independent training runs.</text>
+</svg>

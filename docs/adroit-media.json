@@ -1,0 +1,170 @@
+{
+  "campaign": "adroit_seq10_l3pr",
+  "generation_script": "scripts/render_adroit_media.py",
+  "clips": [
+    {
+      "task": "door",
+      "video": "assets/videos/adroit-door.mp4",
+      "poster": "assets/images/adroit-door-poster.jpg",
+      "source_repository": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1",
+      "source_evaluation": "experiment_results/adroit_seq10_l3pr/heldout/door_po_seq10_L3PR/evaluation.json",
+      "source_evaluation_sha256": "bf7cd9430369470d969de1420bb6bc0d7af78ffdceb89914c2f50a00e6aa3555",
+      "source_trajectory": "experiment_results/adroit_seq10_l3pr/heldout/door_po_seq10_L3PR/episodes/heldout-00000001/trajectory.jsonl",
+      "source_trajectory_sha256": "97a2c2f4ae0447762e2c17079566f47434b6ac5ed8eb6af4cf671c07bc845879",
+      "source_policy_hashes": {
+        "policy.py": "f30213de4b4e4000985e05f5c8817df4fc1d30e13cd5ab29543981c16d727521"
+      },
+      "episode": "heldout-00000001",
+      "selection": "First planned held-out episode for every task, without ranking outcomes.",
+      "seed": 1553058530,
+      "heldout_success": true,
+      "provider_calls": 0,
+      "steps": 200,
+      "native_control_hz": 100.0,
+      "playback_fps": 25,
+      "playback_speed": 0.25,
+      "playback_caption": "Verified held-out replay \u00b7 0.25\u00d7 speed",
+      "duration_seconds": 8.0,
+      "resolution": [
+        640,
+        480
+      ],
+      "poster_step": 107,
+      "replay_max_absolute_state_error": 0.0,
+      "replay_states_bitwise_equal": true,
+      "replay_metrics_equal_every_step": true,
+      "video_sha256": "f17bfdadae656fda806cdbcdcb80fad1dfad0019a43621d872ba6b4335123236",
+      "video_bytes": 323376,
+      "simulator_versions": {
+        "gymnasium": "1.2.3",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.12.0",
+        "numpy": "2.5.4"
+      },
+      "note": "Video is a deterministic native-simulator rendering of recorded test actions, not a new learned policy or new independent test. All 200 states and metrics were reconciled before export. Camera/render dimensions do not alter physics."
+    },
+    {
+      "task": "hammer",
+      "video": "assets/videos/adroit-hammer.mp4",
+      "poster": "assets/images/adroit-hammer-poster.jpg",
+      "source_repository": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1",
+      "source_evaluation": "experiment_results/adroit_seq10_l3pr/heldout/hammer_po_seq10_L3PR/evaluation.json",
+      "source_evaluation_sha256": "4200d048f6a4b99d70246727492bb841632b8a6125a2de23db2a521fd72b41e3",
+      "source_trajectory": "experiment_results/adroit_seq10_l3pr/heldout/hammer_po_seq10_L3PR/episodes/heldout-00000001/trajectory.jsonl",
+      "source_trajectory_sha256": "43f57800eb8df5484983bb6bfdad4e1d48c2ad7499675c4ff75fba60ff387028",
+      "source_policy_hashes": {
+        "policy.py": "3fcb3f623315c8a6574259121dc5eafee79230e947073ecd5fe1f6db1e3ad8a5"
+      },
+      "episode": "heldout-00000001",
+      "selection": "First planned held-out episode for every task, without ranking outcomes.",
+      "seed": 176676348,
+      "heldout_success": true,
+      "provider_calls": 0,
+      "steps": 200,
+      "native_control_hz": 100.0,
+      "playback_fps": 25,
+      "playback_speed": 0.25,
+      "playback_caption": "Verified held-out replay \u00b7 0.25\u00d7 speed",
+      "duration_seconds": 8.0,
+      "resolution": [
+        640,
+        480
+      ],
+      "poster_step": 80,
+      "replay_max_absolute_state_error": 0.0,
+      "replay_states_bitwise_equal": true,
+      "replay_metrics_equal_every_step": true,
+      "video_sha256": "fbe35437514a2190390d722bc2a346607f00eb6629ffbdce0c760646d82e6332",
+      "video_bytes": 106553,
+      "simulator_versions": {
+        "gymnasium": "1.2.3",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.12.0",
+        "numpy": "2.5.4"
+      },
+      "note": "Video is a deterministic native-simulator rendering of recorded test actions, not a new learned policy or new independent test. All 200 states and metrics were reconciled before export. Camera/render dimensions do not alter physics."
+    },
+    {
+      "task": "pen",
+      "video": "assets/videos/adroit-pen.mp4",
+      "poster": "assets/images/adroit-pen-poster.jpg",
+      "source_repository": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1",
+      "source_evaluation": "experiment_results/adroit_seq10_l3pr/heldout/pen_po_seq10_L3PR/evaluation.json",
+      "source_evaluation_sha256": "66c9f96561a8e0691bdfab5d63e5c3562998affad374bf64ea78b69e446ee1b7",
+      "source_trajectory": "experiment_results/adroit_seq10_l3pr/heldout/pen_po_seq10_L3PR/episodes/heldout-00000001/trajectory.jsonl",
+      "source_trajectory_sha256": "bcfd6464085ded387512fc7bf816cde9868d95a9a56a5985563e32ec4da30037",
+      "source_policy_hashes": {
+        "policy.py": "da7be9efa1bae65ee8636645c0474cc41bd2c0e91822ae21b89a914d8543f5e8"
+      },
+      "episode": "heldout-00000001",
+      "selection": "First planned held-out episode for every task, without ranking outcomes.",
+      "seed": 823495863,
+      "heldout_success": true,
+      "provider_calls": 0,
+      "steps": 200,
+      "native_control_hz": 100.0,
+      "playback_fps": 25,
+      "playback_speed": 0.25,
+      "playback_caption": "Verified held-out replay \u00b7 0.25\u00d7 speed",
+      "duration_seconds": 8.0,
+      "resolution": [
+        640,
+        480
+      ],
+      "poster_step": 95,
+      "replay_max_absolute_state_error": 0.0,
+      "replay_states_bitwise_equal": true,
+      "replay_metrics_equal_every_step": true,
+      "video_sha256": "daa2a968080d180064e89dd04287232c40db416b3a9ac3d15fc15916035f9d2c",
+      "video_bytes": 135182,
+      "simulator_versions": {
+        "gymnasium": "1.2.3",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.12.0",
+        "numpy": "2.5.4"
+      },
+      "note": "Video is a deterministic native-simulator rendering of recorded test actions, not a new learned policy or new independent test. All 200 states and metrics were reconciled before export. Camera/render dimensions do not alter physics."
+    },
+    {
+      "task": "relocate",
+      "video": "assets/videos/adroit-relocate.mp4",
+      "poster": "assets/images/adroit-relocate-poster.jpg",
+      "source_repository": "/mnt/home/zhiqi.chen/Impossible/Schema-Robo-v7-r1",
+      "source_evaluation": "experiment_results/adroit_seq10_l3pr/heldout/relocate_po_seq10_L3PR/evaluation.json",
+      "source_evaluation_sha256": "a4e8cbd6e5bd42df3793e5e18c3d47b0471a8366f8cdbc6377a6667956fd7d57",
+      "source_trajectory": "experiment_results/adroit_seq10_l3pr/heldout/relocate_po_seq10_L3PR/episodes/heldout-00000001/trajectory.jsonl",
+      "source_trajectory_sha256": "615afde8088f0a1c03cc85998279cef823cefc10ce5a064e2baa885123c0da77",
+      "source_policy_hashes": {
+        "policy.py": "4c108d7e811fb8f315e5d7049ee85b6d34c52b3b8f936178949896daa70f4a37"
+      },
+      "episode": "heldout-00000001",
+      "selection": "First planned held-out episode for every task, without ranking outcomes.",
+      "seed": 74511615,
+      "heldout_success": true,
+      "provider_calls": 0,
+      "steps": 200,
+      "native_control_hz": 100.0,
+      "playback_fps": 25,
+      "playback_speed": 0.25,
+      "playback_caption": "Verified held-out replay \u00b7 0.25\u00d7 speed",
+      "duration_seconds": 8.0,
+      "resolution": [
+        640,
+        480
+      ],
+      "poster_step": 87,
+      "replay_max_absolute_state_error": 0.0,
+      "replay_states_bitwise_equal": true,
+      "replay_metrics_equal_every_step": true,
+      "video_sha256": "e3a62473d6fbb879258a4b7cd55fa4b63b618e7aebe1dba2544ca18ef272617e",
+      "video_bytes": 113851,
+      "simulator_versions": {
+        "gymnasium": "1.2.3",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.12.0",
+        "numpy": "2.5.4"
+      },
+      "note": "Video is a deterministic native-simulator rendering of recorded test actions, not a new learned policy or new independent test. All 200 states and metrics were reconciled before export. Camera/render dimensions do not alter physics."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "experiment": "adroit_seq10_l3pr",
+  "model": "gpt-6-astra",
+  "reasoning": "max",
+  "training_chains_per_task": 1,
+  "heldout_episodes_per_task": 30,
+  "provider_calls_during_heldout": 0,
+  "training_stages_per_task": 10,
+  "source": "Schema-Robo-v7-r1/docs/figures/adroit_seq10_l3pr/REPORT.md",
+  "tasks": [
+    {
+      "task": "Door",
+      "successes": 29,
+      "episodes": 30,
+      "success_percent": 96.66666666666667,
+      "wilson95_percent": [
+        83.3,
+        99.4
+      ],
+      "search_rollouts": 8858,
+      "model_requests": 671
+    },
+    {
+      "task": "Hammer",
+      "successes": 30,
+      "episodes": 30,
+      "success_percent": 100.0,
+      "wilson95_percent": [
+        88.6,
+        100
+      ],
+      "search_rollouts": 875,
+      "model_requests": 165
+    },
+    {
+      "task": "Pen",
+      "successes": 30,
+      "episodes": 30,
+      "success_percent": 100.0,
+      "wilson95_percent": [
+        88.6,
+        100
+      ],
+      "search_rollouts": 6095,
+      "model_requests": 822
+    },
+    {
+      "task": "Relocate",
+      "successes": 30,
+      "episodes": 30,
+      "success_percent": 100.0,
+      "wilson95_percent": [
+        88.6,
+        100
+      ],
+      "search_rollouts": 1312,
+      "model_requests": 229
+    }
+  ]
+}
