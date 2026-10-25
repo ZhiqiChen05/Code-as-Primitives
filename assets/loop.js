@@ -47,8 +47,6 @@
     evidence.hidden = active < 3;
     panels.forEach((panel, i) => { panel.hidden = i !== active - 3; });
     steps.forEach((step, i) => step.classList.toggle("is-active", i === active));
-    R("counter").textContent = `${String(active + 1).padStart(2, "0")} / ${String(steps.length).padStart(2, "0")}`;
-    R("step-name").textContent = steps[active].dataset.title;
     back.setAttribute("aria-disabled", String(active === 0));
     next.setAttribute("aria-disabled", String(active === steps.length - 1));
     R("compact-note").innerHTML = active < 3 ? steps[active].innerHTML : "";
