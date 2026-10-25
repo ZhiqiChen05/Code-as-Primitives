@@ -31,3 +31,5 @@
 .idea-copy .idea-subhead{font-size:26px;line-height:1.25;color:var(--green);margin:32px 0 14px}
 .idea-copy mark{color:var(--ink);background:var(--green-soft);padding:1px 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 @media(max-width:760px){.idea-copy .idea-subhead{font-size:24px;margin-top:28px}}
+
+.citation-code pre{white-space:pre-wrap;overflow-wrap:anywhere}

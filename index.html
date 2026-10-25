@@ -25,7 +25,7 @@
 <div class="reading-progress" aria-hidden="true"></div>
 <header class="site-header">
 <a href="#top" class="wordmark"><span class="logo-mark" aria-hidden="true">{·}</span> CODE AS PRIMITIVES</a>
-<nav class="header-links" aria-label="Main navigation"><a href="#framework">Method</a><a href="#results">Results</a><a href="#resources">Resources ↗</a><span class="draft-label"><span class="status-dot"></span> FIRST DRAFT</span></nav>
+<nav class="header-links" aria-label="Main navigation"><a href="#framework">Method</a><a href="#results">Results</a><a href="#bibtex">BibTeX</a><span class="draft-label"><span class="status-dot"></span> FIRST DRAFT</span></nav>
 </header>
 <main>
 <div class="hero-band"><div class="hero-split"><section class="hero" aria-labelledby="page-title">
@@ -49,9 +49,9 @@
 </div>
 </div>
 <div class="article-layout">
-<aside class="contents" aria-label="On this page"><div class="contents-title">IN THIS NOTE</div><ol><li><a href="#motivation">01 &nbsp; The idea</a></li><li><a href="#framework">02 &nbsp; Design, then search</a></li><li><a href="#results">03 &nbsp; Held-out evaluation</a></li><li><a href="#challenges">04 &nbsp; The difficult cases</a></li><li><a href="#resources">05 &nbsp; Explore the work</a></li></ol><div class="contents-footer">CODE IS THE POLICY.<br>ROLLOUTS ARE THE EVIDENCE.</div></aside>
+<aside class="contents" aria-label="On this page"><div class="contents-title">IN THIS NOTE</div><ol><li><a href="#motivation">01 &nbsp; The idea</a></li><li><a href="#framework">02 &nbsp; Design, then search</a></li><li><a href="#results">03 &nbsp; Held-out evaluation</a></li><li><a href="#challenges">04 &nbsp; The difficult cases</a></li><li><a href="#bibtex">05 &nbsp; BibTeX</a></li></ol><div class="contents-footer">CODE IS THE POLICY.<br>ROLLOUTS ARE THE EVIDENCE.</div></aside>
 <article class="article" id="article">
-<nav class="mobile-contents" aria-label="Article sections"><a href="#motivation">Idea</a><a href="#framework">Method</a><a href="#pen-walkthrough">Pen walkthrough</a><a href="#results">Results</a><a href="#challenges">Hard cases</a></nav>
+<nav class="mobile-contents" aria-label="Article sections"><a href="#motivation">Idea</a><a href="#framework">Method</a><a href="#pen-walkthrough">Pen walkthrough</a><a href="#results">Results</a><a href="#challenges">Hard cases</a><a href="#bibtex">BibTeX</a></nav>
 <section class="article-section" id="motivation">
 <div class="section-head"><span class="section-index">01 / The idea</span><h2>Choose a space of functions<br>Then search within it</h2></div>
 <div class="prose idea-copy">
@@ -266,13 +266,18 @@ third = max(0.0, min(1.0, (0.5 - v[33]) * 5))</code></pre></div>
 
 <div class="callout"><h4>Comments on long horizons</h4><p>Our method focuses on learning reusable, atomic control primitives. We view parameter search as a tool for refining these local controllers, rather than optimizing an entire long-horizon execution. For composite tasks, we envision handling uncertainty through a higher-level policy that selects and composes primitives as the state evolves, without rerunning parameter search each time a primitive is used. The goal is to reuse these atomic policies across longer tasks and continually improve the primitives themselves using feedback from execution.</p></div>
 </section>
-<section class="article-section" id="resources">
-<div class="section-head"><span class="section-index">05 / Explore the work</span><h2>The policy is an artifact<br>you can inspect</h2></div>
-<div class="prose"><p>The practical output is more than a score: it is code, numerical parameters, and a record of the trials that produced them. Those artifacts let us inspect how a controller responds, reproduce its evaluation, and identify where the next revision should focus.</p></div>
-<div class="resource-grid"><a class="resource-link" href="https://github.com/ZhiqiChen05/Code-as-Primitives"><strong>Project page source <span aria-hidden="true">↗</span></strong><span class="description">This draft, figures, media provenance, and plotting scripts.</span></a><a class="resource-link" href="https://github.com/DjengoFang/dexverse-llm-policy-search"><strong>DexVerse policy-search harness <span aria-hidden="true">↗</span></strong><span class="description">Protocol, search tools, prompts, and published Opus results.</span></a><a class="resource-link" href="https://huggingface.co/datasets/b09501048/dexverse-opus-5.5-runs"><strong>DexVerse experiment archive <span aria-hidden="true">↗</span></strong><span class="description">Frozen policies, rollout records, and comparison videos.</span></a><a class="resource-link" href="docs/source-notes.md"><strong>Evidence & media notes <span aria-hidden="true">↗</span></strong><span class="description">Result definitions, source records, and reproducible visuals.</span></a></div>
-<p class="small-note" style="margin-top:25px">DexVerse footage and report figures are reproduced from the MIT-licensed Opus 5.5 archive by DjengoFang. Adroit videos replay saved simulator actions and were checked against every recorded state. Original project-page inspiration: <a href="https://schema-harness.github.io/">Schema Harness</a>.</p>
+<section class="article-section" id="bibtex">
+<span id="resources" aria-hidden="true"></span>
+<div class="section-head"><span class="section-index">05 / Citation</span><h2>BibTeX</h2><p>Author list to be determined.</p></div>
+<div class="code-window citation-code"><div class="code-toolbar"><span>Project citation</span><button type="button" class="copy-code" data-copy-target="bibtex-code" aria-label="Copy BibTeX citation">Copy</button></div><pre><code id="bibtex-code">@misc{codeasprimitives2026,
+  author = {{To be determined}},
+  title  = {{Code as Primitives: Few-shot agentic policy learning for low-level robotic control}},
+  year   = {2026},
+  url    = {https://zhiqichen05.github.io/Code-as-Primitives/},
+  note   = {Project blog}
+}</code></pre></div>
 </section>
 </article></div>
 </main>
-<footer class="site-footer"><div><span class="footer-mark">Code as Primitives</span><br>Few-shot agentic policy learning for low-level robotic control.</div><div>First draft · October 2026<br><a href="#top">Back to the top ↑</a></div></footer>
+<footer class="site-footer"><div><span class="footer-mark">Code as Primitives</span><br>Few-shot agentic policy learning for low-level robotic control.</div><div>First draft · October 2026<br><a href="docs/source-notes.md">Media &amp; template credits</a><br><a href="#top">Back to the top ↑</a></div></footer>
 </body></html>
