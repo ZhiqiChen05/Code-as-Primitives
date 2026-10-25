@@ -14,9 +14,15 @@ python3 -m http.server 8000 --bind 127.0.0.1
 
 Open <http://127.0.0.1:8000/>. Edit `index.html` for article content, `assets/styles.css` for layout, and `assets/site.js` for the video previews, keyboard-accessible tabs, and reading progress.
 
-The opening uses text on the left and four Adroit videos on the right; the layout stacks on mobile. The page includes a steppable framework, a four-step Pen walkthrough, downloadable result data, search-budget and curriculum figures, and recorded manipulation comparisons. Reduced-motion preferences disable automatic previews.
+The opening uses text on the left and four Adroit videos on the right; the layout stacks on mobile. The page includes a scroll-driven framework figure, a four-step Pen walkthrough, downloadable result data, search-budget and curriculum figures, and recorded manipulation comparisons. Reduced-motion preferences disable automatic previews.
 
-The interactive framework lives in `assets/framework.js` and `assets/framework.css`. Eight steps explain policy design, optional parameter search, training feedback, acceptance, and frozen held-out execution. Readers can click nodes, switch L3+papers/A0 search, or use Play, Back, Next, and Reset. Arrow keys, Home, and End work while a playback control has focus. Playback starts paused. Without JavaScript, and in print, the static SVG remains available.
+Section 2 follows the "Thinking like a physicist" section of the Schema Harness template: Figure 1 shows the two levels (policy design and parameter search), and Figure 2 is a scroll-driven walkthrough in `assets/loop.js` and `assets/loop.css`. Scrolling the step cards drives a sticky stage: the design → search → submit → advance loop and its rollout ledger, a zoom into one parameter search (propose → evaluate → analyze → commit, with A0 and L3+papers), the recorded Pen run from Section 3, and the frozen held-out test. Without JavaScript, and in print, the static SVG replaces the stage and the steps read as text.
+
+Section 4 follows the "What the numbers say" section of the Schema Harness template, in this site's own style: Figures 4 and 5 compare held-out success and total rollouts for L3PG, A0 and a pending baseline (Adroit Pen and DexVerse Long-horizon are left to Section 5), and Figure 6 (`assets/evidence.js`) is a drag-scroll gallery of all 69 remaining tasks, each with its L3PG held-out success replay and per-task bars. Its data, `assets/data/l3pg-a0-tasks.json`, and the videos in `assets/videos/l3pg/` (copied unchanged from `DexVerse/docs/videos/l3pg_heldout_success`) come from `scripts/export_l3pg_tasks.py`, which needs the DexVerse and Adroit checkouts:
+
+```sh
+/home/djengof/CaP-X/cap-x/.venv/bin/python -I scripts/export_l3pg_tasks.py
+```
 
 ## Evidence and media
 

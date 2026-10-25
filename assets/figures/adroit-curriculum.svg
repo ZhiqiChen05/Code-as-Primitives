@@ -7,9 +7,9 @@
 <text x="50" y="91" font-family="Georgia, 'Times New Roman', serif" font-size="33" fill="#242620" text-anchor="start" >A contrast between two training protocols</text>
 <text x="50" y="126" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="start" >Final held-out outcomes · one chain per task and protocol · 30 episodes each</text>
 <rect x="55" y="164" width="10" height="10" fill="#be5d39"/>
-<text x="77" y="176" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#242620" text-anchor="start" >Fixed starts (seq10 L3+papers)</text>
+<text x="77" y="176" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#242620" text-anchor="start" >Fixed starts (Agentic search)</text>
 <circle cx="505" cy="169" r="6" fill="#276451"/>
-<text x="522" y="176" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#242620" text-anchor="start" >Fresh random starts (L3PR)</text>
+<text x="522" y="176" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#242620" text-anchor="start" >Fresh random starts (Agentic search)</text>
 <text x="1050" y="215" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#63675d" text-anchor="end" >successes</text>
 <line x1="235.0" y1="225" x2="235.0" y2="530" stroke="#d7d6ca" stroke-width="1.4" />
 <text x="235.0" y="563" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >0</text>

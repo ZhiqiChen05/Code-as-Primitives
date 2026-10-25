@@ -1,0 +1,126 @@
+{
+  "model": "claude-opus-5-5",
+  "subset": "69 shared E2 tasks",
+  "source": "dexverse-llm-policy-search/results/opus-5.5/comparison_e2.md",
+  "campaign_names": {
+    "CEM": "A0",
+    "Agentic search": "L3+papers",
+    "Agentic + grasp": "L3PG"
+  },
+  "metric": "Mean held-out success per task (50 unseen starts, two repeats averaged); unaccepted tasks count as zero.",
+  "overall_mean_percent": {
+    "CEM": 94.4,
+    "Agentic search": 94.1,
+    "Agentic + grasp": 91.6
+  },
+  "categories": [
+    {
+      "category": "Primitive",
+      "tasks": 7,
+      "arms": {
+        "CEM": {
+          "mean_heldout_percent": 95.6,
+          "accepted": 7
+        },
+        "Agentic search": {
+          "mean_heldout_percent": 94.3,
+          "accepted": 7
+        },
+        "Agentic + grasp": {
+          "mean_heldout_percent": 94.0,
+          "accepted": 7
+        }
+      }
+    },
+    {
+      "category": "Functional",
+      "tasks": 9,
+      "arms": {
+        "CEM": {
+          "mean_heldout_percent": 98.6,
+          "accepted": 9
+        },
+        "Agentic search": {
+          "mean_heldout_percent": 99.2,
+          "accepted": 9
+        },
+        "Agentic + grasp": {
+          "mean_heldout_percent": 96.3,
+          "accepted": 9
+        }
+      }
+    },
+    {
+      "category": "Articulation",
+      "tasks": 13,
+      "arms": {
+        "CEM": {
+          "mean_heldout_percent": 86.7,
+          "accepted": 12
+        },
+        "Agentic search": {
+          "mean_heldout_percent": 86.6,
+          "accepted": 12
+        },
+        "Agentic + grasp": {
+          "mean_heldout_percent": 81.0,
+          "accepted": 11
+        }
+      }
+    },
+    {
+      "category": "Bimanual",
+      "tasks": 3,
+      "arms": {
+        "CEM": {
+          "mean_heldout_percent": 97.7,
+          "accepted": 3
+        },
+        "Agentic search": {
+          "mean_heldout_percent": 97.7,
+          "accepted": 3
+        },
+        "Agentic + grasp": {
+          "mean_heldout_percent": 95.3,
+          "accepted": 3
+        }
+      }
+    },
+    {
+      "category": "Multi-goal",
+      "tasks": 34,
+      "arms": {
+        "CEM": {
+          "mean_heldout_percent": 98.9,
+          "accepted": 34
+        },
+        "Agentic search": {
+          "mean_heldout_percent": 98.8,
+          "accepted": 34
+        },
+        "Agentic + grasp": {
+          "mean_heldout_percent": 99.0,
+          "accepted": 34
+        }
+      }
+    },
+    {
+      "category": "Long-horizon",
+      "tasks": 3,
+      "arms": {
+        "CEM": {
+          "mean_heldout_percent": 58.0,
+          "accepted": 2
+        },
+        "Agentic search": {
+          "mean_heldout_percent": 54.3,
+          "accepted": 2
+        },
+        "Agentic + grasp": {
+          "mean_heldout_percent": 29.3,
+          "accepted": 1
+        }
+      }
+    }
+  ]
+}

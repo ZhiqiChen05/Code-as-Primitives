@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1002" viewBox="0 0 1100 1002" role="img" aria-labelledby="figure-title figure-desc">
+<title id="figure-title">Parameter search vs. code-as-policy</title>
+<desc id="figure-desc">Held-out success · frozen policies on unseen starts · Pen and Long-horizon shown separately. Adroit Door: parameter search 100.0%, code-as-policy TBD; Adroit Hammer: parameter search 93.3%, code-as-policy TBD; Adroit Relocate: parameter search 66.7%, code-as-policy TBD; DexVerse Primitive (7 tasks): parameter search 94.0%, code-as-policy TBD; DexVerse Functional (9 tasks): parameter search 96.3%, code-as-policy TBD; DexVerse Articulation (13 tasks): parameter search 81.0%, code-as-policy TBD; DexVerse Bimanual (3 tasks): parameter search 95.3%, code-as-policy TBD; DexVerse Multi-goal (34 tasks): parameter search 99.0%, code-as-policy TBD. Mean held-out success per task in the category: 50 unseen starts, two repeats averaged; unaccepted tasks count as zero. Long-horizon is reported with the challenging tasks.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#276451"/></marker></defs>
+<rect width="1100" height="1002" fill="#f6f3eb"/>
+<text x="50" y="44" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="start" letter-spacing="2">ADROIT + DEXVERSE  /  CLAUDE OPUS 5.5</text>
+<text x="50" y="91" font-family="Georgia, 'Times New Roman', serif" font-size="33" fill="#242620" text-anchor="start" >Parameter search vs. code-as-policy</text>
+<text x="50" y="126" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="start" >Held-out success · frozen policies on unseen starts · Pen and Long-horizon shown separately</text>
+<circle cx="60" cy="166" r="6" fill="#276451"/>
+<text x="77" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >Parameter search</text>
+<rect x="255" y="161" width="10" height="10" fill="#be5d39"/>
+<text x="277" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >Code-as-policy</text>
+<text x="1050" y="173" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#63675d" text-anchor="end" >success (%)</text>
+<line x1="270.0" y1="203" x2="270.0" y2="804" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="270.0" y="837" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >0</text>
+<line x1="435.0" y1="203" x2="435.0" y2="804" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="435.0" y="837" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >25</text>
+<line x1="600.0" y1="203" x2="600.0" y2="804" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="600.0" y="837" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >50</text>
+<line x1="765.0" y1="203" x2="765.0" y2="804" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="765.0" y="837" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >75</text>
+<line x1="930.0" y1="203" x2="930.0" y2="804" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="930.0" y="837" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >100</text>
+<text x="50" y="232" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#276451" text-anchor="start" letter-spacing="2">ADROIT</text>
+<text x="50" y="274" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#242620" text-anchor="start" >Door</text>
+<text x="50" y="299" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >30/30 starts</text>
+<line x1="270" y1="265" x2="930.0" y2="265" stroke="#276451" stroke-width="2" />
+<circle cx="930.0" cy="265" r="6" fill="#276451"/>
+<text x="1050" y="271" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="end" >100.0</text>
+<text x="278" y="294" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" font-style="italic">TBD</text>
+<text x="1050" y="294" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#63675d" text-anchor="end" font-style="italic">TBD</text>
+<text x="50" y="338" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#242620" text-anchor="start" >Hammer</text>
+<text x="50" y="363" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >28/30 starts</text>
+<line x1="270" y1="329" x2="885.78" y2="329" stroke="#276451" stroke-width="2" />
+<circle cx="885.78" cy="329" r="6" fill="#276451"/>
+<text x="1050" y="335" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="end" >93.3</text>
+<text x="278" y="358" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" font-style="italic">TBD</text>
+<text x="1050" y="358" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#63675d" text-anchor="end" font-style="italic">TBD</text>
+<text x="50" y="402" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#242620" text-anchor="start" >Relocate</text>
+<text x="50" y="427" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >20/30 starts</text>
+<line x1="270" y1="393" x2="710.22" y2="393" stroke="#276451" stroke-width="2" />
+<circle cx="710.22" cy="393" r="6" fill="#276451"/>
+<text x="1050" y="399" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="end" >66.7</text>
+<text x="278" y="422" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" font-style="italic">TBD</text>
+<text x="1050" y="422" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#63675d" text-anchor="end" font-style="italic">TBD</text>
+<text x="50" y="490" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#276451" text-anchor="start" letter-spacing="2">DEXVERSE</text>
+<text x="50" y="532" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#242620" text-anchor="start" >Primitive</text>
+<text x="50" y="557" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >7 tasks</text>
+<line x1="270" y1="523" x2="890.4" y2="523" stroke="#276451" stroke-width="2" />
+<circle cx="890.4" cy="523" r="6" fill="#276451"/>
+<text x="1050" y="529" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="end" >94.0</text>
+<text x="278" y="552" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" font-style="italic">TBD</text>
+<text x="1050" y="552" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#63675d" text-anchor="end" font-style="italic">TBD</text>
+<text x="50" y="596" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#242620" text-anchor="start" >Functional</text>
+<text x="50" y="621" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >9 tasks</text>
+<line x1="270" y1="587" x2="905.58" y2="587" stroke="#276451" stroke-width="2" />
+<circle cx="905.58" cy="587" r="6" fill="#276451"/>
+<text x="1050" y="593" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="end" >96.3</text>
+<text x="278" y="616" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" font-style="italic">TBD</text>
+<text x="1050" y="616" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#63675d" text-anchor="end" font-style="italic">TBD</text>
+<text x="50" y="660" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#242620" text-anchor="start" >Articulation</text>
+<text x="50" y="685" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >13 tasks</text>
+<line x1="270" y1="651" x2="804.6" y2="651" stroke="#276451" stroke-width="2" />
+<circle cx="804.6" cy="651" r="6" fill="#276451"/>
+<text x="1050" y="657" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="end" >81.0</text>
+<text x="278" y="680" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" font-style="italic">TBD</text>
+<text x="1050" y="680" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#63675d" text-anchor="end" font-style="italic">TBD</text>
+<text x="50" y="724" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#242620" text-anchor="start" >Bimanual</text>
+<text x="50" y="749" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >3 tasks</text>
+<line x1="270" y1="715" x2="898.98" y2="715" stroke="#276451" stroke-width="2" />
+<circle cx="898.98" cy="715" r="6" fill="#276451"/>
+<text x="1050" y="721" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="end" >95.3</text>
+<text x="278" y="744" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" font-style="italic">TBD</text>
+<text x="1050" y="744" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#63675d" text-anchor="end" font-style="italic">TBD</text>
+<text x="50" y="788" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#242620" text-anchor="start" >Multi-goal</text>
+<text x="50" y="813" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >34 tasks</text>
+<line x1="270" y1="779" x2="923.4" y2="779" stroke="#276451" stroke-width="2" />
+<circle cx="923.4" cy="779" r="6" fill="#276451"/>
+<text x="1050" y="785" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#276451" text-anchor="end" >99.0</text>
+<text x="278" y="808" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" font-style="italic">TBD</text>
+<text x="1050" y="808" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#63675d" text-anchor="end" font-style="italic">TBD</text>
+<text x="600.0" y="872" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="middle" >Held-out success rate (%)</text>
+<line x1="50" y1="901" x2="1050" y2="901" stroke="#d7d6ca" stroke-width="1.4" />
+<text x="50" y="937" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#242620" text-anchor="start" >Adroit: one run on 30 unseen starts. DexVerse: category mean over tasks, 50 unseen starts × 2 repeats.</text>
+<text x="50" y="968" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="start" >Unaccepted tasks count as zero. One training chain per task. Code-as-policy results pending.</text>
+</svg>

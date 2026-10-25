@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="810" viewBox="0 0 1100 810" role="img" aria-labelledby="figure-title figure-desc">
 <title id="figure-title">Generalization across task categories</title>
-<desc id="figure-desc">Mean held-out success · 75 valid tasks · unaccepted tasks count as zero. Primitive, 8 tasks: A0 96.1%, L3+papers 95.0%; Functional, 10 tasks: A0 98.7%, L3+papers 99.3%; Articulation, 14 tasks: A0 87.6%, L3+papers 87.6%; Bimanual, 4 tasks: A0 97.8%, L3+papers 98.0%; Multi-goal, 35 tasks: A0 98.9%, L3+papers 98.9%; Long-horizon, 4 tasks: A0 63.2%, L3+papers 60.8%. Mean per-task held-out success rate; unaccepted tasks count as zero.</desc>
+<desc id="figure-desc">Mean held-out success · 75 valid tasks · unaccepted tasks count as zero. Primitive, 8 tasks: CEM 96.1%, Agentic search 95.0%; Functional, 10 tasks: CEM 98.7%, Agentic search 99.3%; Articulation, 14 tasks: CEM 87.6%, Agentic search 87.6%; Bimanual, 4 tasks: CEM 97.8%, Agentic search 98.0%; Multi-goal, 35 tasks: CEM 98.9%, Agentic search 98.9%; Long-horizon, 4 tasks: CEM 63.2%, Agentic search 60.8%. Mean per-task held-out success rate; unaccepted tasks count as zero.</desc>
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#276451"/></marker></defs>
 <rect width="1100" height="810" fill="#f6f3eb"/>
 <text x="50" y="44" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="start" letter-spacing="2">DEXVERSE  /  CLAUDE OPUS 5.5</text>
 <text x="50" y="91" font-family="Georgia, 'Times New Roman', serif" font-size="33" fill="#242620" text-anchor="start" >Generalization across task categories</text>
 <text x="50" y="126" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="start" >Mean held-out success · 75 valid tasks · unaccepted tasks count as zero</text>
 <rect x="55" y="161" width="10" height="10" fill="#be5d39"/>
-<text x="77" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >A0</text>
+<text x="77" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >CEM</text>
 <circle cx="150" cy="166" r="6" fill="#276451"/>
-<text x="167" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >L3+papers</text>
+<text x="167" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >Agentic search</text>
 <text x="1050" y="173" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#63675d" text-anchor="end" >success (%)</text>
 <line x1="270.0" y1="203" x2="270.0" y2="613" stroke="#d7d6ca" stroke-width="1.4" />
 <text x="270.0" y="646" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="middle" >0</text>

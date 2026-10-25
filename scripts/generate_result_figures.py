@@ -23,8 +23,8 @@ def category_chart(data, search=False):
         text(50, 44, "DEXVERSE  /  CLAUDE OPUS 5.5", 16, "forest", letter_spacing=2),
         text(50, 91, title, 33, serif=True),
         text(50, 126, subtitle, 20, "muted"),
-        marker(60, 166, "orange", True), text(77, 173, "A0", 18),
-        marker(150, 166, "forest"), text(167, 173, "L3+papers", 18),
+        marker(60, 166, "orange", True), text(77, 173, "CEM", 18),
+        marker(150, 166, "forest"), text(167, 173, "Agentic search", 18),
         text(1050, 173, "mean / task" if search else "success (%)", 16, "muted", "end"),
     ]
     x0, x1 = 270, 930
@@ -54,7 +54,7 @@ def category_chart(data, search=False):
         text(50, 746, "Four of six category means are below 150 in each arm." if search else "Each accepted policy is tested twice on the same 50 unseen starts; results are averaged by task.", 19),
         text(50, 777, "A category mean is not a limit on every task. These counts are not total simulator use." if search else "One training chain per task and arm. These are state-observation simulator experiments.", 18, "muted"),
     ])
-    values = "; ".join(f'{c["category"]}, {c["tasks"]} tasks: A0 {c["arms"]["A0"]["search_cost"]["mean_search_rollouts_per_task"]:.3f}, L3+papers {c["arms"]["L3P"]["search_cost"]["mean_search_rollouts_per_task"]:.3f}' if search else f'{c["category"]}, {c["tasks"]} tasks: A0 {c["arms"]["A0"]["display_percent"]}, L3+papers {c["arms"]["L3P"]["display_percent"]}' for c in data["categories"])
+    values = "; ".join(f'{c["category"]}, {c["tasks"]} tasks: CEM {c["arms"]["A0"]["search_cost"]["mean_search_rollouts_per_task"]:.3f}, Agentic search {c["arms"]["L3P"]["search_cost"]["mean_search_rollouts_per_task"]:.3f}' if search else f'{c["category"]}, {c["tasks"]} tasks: CEM {c["arms"]["A0"]["display_percent"]}, Agentic search {c["arms"]["L3P"]["display_percent"]}' for c in data["categories"])
     description = subtitle + ". " + values + ". " + (data["search_cost_definition"] if search else data["metric"])
     return svg(810, title, description, p)
 
@@ -64,8 +64,8 @@ def curriculum_chart(data):
         text(50, 44, "ADROIT  /  GPT-6 ASTRA", 16, "forest", letter_spacing=2),
         text(50, 91, "A contrast between two training protocols", 33, serif=True),
         text(50, 126, "Final held-out outcomes · one chain per task and protocol · 30 episodes each", 20, "muted"),
-        marker(60, 169, "orange", True), text(77, 176, "Fixed starts (seq10 L3+papers)", 19),
-        marker(505, 169, "forest"), text(522, 176, "Fresh random starts (L3PR)", 19),
+        marker(60, 169, "orange", True), text(77, 176, "Fixed starts (Agentic search)", 19),
+        marker(505, 169, "forest"), text(522, 176, "Fresh random starts (Agentic search)", 19),
         text(1050, 215, "successes", 16, "muted", "end"),
     ]
     x0, x1 = 235, 900
@@ -92,10 +92,197 @@ def curriculum_chart(data):
     return svg(735, "Adroit outcomes under fixed-start and random-reset training", description, p)
 
 
+def comparison_chart(data):
+    title = "Three search treatments, one task set"
+    subtitle = f'Mean held-out success · {data["subset"]} · unaccepted tasks count as zero'
+    arms = (("CEM", "orange", "square"), ("Agentic search", "forest", "circle"), ("Agentic + grasp", "ink", "diamond"))
+
+    def mark(x, y, color, shape):
+        if shape == "diamond":
+            return f'<rect x="{x - 5}" y="{y - 5}" width="10" height="10" fill="{PALETTE[color]}" transform="rotate(45 {x} {y})"/>'
+        return marker(x, y, color, shape == "square")
+
+    overall = data["overall_mean_percent"]
+    p = [
+        text(50, 44, "DEXVERSE  /  CLAUDE OPUS 5.5", 16, "forest", letter_spacing=2),
+        text(50, 91, title, 33, serif=True),
+        text(50, 126, subtitle, 20, "muted"),
+        text(1050, 173, "success (%)", 16, "muted", "end"),
+    ]
+    lx = 60
+    for name, color, shape in arms:
+        label = f"{name} · {overall[name]:.1f}"
+        p += [mark(lx, 166, color, shape), text(lx + 17, 173, label, 18)]
+        lx += 52 + 10 * len(label)
+    x0, x1 = 270, 930
+    x = lambda value: x0 + (x1 - x0) * value / 100
+    pitch, y0 = 78, 238
+    bottom = y0 + pitch * len(data["categories"]) - 30
+    for tick in (0, 25, 50, 75, 100):
+        p.append(line(x(tick), 203, x(tick), bottom))
+        p.append(text(x(tick), bottom + 33, str(tick), 17, "muted", "middle"))
+    for i, category in enumerate(data["categories"]):
+        y = y0 + i * pitch
+        p.append(text(50, y, category["category"], 24, serif=True))
+        p.append(text(50, y + 25, f'{category["tasks"]} tasks', 17, "muted"))
+        for (name, color, shape), dy in zip(arms, (-16, 2, 20)):
+            value = category["arms"][name]["mean_heldout_percent"]
+            p.append(line(x0, y + dy, x(value), y + dy, color, 2))
+            p.append(mark(x(value), y + dy, color, shape))
+            p.append(text(1050, y + dy + 6, f"{value:.1f}", 18, color, "end"))
+    foot = bottom + 68
+    p.extend([
+        text((x0 + x1) / 2, foot, "Mean held-out success rate (%)", 20, "muted", "middle"),
+        line(50, foot + 29, 1050, foot + 29),
+        text(50, foot + 65, "Agentic + grasp adds a fixed prompt asking for a grasp-aware controller; it lowers Long-horizon most.", 19),
+        text(50, foot + 96, "Each accepted policy is tested twice on the same 50 unseen starts. One training chain per task and arm.", 18, "muted"),
+    ])
+    values = "; ".join(f'{c["category"]} ({c["tasks"]} tasks): ' + ", ".join(f'{n} {c["arms"][n]["mean_heldout_percent"]}%' for n, _, _ in arms) for c in data["categories"])
+    return svg(foot + 130, title, f"{subtitle}. {values}. {data['metric']}", p)
+
+
+def baseline_chart(data):
+    title = "Parameter search vs. code-as-policy"
+    subtitle = "Held-out success · frozen policies on unseen starts · Pen and Long-horizon shown separately"
+    p = [
+        text(50, 44, "ADROIT + DEXVERSE  /  CLAUDE OPUS 5.5", 16, "forest", letter_spacing=2),
+        text(50, 91, title, 33, serif=True),
+        text(50, 126, subtitle, 20, "muted"),
+        marker(60, 166, "forest"), text(77, 173, "Parameter search", 18),
+        marker(260, 166, "orange", True), text(277, 173, "Code-as-policy", 18),
+        text(1050, 173, "success (%)", 16, "muted", "end"),
+    ]
+    x0, x1 = 270, 930
+    x = lambda value: x0 + (x1 - x0) * value / 100
+    groups = [("ADROIT", [(r["task"], f'{r["successes"]}/{r["episodes"]} starts', r) for r in data["adroit"]]),
+              ("DEXVERSE", [(c["category"], f'{c["tasks"]} tasks', c) for c in data["dexverse_categories"]])]
+    y, rows = 232, []
+    for name, items in groups:
+        rows.append(("group", name, y))
+        y += 48
+        for label, sub, row in items:
+            rows.append(("row", (label, sub, row), y))
+            y += 64
+        y += 18
+    y -= 82
+    top, bottom = 203, y + 10
+    for tick in (0, 25, 50, 75, 100):
+        p.append(line(x(tick), top, x(tick), bottom))
+        p.append(text(x(tick), bottom + 33, str(tick), 17, "muted", "middle"))
+    for kind, item, ry in rows:
+        if kind == "group":
+            p.append(text(50, ry, item, 15, "forest", letter_spacing=2))
+            continue
+        label, sub, row = item
+        p.append(text(50, ry - 6, label, 24, serif=True))
+        p.append(text(50, ry + 19, sub, 17, "muted"))
+        for key, dy, color, square in (("parameter_search_percent", -15, "forest", False), ("code_as_policy_percent", 8, "orange", True)):
+            value = row[key]
+            if value is None:
+                p.append(text(x0 + 8, ry + dy + 6, "TBD", 17, "muted", font_style="italic"))
+                p.append(text(1050, ry + dy + 6, "TBD", 19, "muted", "end", font_style="italic"))
+                continue
+            p.append(line(x0, ry + dy, x(value), ry + dy, color, 2))
+            p.append(marker(x(value), ry + dy, color, square))
+            p.append(text(1050, ry + dy + 6, f"{value:.1f}", 19, color, "end"))
+    foot = bottom + 68
+    p.extend([
+        text((x0 + x1) / 2, foot, "Held-out success rate (%)", 20, "muted", "middle"),
+        line(50, foot + 29, 1050, foot + 29),
+        text(50, foot + 65, "Adroit: one run on 30 unseen starts. DexVerse: category mean over tasks, 50 unseen starts × 2 repeats.", 19),
+        text(50, foot + 96, "Unaccepted tasks count as zero. One training chain per task. Code-as-policy results pending.", 18, "muted"),
+    ])
+    height = foot + 130
+    values = "; ".join([f'Adroit {r["task"]}: parameter search {r["parameter_search_percent"]}%, code-as-policy TBD' for r in data["adroit"]]
+                       + [f'DexVerse {c["category"]} ({c["tasks"]} tasks): parameter search {c["parameter_search_percent"]}%, code-as-policy TBD' for c in data["dexverse_categories"]])
+    return svg(height, title, f"{subtitle}. {values}. {data['dexverse_metric']}", p)
+
+
+def search_vs_baseline_chart(data, rollouts=False):
+    """Figures 4 and 5: L3PG, A0 and the pending baseline per Adroit task and DexVerse category."""
+    title = "Total rollouts to an accepted policy" if rollouts else "Held-out success of the frozen policy"
+    subtitle = ("Parameter-search rollouts + policy-design resets · DexVerse: mean per task" if rollouts
+                else "Unseen starts · DexVerse: mean per task, unaccepted tasks count as zero")
+    reset_color = "#8db3a3"
+    arms = [("l3pg", "Model-driven search (L3PG)", "forest"), ("a0", "Host CEM search (A0)", "orange"),
+            ("baseline", "Baseline", "muted")]
+    p = [
+        text(50, 44, "ADROIT + DEXVERSE  /  CLAUDE OPUS 5.5", 16, "forest", letter_spacing=2),
+        text(50, 91, title, 33, serif=True),
+        text(50, 126, subtitle, 20, "muted"),
+    ]
+    legend = [(label, color) for _, label, color in arms]
+    if rollouts:
+        legend.insert(1, ("L3PG resets", reset_color))
+    lx = 50
+    for label, color in legend:
+        p += [f'<rect x="{lx}" y="158" width="16" height="16" fill="{PALETTE.get(color, color)}"/>', text(lx + 24, 172, label, 17)]
+        lx += 48 + 9 * len(label)
+    adroit = [g for g in data["summary"] if g["group"] == "Adroit"]
+    dex = [g for g in data["summary"] if g["group"] != "Adroit"]
+    panels = [("ADROIT", [(g["task"], "30 unseen starts", g) for g in adroit], 1500 if rollouts else 100),
+              ("DEXVERSE", [(g["group"], f'{g["tasks"]} tasks', g) for g in dex], 600 if rollouts else 100)]
+    x0, x1, bar, pitch = 270, 960, 15, 76
+    y = 222
+    fmt_total = lambda v: f"{v:,.0f}" if float(v).is_integer() else f"{v:,.1f}"
+    for name, rows, xmax in panels:
+        x = lambda v, xmax=xmax: x0 + (x1 - x0) * min(v, xmax) / xmax
+        p.append(text(50, y, name, 15, "forest", letter_spacing=2))
+        top = y + 14
+        bottom = top + pitch * len(rows)
+        ticks = range(0, xmax + 1, 300 if xmax == 1500 else (100 if rollouts else 20))
+        for t in ticks:
+            p.append(line(x(t), top, x(t), bottom))
+            p.append(text(x(t), bottom + 26, f"{t:,}" + ("" if rollouts else "%"), 15, "muted", "middle"))
+        for i, (label, sub, g) in enumerate(rows):
+            cy = top + 16 + i * pitch
+            p.append(text(50, cy + 14, label, 22, serif=True))
+            p.append(text(50, cy + 38, sub, 15, "muted"))
+            for j, (key, _, color) in enumerate(arms):
+                by = cy + j * (bar + 4)
+                value = g[key]
+                if value is None:
+                    p.append(text(x0 + 6, by + 12, "TBD", 14, "muted", font_style="italic"))
+                    continue
+                if rollouts:
+                    total = value["total_rollouts"]
+                    if key == "l3pg":
+                        p.append(f'<rect x="{x0}" y="{by}" width="{x(value["search_rollouts"]) - x0:.1f}" height="{bar}" fill="{PALETTE[color]}"/>')
+                        p.append(f'<rect x="{x(value["search_rollouts"]):.1f}" y="{by}" width="{x(total) - x(value["search_rollouts"]):.1f}" height="{bar}" fill="{reset_color}"/>')
+                    else:
+                        p.append(f'<rect x="{x0}" y="{by}" width="{x(total) - x0:.1f}" height="{bar}" fill="{PALETTE[color]}"/>')
+                    label_text = f'{fmt_total(total)}  ({fmt_total(value["search_rollouts"])} + {fmt_total(value["resets"])})'
+                    p.append(text(x(total) + 8, by + 12, label_text, 14, "ink"))
+                else:
+                    v = value["heldout_percent"]
+                    p.append(f'<rect x="{x0}" y="{by}" width="{x(v) - x0:.1f}" height="{bar}" fill="{PALETTE[color]}"/>')
+                    p.append(text(x(v) + 8, by + 12, f"{v:.1f}%", 14, "ink"))
+        y = bottom + 74
+    foot = y - 20
+    note = ("Labels: total (search + resets). Resets are policy-design restarts; A0 bars combine both counters." if rollouts
+            else "Adroit: one run on 30 unseen starts. DexVerse: 50 unseen starts, two repeats averaged.")
+    p.extend([
+        line(50, foot, 1050, foot),
+        text(50, foot + 34, note, 18),
+        text(50, foot + 62, "One training chain per task and arm. Adroit Pen and DexVerse Long-horizon are in Section 5. Baseline pending.", 17, "muted"),
+    ])
+    key = "total_rollouts" if rollouts else "heldout_percent"
+    values = "; ".join(f'{g.get("task", g["group"]) if g["group"] == "Adroit" else g["group"]}: L3PG {g["l3pg"][key]}, A0 {g["a0"][key]}, baseline TBD'
+                       for g in data["summary"])
+    return svg(foot + 92, title, f"{subtitle}. {values}.", p)
+
+
 def main():
     dexverse = json.loads((ROOT / "assets/data/dexverse-results.json").read_text())
     adroit = json.loads((ROOT / "assets/data/adroit-curriculum.json").read_text())
+    baseline = json.loads((ROOT / "assets/data/l3pg-heldout-main.json").read_text())
+    comparison = json.loads((ROOT / "assets/data/dexverse-comparison-e2.json").read_text())
+    tasks = json.loads((ROOT / "assets/data/l3pg-a0-tasks.json").read_text())
     outputs = {
+        "dexverse-comparison-e2.svg": comparison_chart(comparison),
+        "heldout-main-baseline.svg": baseline_chart(baseline),
+        "evidence-heldout.svg": search_vs_baseline_chart(tasks),
+        "evidence-rollouts.svg": search_vs_baseline_chart(tasks, rollouts=True),
         "dexverse-heldout.svg": category_chart(dexverse),
         "dexverse-search-rollouts.svg": category_chart(dexverse, search=True),
         "adroit-curriculum.svg": curriculum_chart(adroit),

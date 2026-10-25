@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="810" viewBox="0 0 1100 810" role="img" aria-labelledby="figure-title figure-desc">
 <title id="figure-title">Search effort varies across task categories</title>
-<desc id="figure-desc">Mean search rollouts per task · learning and evaluation episodes excluded. Primitive, 8 tasks: A0 5.125, L3+papers 83.875; Functional, 10 tasks: A0 83.900, L3+papers 122.200; Articulation, 14 tasks: A0 178.714, L3+papers 422.571; Bimanual, 4 tasks: A0 0.000, L3+papers 83.000; Multi-goal, 35 tasks: A0 6.971, L3+papers 101.229; Long-horizon, 4 tasks: A0 564.000, L3+papers 1384.000. Recorded search_rollouts counter, averaged over all valid tasks in each category, including unaccepted tasks. Excludes learning episodes, frozen training evaluations, held-out tests, and any uncounted interrupted work.</desc>
+<desc id="figure-desc">Mean search rollouts per task · learning and evaluation episodes excluded. Primitive, 8 tasks: CEM 5.125, Agentic search 83.875; Functional, 10 tasks: CEM 83.900, Agentic search 122.200; Articulation, 14 tasks: CEM 178.714, Agentic search 422.571; Bimanual, 4 tasks: CEM 0.000, Agentic search 83.000; Multi-goal, 35 tasks: CEM 6.971, Agentic search 101.229; Long-horizon, 4 tasks: CEM 564.000, Agentic search 1384.000. Recorded search_rollouts counter, averaged over all valid tasks in each category, including unaccepted tasks. Excludes learning episodes, frozen training evaluations, held-out tests, and any uncounted interrupted work.</desc>
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#276451"/></marker></defs>
 <rect width="1100" height="810" fill="#f6f3eb"/>
 <text x="50" y="44" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="start" letter-spacing="2">DEXVERSE  /  CLAUDE OPUS 5.5</text>
 <text x="50" y="91" font-family="Georgia, 'Times New Roman', serif" font-size="33" fill="#242620" text-anchor="start" >Search effort varies across task categories</text>
 <text x="50" y="126" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="start" >Mean search rollouts per task · learning and evaluation episodes excluded</text>
 <rect x="55" y="161" width="10" height="10" fill="#be5d39"/>
-<text x="77" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >A0</text>
+<text x="77" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >CEM</text>
 <circle cx="150" cy="166" r="6" fill="#276451"/>
-<text x="167" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >L3+papers</text>
+<text x="167" y="173" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >Agentic search</text>
 <text x="1050" y="173" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#63675d" text-anchor="end" >mean / task</text>
 <rect x="270" y="203" width="66.0" height="410" fill="#e8eee5"/>
 <line x1="336.0" y1="203" x2="336.0" y2="613" stroke="#276451" stroke-width="1.4" stroke-dasharray="5 5"/>
