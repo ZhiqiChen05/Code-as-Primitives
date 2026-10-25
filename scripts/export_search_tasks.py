@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Export per-task L3PG and A0 results for Section 4 (Figures 4-6) to assets/data/l3pg-a0-tasks.json.
+"""Export per-task results for Figures 1 and 4-6 to assets/data/search-results-by-task.json.
+
+The page calls the two campaigns model-driven search (campaign L3PG) and CEM search (campaign A0).
 
 Reads the same campaign reports as DexVerse/docs/figs/l3pg_dexverse_adroit/make_baseline_figures.py
 (heldout_success_main.png, total_rollouts_main.png) and copies the L3PG held-out success videos
 from DexVerse/docs/videos/l3pg_heldout_success unchanged. Adroit Pen and DexVerse Long-horizon are
-left out (Section 5). Needs the source checkouts; run with the CaP-X venv, which has matplotlib:
+left out (Section 4). Needs the source checkouts; run with the CaP-X venv, which has matplotlib:
 
-  /home/djengof/CaP-X/cap-x/.venv/bin/python -I scripts/export_l3pg_tasks.py
+  /home/djengof/CaP-X/cap-x/.venv/bin/python -I scripts/export_search_tasks.py
 """
 import json
 import re
@@ -64,7 +66,7 @@ def summary(r):
 
 def main():
     adroit, dex, a0 = load_adroit(), load_dexverse(), a0_tasks()
-    (ROOT / "assets/videos/l3pg").mkdir(parents=True, exist_ok=True)
+    (ROOT / "assets/videos/model-driven").mkdir(parents=True, exist_ok=True)
     tasks = []
     for r in adroit + dex:
         group = r["group"]
@@ -74,35 +76,35 @@ def main():
         src = VIDEOS / f"{bench}-{r['task']}.mp4"
         video = None
         if src.exists():
-            video = f"assets/videos/l3pg/{src.name}"
+            video = f"assets/videos/model-driven/{src.name}"
             shutil.copy2(src, ROOT / video)
         tasks.append(dict(benchmark=bench, group=group, task=r["task"], video=video,
                           heldout_repeats=r["heldout"], episodes=r["n"],
-                          l3pg=arm(r), a0=arm(a0[r["task"]]), baseline=None))
-    groups = [dict(group="Adroit", task=t["task"], l3pg=summary(next(r for r in adroit if r["task"] == t["task"])),
-                   a0=summary(a0[t["task"]]), baseline=None) for t in tasks if t["benchmark"] == "Adroit"]
+                          model_driven=arm(r), cem=arm(a0[r["task"]]), baseline=None))
+    groups = [dict(group="Adroit", task=t["task"], model_driven=summary(next(r for r in adroit if r["task"] == t["task"])),
+                   cem=summary(a0[t["task"]]), baseline=None) for t in tasks if t["benchmark"] == "Adroit"]
     dex = [r for r in dex if r["group"] not in SKIP]
     make_figures.CATEGORIES = [c for c in CATEGORIES if c not in SKIP]  # by_category divides by task count
     l3_cats = by_category(dex)
     a0_cats = by_category([a0[r["task"]] for r in dex])
     for c, a in zip(l3_cats, a0_cats):
-        groups.append(dict(group=c["task"].split(" (")[0], tasks=c["ntasks"], l3pg=summary(c), a0=summary(a),
+        groups.append(dict(group=c["task"].split(" (")[0], tasks=c["ntasks"], model_driven=summary(c), cem=summary(a),
                            baseline=None))
     data = {
         "model": "claude-opus-5-5",
-        "source": "DexVerse/docs/figs/l3pg_dexverse_adroit/make_baseline_figures.py (campaign report.json files); "
-                  "videos from DexVerse/docs/videos/l3pg_heldout_success, copied unchanged",
-        "arms": {"l3pg": "Model-driven search (L3PG)", "a0": "Host CEM search (A0)", "baseline": "Baseline (not yet run)"},
+        "source": "DexVerse campaign report.json files, read by scripts/export_search_tasks.py; videos are the "
+                  "recorded held-out success renders, copied unchanged",
+        "arms": {"model_driven": "Model-driven search", "cem": "CEM search", "baseline": "Baseline (policy search), not yet run"},
         "heldout_metric": "Adroit: frozen policy on 30 unseen starts, one run. DexVerse: 50 unseen starts, mean of two "
                           "repeats. Unaccepted tasks count as 0%.",
         "rollouts_metric": "Total rollouts = parameter-search rollouts + policy-design resets.",
-        "video_note": "One successful L3PG held-out episode per task; tasks with no recorded success video show none.",
+        "video_note": "One successful model-driven-search held-out episode per task; tasks with no recorded success video show none.",
         "baseline_note": "Baseline values are null until the runs exist; " + ("all BASELINE entries are None"
                          if all(v["rollouts"] is None and v["rate"] is None for v in BASELINE.values()) else "see source"),
         "summary": groups,
         "tasks": tasks,
     }
-    (ROOT / "assets/data/l3pg-a0-tasks.json").write_text(json.dumps(data, indent=1) + "\n")
+    (ROOT / "assets/data/search-results-by-task.json").write_text(json.dumps(data, indent=1) + "\n")
     print(len(tasks), "tasks,", sum(t["video"] is not None for t in tasks), "videos")
 
 

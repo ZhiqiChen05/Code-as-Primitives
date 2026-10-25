@@ -38,13 +38,13 @@ The outline's claims about replacing control engineers or outperforming human de
 
 ## Figures
 
-- The scroll-driven framework figure (Figure 2, `assets/loop.js`) adapts the mechanics of the Schema Harness Figure 3. Its stages, tool names and search/acceptance boundaries follow the two harness codebases and DexVerse `docs/method.md`: L3+papers uses model-designed candidate batches and numerical analysis; A0 supplies host CEM; training feedback can inform revision; held-out outcomes cannot. Its running-example lines restate the GPT-6 Astra Pen run in `docs/pen-case-study.json` (the same facts as Section 3); no new results are shown. Figure 1's Level 1 excerpt is from the saved stage-one policy in `search_0039`. The static overview is the no-JavaScript and print fallback.
+- The scroll-driven framework figure (Figure 3, `assets/loop.js`) adapts the mechanics of the Schema Harness Figure 3. Its stages, tool names and search/acceptance boundaries follow the two harness codebases and DexVerse `docs/method.md`: L3+papers uses model-designed candidate batches and numerical analysis; A0 supplies host CEM; training feedback can inform revision; held-out outcomes cannot. Its running-example lines restate the GPT-6 Astra Pen run in `docs/pen-case-study.json` (the same facts as the Pen walkthrough that follows the figure); no new results are shown. Figure 2's Level 1 excerpt is from the saved stage-one policy in `search_0039`. The static overview is the no-JavaScript and print fallback.
 - `figure-sources.json` records source paths, hashes, captions, and limitations.
 - `assets/data/` contains the numeric values behind the new SVG charts.
 - `scripts/generate_figures.py` generates the method overview and Adroit held-out chart using the Python standard library.
 - `scripts/generate_result_figures.py` generates the DexVerse held-out/search-cost and Adroit curriculum figures.
 - The 69-task comparison chart (`assets/figures/dexverse-comparison-e2.svg`) is redrawn in the blog's figure style from the category table in the source repository's `results/opus-5.5/comparison_e2.md`; values are in `assets/data/dexverse-comparison-e2.json`.
-- Method names: the blog calls the campaigns A0, L3+papers and L3PG (and the random-reset Adroit L3+papers run, L3PR) **CEM**, **Agentic search** and **Agentic + grasp**. File and campaign paths keep the original identifiers. The DexVerse comparison videos keep their original burned-in labels (A0, L3+papers, L3PG).
+- Method names: the blog calls the campaigns A0, L3+papers and L3PG (and the random-reset Adroit L3+papers run, L3PR) **CEM search**, **Agentic search** and **model-driven search**. Model-driven search is Agentic search plus a task-general prompt to design grasp-aware controllers. File and campaign paths keep the original identifiers. The Section 3 gallery videos carry a burned-in caption with the campaign name; the page crops that band out of view. The MakeCoffee pair in Section 4 was re-rendered with the public names.
 
 ## Media
 

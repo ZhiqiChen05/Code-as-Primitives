@@ -1,26 +1,26 @@
 {
  "model": "claude-opus-5-5",
- "source": "DexVerse/docs/figs/l3pg_dexverse_adroit/make_baseline_figures.py (campaign report.json files); videos from DexVerse/docs/videos/l3pg_heldout_success, copied unchanged",
+ "source": "DexVerse campaign report.json files, read by scripts/export_search_tasks.py; videos are the recorded held-out success renders, copied unchanged",
  "arms": {
-  "l3pg": "Model-driven search (L3PG)",
-  "a0": "Host CEM search (A0)",
-  "baseline": "Baseline (not yet run)"
+  "model_driven": "Model-driven search",
+  "cem": "CEM search",
+  "baseline": "Baseline (policy search), not yet run"
  },
  "heldout_metric": "Adroit: frozen policy on 30 unseen starts, one run. DexVerse: 50 unseen starts, mean of two repeats. Unaccepted tasks count as 0%.",
  "rollouts_metric": "Total rollouts = parameter-search rollouts + policy-design resets.",
- "video_note": "One successful L3PG held-out episode per task; tasks with no recorded success video show none.",
+ "video_note": "One successful model-driven-search held-out episode per task; tasks with no recorded success video show none.",
  "baseline_note": "Baseline values are null until the runs exist; all BASELINE entries are None",
  "summary": [
   {
    "group": "Adroit",
    "task": "Door",
-   "l3pg": {
+   "model_driven": {
     "search_rollouts": 282,
     "resets": 1,
     "total_rollouts": 283,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "search_rollouts": 13,
     "resets": 8,
     "total_rollouts": 21,
@@ -31,13 +31,13 @@
   {
    "group": "Adroit",
    "task": "Hammer",
-   "l3pg": {
+   "model_driven": {
     "search_rollouts": 91,
     "resets": 2,
     "total_rollouts": 93,
     "heldout_percent": 93.3
    },
-   "a0": {
+   "cem": {
     "search_rollouts": 1056,
     "resets": 7,
     "total_rollouts": 1063,
@@ -48,13 +48,13 @@
   {
    "group": "Adroit",
    "task": "Relocate",
-   "l3pg": {
+   "model_driven": {
     "search_rollouts": 37,
     "resets": 0,
     "total_rollouts": 37,
     "heldout_percent": 66.7
    },
-   "a0": {
+   "cem": {
     "search_rollouts": 31,
     "resets": 14,
     "total_rollouts": 45,
@@ -65,13 +65,13 @@
   {
    "group": "Primitive",
    "tasks": 7,
-   "l3pg": {
+   "model_driven": {
     "search_rollouts": 119.9,
     "resets": 1.6,
     "total_rollouts": 121.4,
     "heldout_percent": 94.0
    },
-   "a0": {
+   "cem": {
     "search_rollouts": 5.9,
     "resets": 6.7,
     "total_rollouts": 12.6,
@@ -82,13 +82,13 @@
   {
    "group": "Functional",
    "tasks": 9,
-   "l3pg": {
+   "model_driven": {
     "search_rollouts": 108.0,
     "resets": 2.8,
     "total_rollouts": 110.8,
     "heldout_percent": 96.3
    },
-   "a0": {
+   "cem": {
     "search_rollouts": 93.2,
     "resets": 16.3,
     "total_rollouts": 109.6,
@@ -99,13 +99,13 @@
   {
    "group": "Articulation",
    "tasks": 13,
-   "l3pg": {
+   "model_driven": {
     "search_rollouts": 417.5,
     "resets": 6.2,
     "total_rollouts": 423.7,
     "heldout_percent": 81.0
    },
-   "a0": {
+   "cem": {
     "search_rollouts": 192.5,
     "resets": 24.7,
     "total_rollouts": 217.2,
@@ -116,13 +116,13 @@
   {
    "group": "Bimanual",
    "tasks": 3,
-   "l3pg": {
+   "model_driven": {
     "search_rollouts": 134.7,
     "resets": 0.3,
     "total_rollouts": 135.0,
     "heldout_percent": 95.3
    },
-   "a0": {
+   "cem": {
     "search_rollouts": 0.0,
     "resets": 7.7,
     "total_rollouts": 7.7,
@@ -133,13 +133,13 @@
   {
    "group": "Multi-goal",
    "tasks": 34,
-   "l3pg": {
+   "model_driven": {
     "search_rollouts": 71.2,
     "resets": 1.2,
     "total_rollouts": 72.4,
     "heldout_percent": 99.0
    },
-   "a0": {
+   "cem": {
     "search_rollouts": 7.2,
     "resets": 5.5,
     "total_rollouts": 12.6,
@@ -153,19 +153,19 @@
    "benchmark": "Adroit",
    "group": "Adroit",
    "task": "Door",
-   "video": "assets/videos/l3pg/Adroit-Door.mp4",
+   "video": "assets/videos/model-driven/Adroit-Door.mp4",
    "heldout_repeats": [
     30
    ],
    "episodes": 30,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 282,
     "resets": 1,
     "total_rollouts": 283,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 13,
     "resets": 8,
@@ -178,19 +178,19 @@
    "benchmark": "Adroit",
    "group": "Adroit",
    "task": "Hammer",
-   "video": "assets/videos/l3pg/Adroit-Hammer.mp4",
+   "video": "assets/videos/model-driven/Adroit-Hammer.mp4",
    "heldout_repeats": [
     28
    ],
    "episodes": 30,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 91,
     "resets": 2,
     "total_rollouts": 93,
     "heldout_percent": 93.3
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 1056,
     "resets": 7,
@@ -203,19 +203,19 @@
    "benchmark": "Adroit",
    "group": "Adroit",
    "task": "Relocate",
-   "video": "assets/videos/l3pg/Adroit-Relocate.mp4",
+   "video": "assets/videos/model-driven/Adroit-Relocate.mp4",
    "heldout_repeats": [
     20
    ],
    "episodes": 30,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 37,
     "resets": 0,
     "total_rollouts": 37,
     "heldout_percent": 66.7
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 31,
     "resets": 14,
@@ -228,20 +228,20 @@
    "benchmark": "DexVerse",
    "group": "Primitive",
    "task": "RelocateObject",
-   "video": "assets/videos/l3pg/DexVerse-RelocateObject.mp4",
+   "video": "assets/videos/model-driven/DexVerse-RelocateObject.mp4",
    "heldout_repeats": [
     29,
     29
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 580,
     "resets": 2,
     "total_rollouts": 582,
     "heldout_percent": 58.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 28,
@@ -254,20 +254,20 @@
    "benchmark": "DexVerse",
    "group": "Primitive",
    "task": "PushButton",
-   "video": "assets/videos/l3pg/DexVerse-PushButton.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PushButton.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 76,
     "resets": 0,
     "total_rollouts": 76,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -280,20 +280,20 @@
    "benchmark": "DexVerse",
    "group": "Primitive",
    "task": "OpenFaucet",
-   "video": "assets/videos/l3pg/DexVerse-OpenFaucet.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenFaucet.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 59,
     "resets": 0,
     "total_rollouts": 59,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 41,
     "resets": 7,
@@ -306,20 +306,20 @@
    "benchmark": "DexVerse",
    "group": "Primitive",
    "task": "TurnOnSwitch",
-   "video": "assets/videos/l3pg/DexVerse-TurnOnSwitch.mp4",
+   "video": "assets/videos/model-driven/DexVerse-TurnOnSwitch.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 52,
     "resets": 1,
     "total_rollouts": 53,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 0,
@@ -332,20 +332,20 @@
    "benchmark": "DexVerse",
    "group": "Primitive",
    "task": "PickCube",
-   "video": "assets/videos/l3pg/DexVerse-PickCube.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PickCube.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 50,
     "resets": 0,
     "total_rollouts": 50,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 2,
@@ -358,20 +358,20 @@
    "benchmark": "DexVerse",
    "group": "Primitive",
    "task": "StackCube",
-   "video": "assets/videos/l3pg/DexVerse-StackCube.mp4",
+   "video": "assets/videos/model-driven/DexVerse-StackCube.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 22,
     "resets": 1,
     "total_rollouts": 23,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -384,20 +384,20 @@
    "benchmark": "DexVerse",
    "group": "Primitive",
    "task": "PickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-PickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PickUpStick.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 7,
     "total_rollouts": 7,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 4,
@@ -410,20 +410,20 @@
    "benchmark": "DexVerse",
    "group": "Functional",
    "task": "GraspBleach",
-   "video": "assets/videos/l3pg/DexVerse-GraspBleach.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspBleach.mp4",
    "heldout_repeats": [
     50,
     48
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 368,
     "resets": 16,
     "total_rollouts": 384,
     "heldout_percent": 98.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 723,
     "resets": 62,
@@ -436,20 +436,20 @@
    "benchmark": "DexVerse",
    "group": "Functional",
    "task": "FunctionalPourMug",
-   "video": "assets/videos/l3pg/DexVerse-FunctionalPourMug.mp4",
+   "video": "assets/videos/model-driven/DexVerse-FunctionalPourMug.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 176,
     "resets": 0,
     "total_rollouts": 176,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 9,
@@ -462,20 +462,20 @@
    "benchmark": "DexVerse",
    "group": "Functional",
    "task": "FunctionalDrillApply",
-   "video": "assets/videos/l3pg/DexVerse-FunctionalDrillApply.mp4",
+   "video": "assets/videos/model-driven/DexVerse-FunctionalDrillApply.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 90,
     "resets": 0,
     "total_rollouts": 90,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 12,
@@ -488,20 +488,20 @@
    "benchmark": "DexVerse",
    "group": "Functional",
    "task": "LiftBucket",
-   "video": "assets/videos/l3pg/DexVerse-LiftBucket.mp4",
+   "video": "assets/videos/model-driven/DexVerse-LiftBucket.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 88,
     "resets": 0,
     "total_rollouts": 88,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 9,
@@ -514,20 +514,20 @@
    "benchmark": "DexVerse",
    "group": "Functional",
    "task": "GraspPan",
-   "video": "assets/videos/l3pg/DexVerse-GraspPan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspPan.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 80,
     "resets": 0,
     "total_rollouts": 80,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 5,
@@ -540,20 +540,20 @@
    "benchmark": "DexVerse",
    "group": "Functional",
    "task": "RemoveCupFromRack",
-   "video": "assets/videos/l3pg/DexVerse-RemoveCupFromRack.mp4",
+   "video": "assets/videos/model-driven/DexVerse-RemoveCupFromRack.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 61,
     "resets": 0,
     "total_rollouts": 61,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 91,
     "resets": 25,
@@ -566,20 +566,20 @@
    "benchmark": "DexVerse",
    "group": "Functional",
    "task": "GraspCup",
-   "video": "assets/videos/l3pg/DexVerse-GraspCup.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspCup.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 50,
     "resets": 7,
     "total_rollouts": 57,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 4,
@@ -592,20 +592,20 @@
    "benchmark": "DexVerse",
    "group": "Functional",
    "task": "GraspKettle",
-   "video": "assets/videos/l3pg/DexVerse-GraspKettle.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspKettle.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 40,
     "resets": 0,
     "total_rollouts": 40,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -618,20 +618,20 @@
    "benchmark": "DexVerse",
    "group": "Functional",
    "task": "FunctionalPourCan",
-   "video": "assets/videos/l3pg/DexVerse-FunctionalPourCan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-FunctionalPourCan.mp4",
    "heldout_repeats": [
     35,
     34
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 19,
     "resets": 2,
     "total_rollouts": 21,
     "heldout_percent": 69.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 25,
     "resets": 18,
@@ -644,20 +644,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "UnscrewCap",
-   "video": "assets/videos/l3pg/DexVerse-UnscrewCap.mp4",
+   "video": "assets/videos/model-driven/DexVerse-UnscrewCap.mp4",
    "heldout_repeats": [
     40,
     38
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 1144,
     "resets": 10,
     "total_rollouts": 1154,
     "heldout_percent": 78.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 8,
@@ -670,20 +670,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "OpenFlatFolder",
-   "video": "assets/videos/l3pg/DexVerse-OpenFlatFolder.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenFlatFolder.mp4",
    "heldout_repeats": [
     46,
     42
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 1055,
     "resets": 22,
     "total_rollouts": 1077,
     "heldout_percent": 88.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 403,
     "resets": 71,
@@ -696,20 +696,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "SqueezeScissors",
-   "video": "assets/videos/l3pg/DexVerse-SqueezeScissors.mp4",
+   "video": "assets/videos/model-driven/DexVerse-SqueezeScissors.mp4",
    "heldout_repeats": [
     50,
     49
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 962,
     "resets": 4,
     "total_rollouts": 966,
     "heldout_percent": 99.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 1689,
     "resets": 67,
@@ -722,20 +722,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "LiftBasketHandle",
-   "video": "assets/videos/l3pg/DexVerse-LiftBasketHandle.mp4",
+   "video": "assets/videos/model-driven/DexVerse-LiftBasketHandle.mp4",
    "heldout_repeats": [
     47,
     48
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 860,
     "resets": 13,
     "total_rollouts": 873,
     "heldout_percent": 95.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 14,
@@ -751,14 +751,14 @@
    "video": null,
    "heldout_repeats": null,
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": false,
     "search_rollouts": 594,
     "resets": 12,
     "total_rollouts": 606,
     "heldout_percent": 0.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 24,
@@ -771,20 +771,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "LiftLid",
-   "video": "assets/videos/l3pg/DexVerse-LiftLid.mp4",
+   "video": "assets/videos/model-driven/DexVerse-LiftLid.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 168,
     "resets": 0,
     "total_rollouts": 168,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 7,
@@ -800,14 +800,14 @@
    "video": null,
    "heldout_repeats": null,
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": false,
     "search_rollouts": 130,
     "resets": 17,
     "total_rollouts": 147,
     "heldout_percent": 0.0
    },
-   "a0": {
+   "cem": {
     "accepted": false,
     "search_rollouts": 280,
     "resets": 74,
@@ -820,20 +820,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "OpenLaptop",
-   "video": "assets/videos/l3pg/DexVerse-OpenLaptop.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenLaptop.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 139,
     "resets": 0,
     "total_rollouts": 139,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 76,
     "resets": 26,
@@ -846,20 +846,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "OpenMicrowave",
-   "video": "assets/videos/l3pg/DexVerse-OpenMicrowave.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenMicrowave.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 102,
     "resets": 0,
     "total_rollouts": 102,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 6,
@@ -872,20 +872,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "GraspPot",
-   "video": "assets/videos/l3pg/DexVerse-GraspPot.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspPot.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 95,
     "resets": 0,
     "total_rollouts": 95,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -898,20 +898,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "SlideUtilityKnife",
-   "video": "assets/videos/l3pg/DexVerse-SlideUtilityKnife.mp4",
+   "video": "assets/videos/model-driven/DexVerse-SlideUtilityKnife.mp4",
    "heldout_repeats": [
     46,
     47
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 92,
     "resets": 0,
     "total_rollouts": 92,
     "heldout_percent": 93.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 54,
     "resets": 19,
@@ -924,20 +924,20 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "GraspBucket",
-   "video": "assets/videos/l3pg/DexVerse-GraspBucket.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspBucket.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 86,
     "resets": 0,
     "total_rollouts": 86,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 1,
@@ -956,14 +956,14 @@
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
     "total_rollouts": 3,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 1,
@@ -976,20 +976,20 @@
    "benchmark": "DexVerse",
    "group": "Bimanual",
    "task": "BimanualLiftBasket",
-   "video": "assets/videos/l3pg/DexVerse-BimanualLiftBasket.mp4",
+   "video": "assets/videos/model-driven/DexVerse-BimanualLiftBasket.mp4",
    "heldout_repeats": [
     43,
     44
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 223,
     "resets": 1,
     "total_rollouts": 224,
     "heldout_percent": 87.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 6,
@@ -1002,20 +1002,20 @@
    "benchmark": "DexVerse",
    "group": "Bimanual",
    "task": "BimanualLiftDutchOven",
-   "video": "assets/videos/l3pg/DexVerse-BimanualLiftDutchOven.mp4",
+   "video": "assets/videos/model-driven/DexVerse-BimanualLiftDutchOven.mp4",
    "heldout_repeats": [
     49,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 97,
     "resets": 0,
     "total_rollouts": 97,
     "heldout_percent": 99.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 14,
@@ -1028,20 +1028,20 @@
    "benchmark": "DexVerse",
    "group": "Bimanual",
    "task": "BimanualLiftCarton",
-   "video": "assets/videos/l3pg/DexVerse-BimanualLiftCarton.mp4",
+   "video": "assets/videos/model-driven/DexVerse-BimanualLiftCarton.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 84,
     "resets": 0,
     "total_rollouts": 84,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -1054,20 +1054,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "PourMugPickUpCan",
-   "video": "assets/videos/l3pg/DexVerse-PourMugPickUpCan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PourMugPickUpCan.mp4",
    "heldout_repeats": [
     45,
     46
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 182,
     "resets": 1,
     "total_rollouts": 183,
     "heldout_percent": 91.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 7,
@@ -1080,20 +1080,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "OpenDrawerPickUpCan",
-   "video": "assets/videos/l3pg/DexVerse-OpenDrawerPickUpCan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenDrawerPickUpCan.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 130,
     "resets": 0,
     "total_rollouts": 130,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 2,
@@ -1106,20 +1106,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "LiftLidPickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-LiftLidPickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-LiftLidPickUpStick.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 127,
     "resets": 0,
     "total_rollouts": 127,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 19,
@@ -1132,20 +1132,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "PourMugPickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-PourMugPickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PourMugPickUpStick.mp4",
    "heldout_repeats": [
     39,
     39
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 117,
     "resets": 5,
     "total_rollouts": 122,
     "heldout_percent": 78.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 12,
@@ -1158,20 +1158,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "GraspBucketPourMug",
-   "video": "assets/videos/l3pg/DexVerse-GraspBucketPourMug.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspBucketPourMug.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 121,
     "resets": 0,
     "total_rollouts": 121,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 49,
     "resets": 4,
@@ -1184,20 +1184,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "GraspPotRelocateSphere",
-   "video": "assets/videos/l3pg/DexVerse-GraspPotRelocateSphere.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspPotRelocateSphere.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 120,
     "resets": 0,
     "total_rollouts": 120,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 25,
     "resets": 7,
@@ -1210,20 +1210,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "GraspBucketPickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-GraspBucketPickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspBucketPickUpStick.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 119,
     "resets": 0,
     "total_rollouts": 119,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -1236,20 +1236,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "LiftLidPickUpCan",
-   "video": "assets/videos/l3pg/DexVerse-LiftLidPickUpCan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-LiftLidPickUpCan.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 117,
     "resets": 0,
     "total_rollouts": 117,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 11,
@@ -1262,20 +1262,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "RotateKnobRelocateSphere",
-   "video": "assets/videos/l3pg/DexVerse-RotateKnobRelocateSphere.mp4",
+   "video": "assets/videos/model-driven/DexVerse-RotateKnobRelocateSphere.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 114,
     "resets": 1,
     "total_rollouts": 115,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -1288,20 +1288,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "LiftLidPourMug",
-   "video": "assets/videos/l3pg/DexVerse-LiftLidPourMug.mp4",
+   "video": "assets/videos/model-driven/DexVerse-LiftLidPourMug.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 107,
     "resets": 0,
     "total_rollouts": 107,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 7,
@@ -1314,20 +1314,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "OpenDrawerPourMug",
-   "video": "assets/videos/l3pg/DexVerse-OpenDrawerPourMug.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenDrawerPourMug.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 107,
     "resets": 0,
     "total_rollouts": 107,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 4,
@@ -1340,20 +1340,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "PushButtonRelocateSphere",
-   "video": "assets/videos/l3pg/DexVerse-PushButtonRelocateSphere.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PushButtonRelocateSphere.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 89,
     "resets": 0,
     "total_rollouts": 89,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 0,
@@ -1366,20 +1366,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "GraspPotPourMug",
-   "video": "assets/videos/l3pg/DexVerse-GraspPotPourMug.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspPotPourMug.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 82,
     "resets": 0,
     "total_rollouts": 82,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 2,
@@ -1392,20 +1392,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "OpenMicrowavePourMug",
-   "video": "assets/videos/l3pg/DexVerse-OpenMicrowavePourMug.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenMicrowavePourMug.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 79,
     "resets": 1,
     "total_rollouts": 80,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 2,
@@ -1418,20 +1418,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "RotateKnobPickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-RotateKnobPickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-RotateKnobPickUpStick.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 76,
     "resets": 0,
     "total_rollouts": 76,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 1,
@@ -1444,20 +1444,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "LiftLidRelocateSphere",
-   "video": "assets/videos/l3pg/DexVerse-LiftLidRelocateSphere.mp4",
+   "video": "assets/videos/model-driven/DexVerse-LiftLidRelocateSphere.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 74,
     "resets": 0,
     "total_rollouts": 74,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -1470,20 +1470,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "GraspPotPickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-GraspPotPickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspPotPickUpStick.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 72,
     "resets": 0,
     "total_rollouts": 72,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -1496,20 +1496,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "PourMugRelocateSphere",
-   "video": "assets/videos/l3pg/DexVerse-PourMugRelocateSphere.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PourMugRelocateSphere.mp4",
    "heldout_repeats": [
     48,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 66,
     "resets": 6,
     "total_rollouts": 72,
     "heldout_percent": 98.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 13,
@@ -1522,20 +1522,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "PushButtonPourMug",
-   "video": "assets/videos/l3pg/DexVerse-PushButtonPourMug.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PushButtonPourMug.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 63,
     "resets": 0,
     "total_rollouts": 63,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 2,
@@ -1548,20 +1548,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "OpenMicrowavePickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-OpenMicrowavePickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenMicrowavePickUpStick.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 61,
     "resets": 0,
     "total_rollouts": 61,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 4,
@@ -1574,20 +1574,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "PushButtonPickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-PushButtonPickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PushButtonPickUpStick.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 61,
     "resets": 0,
     "total_rollouts": 61,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 2,
@@ -1600,20 +1600,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "RotateKnobPourMug",
-   "video": "assets/videos/l3pg/DexVerse-RotateKnobPourMug.mp4",
+   "video": "assets/videos/model-driven/DexVerse-RotateKnobPourMug.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 52,
     "resets": 1,
     "total_rollouts": 53,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 10,
@@ -1626,20 +1626,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "TurnOnSwitchPickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-TurnOnSwitchPickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchPickUpStick.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 49,
     "resets": 4,
     "total_rollouts": 53,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 2,
@@ -1652,20 +1652,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "OpenDrawerRelocateSphere",
-   "video": "assets/videos/l3pg/DexVerse-OpenDrawerRelocateSphere.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenDrawerRelocateSphere.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 50,
     "resets": 1,
     "total_rollouts": 51,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -1678,20 +1678,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "RotateKnobPickUpCan",
-   "video": "assets/videos/l3pg/DexVerse-RotateKnobPickUpCan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-RotateKnobPickUpCan.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 43,
     "resets": 1,
     "total_rollouts": 44,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 11,
@@ -1704,20 +1704,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "TurnOnSwitchPourMug",
-   "video": "assets/videos/l3pg/DexVerse-TurnOnSwitchPourMug.mp4",
+   "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchPourMug.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 41,
     "resets": 0,
     "total_rollouts": 41,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 9,
@@ -1730,20 +1730,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "TurnOnSwitchRelocateSphere",
-   "video": "assets/videos/l3pg/DexVerse-TurnOnSwitchRelocateSphere.mp4",
+   "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchRelocateSphere.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 39,
     "resets": 0,
     "total_rollouts": 39,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 3,
@@ -1756,20 +1756,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "OpenMicrowaveRelocateSphere",
-   "video": "assets/videos/l3pg/DexVerse-OpenMicrowaveRelocateSphere.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenMicrowaveRelocateSphere.mp4",
    "heldout_repeats": [
     49,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 32,
     "resets": 0,
     "total_rollouts": 32,
     "heldout_percent": 99.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 10,
@@ -1782,20 +1782,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "PushButtonPickUpCan",
-   "video": "assets/videos/l3pg/DexVerse-PushButtonPickUpCan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-PushButtonPickUpCan.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 32,
     "resets": 0,
     "total_rollouts": 32,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 1,
@@ -1808,20 +1808,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "GraspPotPickUpCan",
-   "video": "assets/videos/l3pg/DexVerse-GraspPotPickUpCan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspPotPickUpCan.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 6,
     "total_rollouts": 6,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 5,
@@ -1834,20 +1834,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "OpenDrawerPickUpStick",
-   "video": "assets/videos/l3pg/DexVerse-OpenDrawerPickUpStick.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenDrawerPickUpStick.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 6,
     "total_rollouts": 6,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 2,
@@ -1860,20 +1860,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "OpenMicrowavePickUpCan",
-   "video": "assets/videos/l3pg/DexVerse-OpenMicrowavePickUpCan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-OpenMicrowavePickUpCan.mp4",
    "heldout_repeats": [
     50,
     49
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 5,
     "total_rollouts": 5,
     "heldout_percent": 99.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 170,
     "resets": 10,
@@ -1886,20 +1886,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "TurnOnSwitchPickUpCan",
-   "video": "assets/videos/l3pg/DexVerse-TurnOnSwitchPickUpCan.mp4",
+   "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchPickUpCan.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 2,
     "total_rollouts": 2,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 4,
@@ -1912,20 +1912,20 @@
    "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "GraspBucketRelocateSphere",
-   "video": "assets/videos/l3pg/DexVerse-GraspBucketRelocateSphere.mp4",
+   "video": "assets/videos/model-driven/DexVerse-GraspBucketRelocateSphere.mp4",
    "heldout_repeats": [
     50,
     50
    ],
    "episodes": 50,
-   "l3pg": {
+   "model_driven": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 1,
     "total_rollouts": 1,
     "heldout_percent": 100.0
    },
-   "a0": {
+   "cem": {
     "accepted": true,
     "search_rollouts": 0,
     "resets": 5,

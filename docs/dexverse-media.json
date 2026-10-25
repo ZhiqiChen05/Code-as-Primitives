@@ -218,36 +218,38 @@
     {
       "task": "LongHorizon-MakeCoffee",
       "seed": 9000,
-      "arm": "L3PG",
-      "path": "assets/videos/dexverse-make-coffee-l3pg.mp4",
-      "poster_path": "assets/images/dexverse-make-coffee-l3pg.jpg",
+      "path": "assets/videos/dexverse-make-coffee-model-driven.mp4",
+      "poster_path": "assets/images/dexverse-make-coffee-model-driven.jpg",
       "poster_time_s": 12,
       "description": "Take the mug off the tree, pour milk over it, set it under the espresso machine, turn the switch.",
       "chain": "Schema-Robo-dexverse/experiment_results/e2_L3PG/chains/LongHorizon-MakeCoffee_L3PG",
       "outcome": "success",
       "steps": 2384,
-      "source_path": "/home/djengof/DexVerse/docs/videos/l3pg_heldout_success/DexVerse-LongHorizon-MakeCoffee.mp4",
-      "note": "Existing L3PG held-out success render, copied unchanged.",
+      "source_path": "/home/djengof/DexVerse/Schema-Robo-dexverse/experiment_results/videos/blog_make_coffee/LongHorizon-MakeCoffee.model-driven.mp4",
+      "note": "Rendered 2026-10-25 from the saved held-out recording with render_video.py --label \"Model-driven search\".",
       "model": "claude-opus-5-5",
-      "bytes": 4236119,
-      "sha256": "8f7898a5b4105121742975a5dabb574ea360261845fa5931783f71fad76eca0a"
+      "bytes": 4259887,
+      "sha256": "2d209a185ce0bcd2d6b9ba90590f1c59e160d0bced093c1dd7806d35c5fd0746",
+      "campaign_arm": "L3PG",
+      "arm": "Model-driven search"
     },
     {
       "task": "LongHorizon-MakeCoffee",
       "seed": 9000,
-      "arm": "A0",
-      "path": "assets/videos/dexverse-make-coffee-a0.mp4",
-      "poster_path": "assets/images/dexverse-make-coffee-a0.jpg",
+      "path": "assets/videos/dexverse-make-coffee-cem.mp4",
+      "poster_path": "assets/images/dexverse-make-coffee-cem.jpg",
       "poster_time_s": 12,
       "description": "Take the mug off the tree, pour milk over it, set it under the espresso machine, turn the switch.",
       "chain": "Schema-Robo-dexverse/experiment_results/e2_wave1_A0/chains/LongHorizon-MakeCoffee_A0",
       "outcome": "success",
       "steps": 2099,
-      "source_path": "/home/djengof/DexVerse/Schema-Robo-dexverse/experiment_results/videos/a0_heldout/LongHorizon-MakeCoffee.mp4",
-      "note": "Rendered 2026-10-25 with dexpolicy.record_video --seed 9000 and render_video.py --label A0 --camera-from the L3PG recording, so both panels share one camera.",
+      "source_path": "/home/djengof/DexVerse/Schema-Robo-dexverse/experiment_results/videos/blog_make_coffee/LongHorizon-MakeCoffee.cem.mp4",
+      "note": "Rendered 2026-10-25 from the saved held-out recording with render_video.py --label \"CEM search\" --camera-from the model-driven recording, so both panels share one camera.",
       "model": "claude-opus-5-5",
-      "bytes": 3537145,
-      "sha256": "c1b50ac7313b9badc7fe0485ae0443ef0ed5e688f586b08209aa12f11f21a61e"
+      "bytes": 3543752,
+      "sha256": "fddb28b65f79e68682b7885407497d8a97e2cc4fb8ec025239525364808fab21",
+      "campaign_arm": "A0",
+      "arm": "CEM search"
     }
   ]
 }

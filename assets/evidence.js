@@ -7,7 +7,7 @@
   const statEl = gallery.querySelector('.gallery-stat');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const GROUPS = ['Adroit', 'Primitive', 'Functional', 'Articulation', 'Bimanual', 'Multi-goal'];
-  const ARMS = [['l3pg', 'L3PG', 'var(--green)'], ['a0', 'A0', 'var(--rust)'], ['baseline', 'Base', 'var(--muted)']];
+  const ARMS = [['model_driven', 'Model-driven', 'var(--green)'], ['cem', 'CEM', 'var(--rust)'], ['baseline', 'Base', 'var(--muted)']];
   const RESETS = '#8db3a3';
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   const num = v => (Number.isInteger(v) ? v.toLocaleString('en-US') : v.toFixed(1));
@@ -15,7 +15,7 @@
   let selected = 'All';
 
   function chart(t) {
-    const x0 = 38, x1 = 160, h = 11, pitch = 16;
+    const x0 = 74, x1 = 172, h = 11, pitch = 16;
     const rows = [];
     const block = (title, y0, value, scale, label) => {
       rows.push(`<text x="0" y="${y0}" class="gc-head">${title}</text>`);
@@ -29,7 +29,7 @@
         }
         const w = v => (x1 - x0) * Math.min(v, scale) / scale;
         const v = value(arm);
-        if (key === 'l3pg' && label === 'rollouts') {
+        if (key === 'model_driven' && label === 'rollouts') {
           rows.push(`<rect x="${x0}" y="${y}" width="${w(arm.search_rollouts).toFixed(1)}" height="${h}" fill="${color}"/>`);
           rows.push(`<rect x="${(x0 + w(arm.search_rollouts)).toFixed(1)}" y="${y}" width="${(w(v) - w(arm.search_rollouts)).toFixed(1)}" height="${h}" fill="${RESETS}"/>`);
         } else {
@@ -47,11 +47,12 @@
 
   function card(t) {
     const label = `${t.benchmark} ${t.task}`;
+    // The renders carry a burned-in caption band (task, campaign, seed); the crop classes frame it out.
     const media = t.video
-      ? `<video muted loop playsinline preload="none" aria-label="${esc(label)}: L3PG held-out success replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
-      : `<div class="gc-empty">${t.l3pg.accepted ? 'No replay recorded' : 'No accepted L3PG policy'}</div>`;
-    const summary = `${label}. Held-out success: L3PG ${t.l3pg.heldout_percent}%, A0 ${t.a0.heldout_percent}%, baseline TBD. ` +
-      `Total rollouts: L3PG ${t.l3pg.total_rollouts}, A0 ${t.a0.total_rollouts}, baseline TBD.`;
+      ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: model-driven search held-out success replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
+      : `<div class="gc-empty">${t.model_driven.accepted ? 'No replay recorded' : 'No accepted model-driven policy'}</div>`;
+    const summary = `${label}. Held-out success: model-driven search ${t.model_driven.heldout_percent}%, CEM search ${t.cem.heldout_percent}%, baseline TBD. ` +
+      `Total rollouts: model-driven search ${t.model_driven.total_rollouts}, CEM search ${t.cem.total_rollouts}, baseline TBD.`;
     return `<article class="gallery-card" aria-label="${esc(summary)}"><div class="gc-media">${media}` +
       `<span class="gc-badge">${esc(t.benchmark === 'Adroit' ? 'ADROIT' : t.group.toUpperCase())}</span></div>` +
       `<div class="gc-name">${esc(t.task)}</div>${chart(t)}</article>`;
@@ -64,11 +65,11 @@
     rowsEl.innerHTML = groups.map(g => {
       const ts = data.tasks.filter(t => t.group === g);
       return `<div class="gallery-group"><div class="gallery-group-head"><span>${esc(g)}</span>` +
-        `<span>${ts.length} task${ts.length > 1 ? 's' : ''} · held-out L3PG ${mean(ts, 'l3pg').toFixed(1)}% · A0 ${mean(ts, 'a0').toFixed(1)}%</span></div>` +
+        `<span>${ts.length} task${ts.length > 1 ? 's' : ''} · held-out: model-driven ${mean(ts, 'model_driven').toFixed(1)}% · CEM ${mean(ts, 'cem').toFixed(1)}%</span></div>` +
         `<div class="gallery-track" tabindex="0" aria-label="${esc(g)} tasks, scroll sideways"><div class="gallery-strip">${ts.map(card).join('')}</div></div></div>`;
     }).join('');
     const ts = data.tasks.filter(t => groups.includes(t.group));
-    statEl.textContent = `Mean held-out · L3PG ${mean(ts, 'l3pg').toFixed(1)}% · A0 ${mean(ts, 'a0').toFixed(1)}%`;
+    statEl.textContent = `Mean held-out · model-driven ${mean(ts, 'model_driven').toFixed(1)}% · CEM ${mean(ts, 'cem').toFixed(1)}%`;
     filterEl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.group === selected)));
     rowsEl.querySelectorAll('.gallery-track').forEach(dragScroll);
     watchVideos();
@@ -108,7 +109,7 @@
     else watchVideos();
   });
 
-  fetch('assets/data/l3pg-a0-tasks.json').then(r => r.json()).then(json => {
+  fetch('assets/data/search-results-by-task.json').then(r => r.json()).then(json => {
     data = json;
     filterEl.innerHTML = ['All', ...GROUPS].map(g => `<button type="button" class="tab-button" data-group="${esc(g)}">${esc(g)}</button>`).join('');
     filterEl.addEventListener('click', e => {
@@ -117,6 +118,6 @@
     });
     render();
   }).catch(() => {
-    rowsEl.innerHTML = '<p class="small-note">The task gallery could not load. All per-task numbers are in the <a href="assets/data/l3pg-a0-tasks.json">data file</a>.</p>';
+    rowsEl.innerHTML = '<p class="small-note">The task gallery could not load. All per-task numbers are in the <a href="assets/data/search-results-by-task.json">data file</a>.</p>';
   });
 })();

@@ -141,71 +141,14 @@ def comparison_chart(data):
     return svg(foot + 130, title, f"{subtitle}. {values}. {data['metric']}", p)
 
 
-def baseline_chart(data):
-    title = "Parameter search vs. code-as-policy"
-    subtitle = "Held-out success · frozen policies on unseen starts · Pen and Long-horizon shown separately"
-    p = [
-        text(50, 44, "ADROIT + DEXVERSE  /  CLAUDE OPUS 5.5", 16, "forest", letter_spacing=2),
-        text(50, 91, title, 33, serif=True),
-        text(50, 126, subtitle, 20, "muted"),
-        marker(60, 166, "forest"), text(77, 173, "Parameter search", 18),
-        marker(260, 166, "orange", True), text(277, 173, "Code-as-policy", 18),
-        text(1050, 173, "success (%)", 16, "muted", "end"),
-    ]
-    x0, x1 = 270, 930
-    x = lambda value: x0 + (x1 - x0) * value / 100
-    groups = [("ADROIT", [(r["task"], f'{r["successes"]}/{r["episodes"]} starts', r) for r in data["adroit"]]),
-              ("DEXVERSE", [(c["category"], f'{c["tasks"]} tasks', c) for c in data["dexverse_categories"]])]
-    y, rows = 232, []
-    for name, items in groups:
-        rows.append(("group", name, y))
-        y += 48
-        for label, sub, row in items:
-            rows.append(("row", (label, sub, row), y))
-            y += 64
-        y += 18
-    y -= 82
-    top, bottom = 203, y + 10
-    for tick in (0, 25, 50, 75, 100):
-        p.append(line(x(tick), top, x(tick), bottom))
-        p.append(text(x(tick), bottom + 33, str(tick), 17, "muted", "middle"))
-    for kind, item, ry in rows:
-        if kind == "group":
-            p.append(text(50, ry, item, 15, "forest", letter_spacing=2))
-            continue
-        label, sub, row = item
-        p.append(text(50, ry - 6, label, 24, serif=True))
-        p.append(text(50, ry + 19, sub, 17, "muted"))
-        for key, dy, color, square in (("parameter_search_percent", -15, "forest", False), ("code_as_policy_percent", 8, "orange", True)):
-            value = row[key]
-            if value is None:
-                p.append(text(x0 + 8, ry + dy + 6, "TBD", 17, "muted", font_style="italic"))
-                p.append(text(1050, ry + dy + 6, "TBD", 19, "muted", "end", font_style="italic"))
-                continue
-            p.append(line(x0, ry + dy, x(value), ry + dy, color, 2))
-            p.append(marker(x(value), ry + dy, color, square))
-            p.append(text(1050, ry + dy + 6, f"{value:.1f}", 19, color, "end"))
-    foot = bottom + 68
-    p.extend([
-        text((x0 + x1) / 2, foot, "Held-out success rate (%)", 20, "muted", "middle"),
-        line(50, foot + 29, 1050, foot + 29),
-        text(50, foot + 65, "Adroit: one run on 30 unseen starts. DexVerse: category mean over tasks, 50 unseen starts × 2 repeats.", 19),
-        text(50, foot + 96, "Unaccepted tasks count as zero. One training chain per task. Code-as-policy results pending.", 18, "muted"),
-    ])
-    height = foot + 130
-    values = "; ".join([f'Adroit {r["task"]}: parameter search {r["parameter_search_percent"]}%, code-as-policy TBD' for r in data["adroit"]]
-                       + [f'DexVerse {c["category"]} ({c["tasks"]} tasks): parameter search {c["parameter_search_percent"]}%, code-as-policy TBD' for c in data["dexverse_categories"]])
-    return svg(height, title, f"{subtitle}. {values}. {data['dexverse_metric']}", p)
-
-
-def search_vs_baseline_chart(data, rollouts=False):
-    """Figures 4 and 5: L3PG, A0 and the pending baseline per Adroit task and DexVerse category."""
-    title = "Total rollouts to an accepted policy" if rollouts else "Held-out success of the frozen policy"
+def search_vs_baseline_chart(data, rollouts=False, title=None):
+    """Figures 1, 4 and 5: model-driven search, CEM search and the pending baseline per Adroit task and DexVerse category."""
+    title = title or ("Total rollouts to an accepted policy" if rollouts else "Held-out success of the frozen policy")
     subtitle = ("Parameter-search rollouts + policy-design resets · DexVerse: mean per task" if rollouts
                 else "Unseen starts · DexVerse: mean per task, unaccepted tasks count as zero")
     reset_color = "#8db3a3"
-    arms = [("l3pg", "Model-driven search (L3PG)", "forest"), ("a0", "Host CEM search (A0)", "orange"),
-            ("baseline", "Baseline", "muted")]
+    arms = [("model_driven", "Model-driven search", "forest"), ("cem", "CEM search", "orange"),
+            ("baseline", "Baseline (policy search)", "muted")]
     p = [
         text(50, 44, "ADROIT + DEXVERSE  /  CLAUDE OPUS 5.5", 16, "forest", letter_spacing=2),
         text(50, 91, title, 33, serif=True),
@@ -213,7 +156,7 @@ def search_vs_baseline_chart(data, rollouts=False):
     ]
     legend = [(label, color) for _, label, color in arms]
     if rollouts:
-        legend.insert(1, ("L3PG resets", reset_color))
+        legend.insert(1, ("Model-driven resets", reset_color))
     lx = 50
     for label, color in legend:
         p += [f'<rect x="{lx}" y="158" width="16" height="16" fill="{PALETTE.get(color, color)}"/>', text(lx + 24, 172, label, 17)]
@@ -246,7 +189,7 @@ def search_vs_baseline_chart(data, rollouts=False):
                     continue
                 if rollouts:
                     total = value["total_rollouts"]
-                    if key == "l3pg":
+                    if key == "model_driven":
                         p.append(f'<rect x="{x0}" y="{by}" width="{x(value["search_rollouts"]) - x0:.1f}" height="{bar}" fill="{PALETTE[color]}"/>')
                         p.append(f'<rect x="{x(value["search_rollouts"]):.1f}" y="{by}" width="{x(total) - x(value["search_rollouts"]):.1f}" height="{bar}" fill="{reset_color}"/>')
                     else:
@@ -259,15 +202,15 @@ def search_vs_baseline_chart(data, rollouts=False):
                     p.append(text(x(v) + 8, by + 12, f"{v:.1f}%", 14, "ink"))
         y = bottom + 74
     foot = y - 20
-    note = ("Labels: total (search + resets). Resets are policy-design restarts; A0 bars combine both counters." if rollouts
+    note = ("Labels: total (search + resets). Resets are policy-design restarts; CEM search bars combine both counters." if rollouts
             else "Adroit: one run on 30 unseen starts. DexVerse: 50 unseen starts, two repeats averaged.")
     p.extend([
         line(50, foot, 1050, foot),
         text(50, foot + 34, note, 18),
-        text(50, foot + 62, "One training chain per task and arm. Adroit Pen and DexVerse Long-horizon are in Section 5. Baseline pending.", 17, "muted"),
+        text(50, foot + 62, "One training chain per task and arm. Adroit Pen and DexVerse Long-horizon are in Section 4. Baseline pending.", 17, "muted"),
     ])
     key = "total_rollouts" if rollouts else "heldout_percent"
-    values = "; ".join(f'{g.get("task", g["group"]) if g["group"] == "Adroit" else g["group"]}: L3PG {g["l3pg"][key]}, A0 {g["a0"][key]}, baseline TBD'
+    values = "; ".join(f'{g.get("task", g["group"]) if g["group"] == "Adroit" else g["group"]}: model-driven search {g["model_driven"][key]}, CEM search {g["cem"][key]}, baseline TBD'
                        for g in data["summary"])
     return svg(foot + 92, title, f"{subtitle}. {values}.", p)
 
@@ -275,12 +218,11 @@ def search_vs_baseline_chart(data, rollouts=False):
 def main():
     dexverse = json.loads((ROOT / "assets/data/dexverse-results.json").read_text())
     adroit = json.loads((ROOT / "assets/data/adroit-curriculum.json").read_text())
-    baseline = json.loads((ROOT / "assets/data/l3pg-heldout-main.json").read_text())
     comparison = json.loads((ROOT / "assets/data/dexverse-comparison-e2.json").read_text())
-    tasks = json.loads((ROOT / "assets/data/l3pg-a0-tasks.json").read_text())
+    tasks = json.loads((ROOT / "assets/data/search-results-by-task.json").read_text())
     outputs = {
         "dexverse-comparison-e2.svg": comparison_chart(comparison),
-        "heldout-main-baseline.svg": baseline_chart(baseline),
+        "heldout-main-baseline.svg": search_vs_baseline_chart(tasks, title="Held-out success: parameter search vs. baseline"),
         "evidence-heldout.svg": search_vs_baseline_chart(tasks),
         "evidence-rollouts.svg": search_vs_baseline_chart(tasks, rollouts=True),
         "dexverse-heldout.svg": category_chart(dexverse),

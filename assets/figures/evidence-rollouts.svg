@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1078" viewBox="0 0 1100 1078" role="img" aria-labelledby="figure-title figure-desc">
 <title id="figure-title">Total rollouts to an accepted policy</title>
-<desc id="figure-desc">Parameter-search rollouts + policy-design resets · DexVerse: mean per task. Door: L3PG 283, A0 21, baseline TBD; Hammer: L3PG 93, A0 1063, baseline TBD; Relocate: L3PG 37, A0 45, baseline TBD; Primitive: L3PG 121.4, A0 12.6, baseline TBD; Functional: L3PG 110.8, A0 109.6, baseline TBD; Articulation: L3PG 423.7, A0 217.2, baseline TBD; Bimanual: L3PG 135.0, A0 7.7, baseline TBD; Multi-goal: L3PG 72.4, A0 12.6, baseline TBD.</desc>
+<desc id="figure-desc">Parameter-search rollouts + policy-design resets · DexVerse: mean per task. Door: model-driven search 283, CEM search 21, baseline TBD; Hammer: model-driven search 93, CEM search 1063, baseline TBD; Relocate: model-driven search 37, CEM search 45, baseline TBD; Primitive: model-driven search 121.4, CEM search 12.6, baseline TBD; Functional: model-driven search 110.8, CEM search 109.6, baseline TBD; Articulation: model-driven search 423.7, CEM search 217.2, baseline TBD; Bimanual: model-driven search 135.0, CEM search 7.7, baseline TBD; Multi-goal: model-driven search 72.4, CEM search 12.6, baseline TBD.</desc>
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#276451"/></marker></defs>
 <rect width="1100" height="1078" fill="#f6f3eb"/>
 <text x="50" y="44" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="start" letter-spacing="2">ADROIT + DEXVERSE  /  CLAUDE OPUS 5.5</text>
 <text x="50" y="91" font-family="Georgia, 'Times New Roman', serif" font-size="33" fill="#242620" text-anchor="start" >Total rollouts to an accepted policy</text>
 <text x="50" y="126" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="start" >Parameter-search rollouts + policy-design resets · DexVerse: mean per task</text>
 <rect x="50" y="158" width="16" height="16" fill="#276451"/>
-<text x="74" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >Model-driven search (L3PG)</text>
-<rect x="332" y="158" width="16" height="16" fill="#8db3a3"/>
-<text x="356" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >L3PG resets</text>
-<rect x="479" y="158" width="16" height="16" fill="#be5d39"/>
-<text x="503" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >Host CEM search (A0)</text>
-<rect x="707" y="158" width="16" height="16" fill="#63675d"/>
-<text x="731" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >Baseline</text>
+<text x="74" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >Model-driven search</text>
+<rect x="269" y="158" width="16" height="16" fill="#8db3a3"/>
+<text x="293" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >Model-driven resets</text>
+<rect x="488" y="158" width="16" height="16" fill="#be5d39"/>
+<text x="512" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >CEM search</text>
+<rect x="626" y="158" width="16" height="16" fill="#63675d"/>
+<text x="650" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >Baseline (policy search)</text>
 <text x="50" y="222" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#276451" text-anchor="start" letter-spacing="2">ADROIT</text>
 <line x1="270.0" y1="236" x2="270.0" y2="464" stroke="#d7d6ca" stroke-width="1.4" />
 <text x="270.0" y="490" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#63675d" text-anchor="middle" >0</text>
@@ -107,6 +107,6 @@
 <text x="292.49" y="903" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#242620" text-anchor="start" >12.6  (7.2 + 5.5)</text>
 <text x="276" y="922" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#63675d" text-anchor="start" font-style="italic">TBD</text>
 <line x1="50" y1="986" x2="1050" y2="986" stroke="#d7d6ca" stroke-width="1.4" />
-<text x="50" y="1020" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >Labels: total (search + resets). Resets are policy-design restarts; A0 bars combine both counters.</text>
-<text x="50" y="1048" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >One training chain per task and arm. Adroit Pen and DexVerse Long-horizon are in Section 5. Baseline pending.</text>
+<text x="50" y="1020" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#242620" text-anchor="start" >Labels: total (search + resets). Resets are policy-design restarts; CEM search bars combine both counters.</text>
+<text x="50" y="1048" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#63675d" text-anchor="start" >One training chain per task and arm. Adroit Pen and DexVerse Long-horizon are in Section 4. Baseline pending.</text>
 </svg>
