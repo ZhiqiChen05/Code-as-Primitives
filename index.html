@@ -80,7 +80,7 @@ best = max(LIB, key=lambda r:
 phase = max(0.0, min(1.0, (0.75 - v[33]) * 6))</pre></div></div>
 <p class="lv-foot"><span class="lv-brace">{·}</span> <strong>Code as Primitives</strong> keeps both levels in one editable program, and lets evidence revise either.</p>
 </div>
-<figcaption id="levels-caption"><span class="figure-label">Figure 2</span>The two levels of a learned controller. Level 1 chooses the controller family: what the program reads and how it responds. Level 2 searches the numerical settings inside that family. The Level 1 excerpt is from the saved stage-one Pen policy (<code>search_0039</code>) shown in full in the walkthrough below; the Level 2 panel is the search interface, not a run log.</figcaption>
+<figcaption id="levels-caption"><span class="figure-label">Figure 2</span>The two levels of a learned controller. Level 1 chooses the controller family: what the program reads and how it responds. Level 2 searches the numerical settings inside that family. The Level 1 excerpt is from the saved stage-one Pen policy (<code>search_0039</code>) available in Figure 3’s expandable code excerpt; the Level 2 panel is the search interface, not a run log.</figcaption>
 </figure>
 
 <div class="prose" style="margin-top:34px"><p>Rewriting the whole policy after every rollout leaves many possible explanations for success or failure. A changed threshold and a completely different strategy are both possible edits. Testing a batch within one controller family gives the agent a more comparable set of outcomes.</p>
@@ -90,9 +90,21 @@ phase = max(0.0, min(1.0, (0.75 - v[33]) * 6))</pre></div></div>
 
 <h3 id="pen" style="margin-top:44px">A running example: a pen in the hand.</h3>
 <div class="prose"><p style="margin-top:17px">Contact-rich control makes both levels matter. In Adroit Pen, the controller sees the hand and pen state and must reorient the pen toward a target. An action that changes the pen’s orientation can also loosen the grasp or eject it, so a useful policy has to turn what it observes into a coordinated change across the fingers and wrist.</p><p>We follow one saved run, <strong>GPT-6 Astra with Agentic search on the ten-stage random-reset curriculum</strong>, through the learning loop. Figure 3 plays it alongside each stage of the loop.</p></div>
-<figure class="lp-root" data-loop aria-labelledby="loop-caption">
+<figure class="lp-root" id="pen-walkthrough" data-loop aria-labelledby="loop-caption">
 <div class="lp-scroll" data-ref="scroll">
 <div class="lp-stick" data-ref="stick">
+<div class="lp-scene" data-ref="scene">
+<div class="lp-navigation" role="group" aria-label="Learning loop walkthrough">
+<button type="button" data-loop-action="back" aria-label="Previous framework step" aria-disabled="true">← Back</button>
+<div><span data-ref="counter">01 / 08</span><span data-ref="step-name">The outer loop</span></div>
+<button type="button" data-loop-action="next" aria-label="Next framework step">Next →</button>
+</div>
+<div class="lp-map" aria-hidden="true">
+<div data-mini="0"><strong>design</strong><span>Write the feedback program.</span></div><div data-mini="1"><strong>search</strong><span>Test numerical settings.</span></div><div data-mini="2"><strong>submit</strong><span>Freeze a training candidate.</span></div><div data-mini="3"><strong>advance</strong><span>Pass, or revise from evidence.</span></div>
+<p class="lp-mini-search" data-ref="mini-search" hidden>propose → evaluate → analyze → commit<br><span>Refine the batch while the family remains useful.</span></p>
+<p class="lp-mini-held" data-ref="mini-held">held-out <span>Reserved starts · frozen program · no feedback to learning</span></p>
+</div>
+<div class="lp-compact-note" data-ref="compact-note"></div>
 <div class="lp-fit" data-ref="fit">
 <div class="lp-stage" data-ref="stage" aria-hidden="true">
 <div class="lp-cam" data-ref="cam">
@@ -138,52 +150,35 @@ phase = max(0.0, min(1.0, (0.75 - v[33]) * 6))</pre></div></div>
 <div class="lp-who"><div><b>CEM · BUILT-IN OPTIMIZER</b>The host samples, evaluates and refits parameter vectors; the model reads the results and revises the family.</div><div><b>AGENTIC SEARCH · MODEL-DESIGNED</b>The model writes the batches and the analysis itself, with reference texts for the task category.</div></div>
 <div class="lp-mem"><span class="lp-label">WHAT PERSISTS ACROSS ITERATIONS</span><code>policy.py</code><code>PARAMS</code><code>search/*/result.json</code><code>submissions.json</code><code>saved notes</code></div>
 </div>
-<div class="lp-ptr" data-ref="ptr">
-<div class="lp-ptr-head"><span class="lp-label">RUNNING EXAMPLE — ADROIT PEN · RECORDED RUN</span><span class="lp-label" style="font-weight:400">GPT-6 Astra · Agentic search · 10-stage random-reset curriculum</span></div>
-<div class="lp-ptr-body">
-<div class="lp-ptr-img"><img src="assets/images/adroit-pen-neutral-poster.jpg" alt=""><img data-ref="imgEnd" src="assets/images/adroit-pen-poster.jpg" alt="" style="opacity:0"></div>
-<div class="lp-trace">
-<div data-ref="tr0"><b>[design]</b> Probe: the initial policy sends zero actuator commands. The pen settles roughly horizontal and never meets the success condition.</div>
-<div data-ref="tr1"><b>[design]</b> Saved notes: thumb-only rotation ejects the pen; a flexed wrist keeps a raised grasp. → a grasp library, gated on the observed pen axis.</div>
-<div data-ref="tr2"><b>[search]</b> 128-candidate grasp-expansion batch. Library check: 10/16 fresh starts succeed.</div>
-<div data-ref="tr3"><b>[submit]</b> The first frozen stage-1 submission <b style="color:#be5d39">fails</b> → training evidence. Revise: reverse-tilt and position compensation → 21/32 in the next check.</div>
-<div data-ref="tr4"><b>[advance]</b> The second frozen submission passes stage 1. Stages 2–10 follow; the final frozen policy succeeds on 30/30 reserved held-out seeds.</div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="lp-fallback"><a class="figure-fullsize" href="assets/figures/method-overview.svg" target="_blank" rel="noopener" aria-label="Open the static framework diagram at full size"><img src="assets/figures/method-overview.svg" width="1100" height="720" loading="lazy" alt="The model designs policy code and parameters. Optional counted simulator search returns training evidence for revision. A frozen training submission must pass the acceptance rule. Reserved held-out evaluation runs without model calls and never sends feedback into learning."></a></div>
-<div class="lp-steps" data-ref="steps">
-<div class="lp-step"><div><strong>The outer loop.</strong> The model works on a task in a four-stage cycle: <strong>design</strong> → <strong>search</strong> → <strong>submit</strong> → <strong>advance</strong>. Its weights never change. What changes is the program, its constants, and the evidence it has collected.</div></div>
-<div class="lp-step"><div><strong>Every trial is counted.</strong> Each search candidate runs in the native simulator, and each policy-design reset is a real episode. Both go on the ledger, and the agent cannot take back interaction it has already spent.</div></div>
-<div class="lp-step"><div><strong>Inside one search</strong>, the controller structure is held fixed and only <code>PARAMS</code> varies. The agent proposes a batch, evaluates it in the simulator, analyzes the outcomes, and either commits a vector or refines the batch and runs again.</div></div>
-<div class="lp-step"><div><strong>Two ways to search.</strong> With <strong>CEM</strong>, the host runs the cross-entropy method over <code>PARAMS</code>. In <strong>Agentic search</strong>, the model designs the batches and the numerical analysis itself. Search is optional in both: authored code can go straight to submission. Below, a recorded Pen run plays out stage by stage.</div></div>
-<div class="lp-step"><div><strong>Acceptance outranks the search score.</strong> A submission freezes one controller and applies the training rule: in the Adroit random-reset curriculum, stage <em>k</em> needs one frozen policy to pass <em>k</em> fresh starts together. A failure returns as training evidence; the model revises the structure or searches again.</div></div>
-<div class="lp-step"><div><strong>Freeze the code. Change the start.</strong> After the last stage, the selected program runs on reserved held-out starts with no model calls, parameter updates or edits. Those outcomes measure generalization and never return to learning.</div></div>
-</div>
-</div>
-<figcaption id="loop-caption"><span class="figure-label">Figure 3</span>The Code as Primitives learning loop. Scroll to walk it: the four-stage outer cycle and its rollout ledger, a zoom into one parameter search (propose → evaluate → analyze → commit), then a recorded Adroit Pen run at each stage, ending at the frozen held-out test. The walkthrough after the figure opens the artifacts behind each trace line. <a class="figure-download" href="assets/figures/method-overview.svg" target="_blank" rel="noopener">Open static SVG ↗</a></figcaption>
-</figure>
-
-<div class="prose" style="margin-top:30px"><p>A promising search result still has to pass a frozen-policy evaluation. Once submitted, the code cannot be edited during that evaluation, and the model cannot intervene in individual control steps.</p></div>
-<details class="details"><summary>Read the policy and evaluation contract</summary><div class="details-body"><p>The core interface is <code>select_action(observation)</code>. The program returns native actuator commands or joint-position targets, depending on the environment. In the evaluated policy-only modes, it executes without a model-provider request at each action.</p><p>Training acceptance and held-out testing are separate. Training evaluations can feed adaptation. Held-out starts are reserved for frozen evaluation, and their outcomes are not returned to the learning agent.</p></div></details>
-<h3 id="pen-walkthrough" style="margin-top:44px">Inside the recorded run.</h3>
-<div class="prose"><p style="margin-top:17px">Each line of the trace in Figure 3 comes from a saved artifact. The four steps below open them in order: the probe that first showed how the pen moves, the policy code that came out of it, the search checks that tested that code, and the frozen policy on a start it had never seen.</p></div>
-<div class="walkthrough" data-tab-group>
-<div class="tab-list" role="tablist" aria-label="Pen learning walkthrough">
-<button class="tab-button" id="pen-step-tab-0" role="tab" aria-controls="pen-step-0" aria-selected="true">01 &nbsp; Observe</button>
-<button class="tab-button" id="pen-step-tab-1" role="tab" aria-controls="pen-step-1" aria-selected="false" tabindex="-1">02 &nbsp; Design</button>
-<button class="tab-button" id="pen-step-tab-2" role="tab" aria-controls="pen-step-2" aria-selected="false" tabindex="-1">03 &nbsp; Search</button>
-<button class="tab-button" id="pen-step-tab-3" role="tab" aria-controls="pen-step-3" aria-selected="false" tabindex="-1">04 &nbsp; Freeze & test</button>
-</div>
-<div class="tab-panel walkthrough-panel" role="tabpanel" id="pen-step-0" aria-labelledby="pen-step-tab-0" tabindex="0">
-<div class="walkthrough-grid"><div><span class="tiny-label">Start with contact</span><h3>What makes the pen move?</h3><p>The saved experiment notes describe a neutral action that holds the pen roughly horizontal. Changing the thumb alone tilts it and then ejects it. A combined wrist-and-thumb setting holds the pen along a raised axis.</p><p>These probes give the model evidence about coordinated motion. The design problem becomes how to move between useful grasps while keeping contact.</p><p class="small-note">Recorded stage-one probes. Video: saved neutral-probe rollout, not an artist’s reconstruction.</p></div><div class="walkthrough-video"><video controls playsinline preload="none" poster="assets/images/adroit-pen-neutral-poster.jpg" aria-label="Saved initial Pen neutral-action probe"><source src="assets/videos/adroit-pen-neutral.mp4" type="video/mp4"></video><div class="video-footnote">INITIAL PROBE · 0.25× SPEED</div></div></div>
-</div>
-<div class="tab-panel walkthrough-panel" role="tabpanel" id="pen-step-1" aria-labelledby="pen-step-tab-1" tabindex="0" hidden>
-<span class="tiny-label">Choose the function space</span><h3>From a single grasp to a grasp library.</h3><p>The probes lead to a grasp library with orientation-dependent transitions between grasp configurations. The policy chooses a library entry by its alignment with the desired pen direction, then blends controls according to the observed pen axis. This is the full excerpt behind the Level 1 panel of Figure 2.</p>
-<div class="code-window"><div class="code-toolbar"><span>STAGE 1 · RECORDED POLICY EXCERPT</span><button class="copy-code" data-copy-target="pen-code">Copy</button></div><pre><code id="pen-code"><span class="code-comment"># Select a library entry using the target orientation.</span>
+<section class="lp-evidence" data-ref="evidence" hidden aria-labelledby="pen-evidence-heading">
+  <div class="lp-evidence-head">
+    <div><h3 class="lp-label" id="pen-evidence-heading">RECORDED ADROIT PEN RUN</h3><p class="lp-evidence-attribution">GPT-6 Astra · Agentic search · 10-stage random-reset curriculum</p></div>
+  </div>
+  <div class="lp-evidence-panels">
+    <div class="lp-evidence-panel lp-evidence-with-video" data-pen-evidence="0" id="pen-evidence-0" role="group" aria-labelledby="pen-evidence-title-0">
+      <div class="lp-evidence-copy">
+        <span class="lp-evidence-kicker">01 / Observe</span>
+        <h4 id="pen-evidence-title-0">Find a grasp that keeps contact.</h4>
+        <p>With zero actuator commands, the pen settles roughly horizontal. Saved probe notes show that rotating the thumb alone ejects it; coordinating the wrist and thumb supports a raised grasp.</p>
+        <p class="lp-evidence-takeaway">The useful primitive is a coordinated grasp, not an isolated finger motion.</p>
+      </div>
+      <div class="lp-evidence-video">
+        <video controls playsinline preload="none" poster="assets/images/adroit-pen-neutral-poster.jpg" aria-label="Saved neutral-action Pen probe, shown at one quarter speed"><source src="assets/videos/adroit-pen-neutral.mp4" type="video/mp4"></video>
+        <span>INITIAL NEUTRAL PROBE · 0.25× SPEED</span>
+      </div>
+    </div>
+    <div class="lp-evidence-panel" data-pen-evidence="1" id="pen-evidence-1" role="group" aria-labelledby="pen-evidence-title-1" hidden>
+      <div class="lp-evidence-copy">
+        <span class="lp-evidence-kicker">02 / Design</span>
+        <h4 id="pen-evidence-title-1">Turn the probes into a grasp library.</h4>
+        <p>The policy selects a library entry aligned with the target pen direction, then blends grasp controls according to the observed pen axis.</p>
+<div class="lp-policy-pair"><div><code>best = max(LIB, …)</code><span>Target alignment chooses a grasp.</span></div><div><code>phase = max(0, min(1, …))</code><span>The observed pen axis controls the blend.</span></div></div>
+      </div>
+      <details class="lp-evidence-code">
+        <summary>Inspect the recorded stage-one policy excerpt</summary>
+        <div class="code-window"><div class="code-toolbar"><span>STAGE 1 · search_0039</span><button type="button" class="copy-code" data-copy-target="pen-code">Copy</button></div><pre><code id="pen-code"><span class="code-comment"># Select a library entry using the target orientation.</span>
 t = v[36:39]
 best = max(LIB, key=lambda r:
     sum(r[0][i] * t[i] for i in range(3)))
@@ -191,17 +186,67 @@ best = max(LIB, key=lambda r:
 <span class="code-comment"># Derive transitions from the observed pen axis.</span>
 phase = max(0.0, min(1.0, (0.75 - v[33]) * 6))
 third = max(0.0, min(1.0, (0.5 - v[33]) * 5))</code></pre></div>
-<p class="small-note">Excerpt from the saved stage-one policy in <code>search_0039</code>; omitted code defines the grasp library and actuator outputs. The comments explain the source excerpt. It is not the final stage-ten controller.</p>
+        <p class="lp-evidence-note">Comments annotate the source. Omitted code defines the library and actuator outputs; this is not the final stage-ten controller.</p>
+      </details>
+    </div>
+    <div class="lp-evidence-panel" data-pen-evidence="2" id="pen-evidence-2" role="group" aria-labelledby="pen-evidence-title-2" hidden>
+      <div class="lp-evidence-copy">
+        <span class="lp-evidence-kicker">03 / Search</span>
+        <h4 id="pen-evidence-title-2">Expand the library, then check its coverage.</h4>
+        <p>A batch explores grasp configurations. A later check repeats one parameter vector across fresh starts to expose where the resulting library still fails.</p>
+      </div>
+      <div class="lp-evidence-metrics">
+        <div><strong>128</strong><span>candidates in one grasp-expansion batch</span></div>
+        <div><strong>10 / 16</strong><span>successful rollouts in the initial library check</span></div>
+      </div>
+      <p class="lp-evidence-takeaway">The 16-rollout check tests one vector on different starts, not 16 different controllers.</p>
+    </div>
+    <div class="lp-evidence-panel" data-pen-evidence="3" id="pen-evidence-3" role="group" aria-labelledby="pen-evidence-title-3" hidden>
+      <div class="lp-evidence-copy">
+        <span class="lp-evidence-kicker">04 / Submit &amp; revise</span>
+        <h4 id="pen-evidence-title-3">A promising search score still fails acceptance.</h4>
+        <p>The first frozen submission fails. The model adds reverse-tilt and position-compensation behavior, then checks the expanded library on another set of fresh starts.</p>
+      </div>
+      <div class="lp-evidence-metrics">
+        <div><strong>21 / 32</strong><span>successful rollouts in the revised library check</span></div>
+        <div><strong>Stage 1 ✓</strong><span>the second frozen submission passes</span></div>
+      </div>
+      <p class="lp-evidence-takeaway">The check guides revision; the separate frozen submission determines acceptance.</p>
+    </div>
+    <div class="lp-evidence-panel lp-evidence-with-video" data-pen-evidence="4" id="pen-evidence-4" role="group" aria-labelledby="pen-evidence-title-4" hidden>
+      <div class="lp-evidence-copy">
+        <span class="lp-evidence-kicker">05 / Frozen held-out evaluation</span>
+        <p class="lp-evidence-bridge">Stages 2–10: further refinement</p>
+        <h4 id="pen-evidence-title-4">The final policy succeeds on 30 / 30 unseen starts.</h4>
+        <p>After stage ten, the program runs on reserved starts with no model calls, edits, or parameter updates. The video replays its first held-out episode; every saved state matched exactly.</p>
+        <p class="lp-evidence-takeaway">This result belongs to the final controller, after the full curriculum.</p>
+      </div>
+      <div class="lp-evidence-video">
+        <video controls playsinline preload="none" poster="assets/images/adroit-pen-poster.jpg" aria-label="Final stage-ten Pen policy on an unseen held-out start, shown at one quarter speed"><source src="assets/videos/adroit-pen.mp4" type="video/mp4"></video>
+        <span>FINAL HELD-OUT REPLAY · 0.25× SPEED</span>
+      </div>
+    </div>
+  </div>
+  <div class="lp-evidence-footer"><p>The 16- and 32-rollout checks repeat one vector on fresh starts. They guide adaptation; they are not a controlled comparison or held-out evaluation. The final 30/30 comes from one training chain.</p><a href="docs/pen-case-study.json">Trace and replay provenance ↗</a></div>
+</section>
 </div>
-<div class="tab-panel walkthrough-panel" role="tabpanel" id="pen-step-2" aria-labelledby="pen-step-tab-2" tabindex="0" hidden>
-<span class="tiny-label">Use batches as evidence</span><h3>Test the family. Find what it misses.</h3><p>The run evaluates 128-candidate batches while expanding grasp configurations. A later 16-rollout library check records ten successes. The next frozen submission still fails, showing why search success alone does not establish acceptance.</p>
-<div class="search-checkpoints"><div><strong>128</strong><span>candidates in a grasp-expansion batch</span></div><div><strong>10 / 16</strong><span>successful rollouts in the initial library check</span></div><div><strong>21 / 32</strong><span>successful rollouts after library expansion</span></div></div>
-<p>The next revision expands the library with reverse-tilt and position-compensation behavior. Its recorded 32-rollout check finds 21 successes, and the second frozen submission passes stage one.</p><p class="small-note">The 16- and 32-rollout checks each repeat one parameter vector on fresh starts. These are adaptive search-batch outcomes, not held-out success rates or a controlled before/after comparison. Further policy refinement occurs in stages two through ten.</p>
 </div>
-<div class="tab-panel walkthrough-panel" role="tabpanel" id="pen-step-3" aria-labelledby="pen-step-tab-3" tabindex="0" hidden>
-<div class="walkthrough-grid"><div><span class="tiny-label">Separate learning from testing</span><h3>Thirty unseen starts.<br>Thirty successes.</h3><p>After the ten-stage curriculum, the final Pen policy succeeds on all 30 reserved held-out seeds. There are no model calls, parameter updates, or code edits during this test.</p><p>The video shows the first planned held-out episode. Its saved actions were replayed and every recorded state matched exactly.</p><p class="small-note">30/30 is the final frozen evaluation, not the result of the stage-one library alone. One training chain; 30 test starts.</p></div><div class="walkthrough-video"><video controls playsinline preload="none" poster="assets/images/adroit-pen-poster.jpg" aria-label="Final Adroit Pen policy on an unseen held-out reset"><source src="assets/videos/adroit-pen.mp4" type="video/mp4"></video><div class="video-footnote">FROZEN HELD-OUT REPLAY · 0.25× SPEED</div></div></div>
-</div></div>
-<p class="small-note" style="margin-top:12px">The walkthrough summarizes saved experiment notes and controller artifacts. <a href="docs/pen-case-study.json">Trace and replay provenance ↗</a></p>
+<div class="lp-fallback"><a class="figure-fullsize" href="assets/figures/method-overview.svg" target="_blank" rel="noopener" aria-label="Open the static framework diagram at full size"><img src="assets/figures/method-overview.svg" width="1100" height="720" loading="lazy" alt="The model designs policy code and parameters. Optional counted simulator search returns training evidence for revision. A frozen training submission must pass the acceptance rule. Reserved held-out evaluation runs without model calls and never sends feedback into learning."></a></div>
+<div class="lp-steps" data-ref="steps">
+<div class="lp-step" data-title="The outer loop"><div><strong>The outer loop.</strong> The model works in a four-stage cycle: <strong>design</strong> → <strong>search</strong> → <strong>submit</strong> → <strong>advance</strong>. Its weights stay fixed. The program, constants, and collected evidence change.</div></div>
+<div class="lp-step" data-title="Count the interaction"><div><strong>Every trial is counted.</strong> Each search candidate runs in the native simulator, and each policy-design reset is a real episode. Both go on the ledger.</div></div>
+<div class="lp-step" data-title="Inside one search"><div><strong>Search within a family.</strong> Hold the structure fixed, propose a batch of <code>PARAMS</code>, evaluate it, and analyze the outcomes. Refine the batch or commit a vector. <strong>CEM</strong> supplies the optimizer; <strong>Agentic search</strong> lets the model design the search. Either can be skipped before submission.</div></div>
+<div class="lp-step" data-title="Observe the contact"><div><strong>Start with what the hand actually does.</strong> In the saved Pen run, simple probes expose how thumb and wrist motion affect contact. The neutral-probe video is the first piece of evidence behind the controller design.</div></div>
+<div class="lp-step" data-title="Design the controller"><div><strong>Turn observations into a function space.</strong> The model moves from individual grasps to a library with feedback-driven transitions. The short annotation explains the structure; expand the code to inspect the recorded policy.</div></div>
+<div class="lp-step" data-title="Search and check"><div><strong>Test more than one start.</strong> Exploring different parameter vectors and checking one vector across fresh starts answer different questions. The recorded search contains both kinds of batch.</div></div>
+<div class="lp-step" data-title="Submit, fail, and revise"><div><strong>Acceptance is a separate gate.</strong> Stage <em>k</em> requires one frozen policy to pass <em>k</em> fresh starts together. A failed submission returns as training evidence. Here it leads to a richer library before the second submission passes stage one.</div></div>
+<div class="lp-step" data-title="Freeze and test"><div><strong>Finish training, then change the start.</strong> Stages 2–10 refine the controller further. Only then does the final frozen program run on reserved held-out starts. Those results never return to learning.</div></div>
+</div>
+</div>
+<figcaption id="loop-caption"><span class="figure-label">Figure 3</span>The learning loop, with its recorded Adroit Pen evidence. Follow the outer cycle and parameter search, then inspect the probe, controller code, search checks, failed submission, revision, and final held-out replay. Scroll or use Back and Next; on smaller screens, use the step controls. <a class="figure-download" href="assets/figures/method-overview.svg" target="_blank" rel="noopener">Open static SVG ↗</a></figcaption>
+</figure>
+
+<details class="details"><summary>Read the policy and evaluation contract</summary><div class="details-body"><p>The core interface is <code>select_action(observation)</code>. The program returns native actuator commands or joint-position targets, depending on the environment. In the evaluated policy-only modes, it executes without a model-provider request at each action.</p><p>Training acceptance and held-out testing are separate. Training evaluations can feed adaptation. Held-out starts are reserved for frozen evaluation, and their outcomes are not returned to the learning agent.</p></div></details>
 </section>
 <section class="article-section" id="results">
 <div class="section-head"><span class="section-index">03 / Held-out evaluation</span><h2>Freeze the policy<br>Then test it on unseen starts</h2></div>
