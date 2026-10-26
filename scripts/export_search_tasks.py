@@ -19,6 +19,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FIGS = Path("/home/djengof/DexVerse/docs/figs/l3pg_dexverse_adroit")
 VIDEOS = Path("/home/djengof/DexVerse/docs/videos/l3pg_heldout_success")
+# Renders made for the blog where the folder above has none: a failed held-out episode (seed 9000)
+# of the last submitted policy for the two tasks with no accepted policy. RotateKnob has none: its
+# replays diverge from the saved evaluation at step 24 and time out. task -> (file, outcome)
+EXTRA = Path("/home/djengof/DexVerse/Schema-Robo-dexverse/experiment_results/videos/blog_gallery_extra")
+EXTRA_VIDEOS = {"OpenHuaweiPhone": ("OpenHuaweiPhone.mp4", "failure"),
+                "OpenGlasses": ("OpenGlasses.mp4", "failure")}
 sys.path.insert(0, str(FIGS))
 from make_baseline_figures import A0_ADROIT, A0_DEX, BASELINE  # noqa: E402
 import make_figures  # noqa: E402
@@ -73,12 +79,16 @@ def main():
         if r["task"] in SKIP or group in SKIP:
             continue
         bench = "Adroit" if group == "Adroit" else "DexVerse"
-        src = VIDEOS / f"{bench}-{r['task']}.mp4"
+        src, outcome = VIDEOS / f"{bench}-{r['task']}.mp4", "success"
+        if r["task"] in EXTRA_VIDEOS:
+            name, outcome = EXTRA_VIDEOS[r["task"]]
+            src = EXTRA / name
         video = None
         if src.exists():
-            video = f"assets/videos/model-driven/{src.name}"
+            video = f"assets/videos/model-driven/{bench}-{r['task']}.mp4"
             shutil.copy2(src, ROOT / video)
         tasks.append(dict(benchmark=bench, group=group, task=r["task"], video=video,
+                          video_outcome=outcome if video else None,
                           heldout_repeats=r["heldout"], episodes=r["n"],
                           model_driven=arm(r), cem=arm(a0[r["task"]]), baseline=None))
     groups = [dict(group="Adroit", task=t["task"], model_driven=summary(next(r for r in adroit if r["task"] == t["task"])),
@@ -98,7 +108,7 @@ def main():
         "heldout_metric": "Adroit: frozen policy on 30 unseen starts, one run. DexVerse: 50 unseen starts, mean of two "
                           "repeats. Unaccepted tasks count as 0%.",
         "rollouts_metric": "Total rollouts = parameter-search rollouts + policy-design resets.",
-        "video_note": "One successful model-driven-search held-out episode per task; tasks with no recorded success video show none.",
+        "video_note": "One held-out episode per task from model-driven search: a success, or for the two tasks with no accepted policy a failed episode of the last submitted policy (video_outcome: failure); tasks with no recorded success video show none.",
         "baseline_note": "Baseline values are null until the runs exist; " + ("all BASELINE entries are None"
                          if all(v["rollouts"] is None and v["rate"] is None for v in BASELINE.values()) else "see source"),
         "summary": groups,

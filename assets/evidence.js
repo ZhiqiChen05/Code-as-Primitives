@@ -47,14 +47,16 @@
 
   function card(t) {
     const label = `${t.benchmark} ${t.task}`;
+    const failed = t.video_outcome === 'failure';
     // The renders carry a burned-in caption band (task, campaign, seed); the crop classes frame it out.
     const media = t.video
-      ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: model-driven search held-out success replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
+      ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: model-driven search held-out ${failed ? 'failure, the policy times out' : 'success'} replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
       : `<div class="gc-empty">${t.model_driven.accepted ? 'No replay recorded' : 'No accepted model-driven policy'}</div>`;
     const summary = `${label}. Held-out success: model-driven search ${t.model_driven.heldout_percent}%, CEM search ${t.cem.heldout_percent}%, baseline TBD. ` +
       `Total rollouts: model-driven search ${t.model_driven.total_rollouts}, CEM search ${t.cem.total_rollouts}, baseline TBD.`;
-    return `<article class="gallery-card" aria-label="${esc(summary)}"><div class="gc-media">${media}` +
-      `<span class="gc-badge">${esc(t.benchmark === 'Adroit' ? 'ADROIT' : t.group.toUpperCase())}</span></div>` +
+    return `<article class="gallery-card${failed ? ' is-failed' : ''}" aria-label="${esc(summary)}"><div class="gc-media">${media}` +
+      `<span class="gc-badge">${esc(t.benchmark === 'Adroit' ? 'ADROIT' : t.group.toUpperCase())}</span>` +
+      (failed ? '<span class="gc-failed">FAILED · not accepted</span>' : '') + '</div>' +
       `<div class="gc-name">${esc(t.task)}</div>${chart(t)}</article>`;
   }
 

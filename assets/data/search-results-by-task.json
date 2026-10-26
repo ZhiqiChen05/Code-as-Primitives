@@ -8,7 +8,7 @@
  },
  "heldout_metric": "Adroit: frozen policy on 30 unseen starts, one run. DexVerse: 50 unseen starts, mean of two repeats. Unaccepted tasks count as 0%.",
  "rollouts_metric": "Total rollouts = parameter-search rollouts + policy-design resets.",
- "video_note": "One successful model-driven-search held-out episode per task; tasks with no recorded success video show none.",
+ "video_note": "One held-out episode per task from model-driven search: a success, or for the two tasks with no accepted policy a failed episode of the last submitted policy (video_outcome: failure); tasks with no recorded success video show none.",
  "baseline_note": "Baseline values are null until the runs exist; all BASELINE entries are None",
  "summary": [
   {
@@ -154,6 +154,7 @@
    "group": "Adroit",
    "task": "Door",
    "video": "assets/videos/model-driven/Adroit-Door.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     30
    ],
@@ -179,6 +180,7 @@
    "group": "Adroit",
    "task": "Hammer",
    "video": "assets/videos/model-driven/Adroit-Hammer.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     28
    ],
@@ -204,6 +206,7 @@
    "group": "Adroit",
    "task": "Relocate",
    "video": "assets/videos/model-driven/Adroit-Relocate.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     20
    ],
@@ -229,6 +232,7 @@
    "group": "Primitive",
    "task": "RelocateObject",
    "video": "assets/videos/model-driven/DexVerse-RelocateObject.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     29,
     29
@@ -255,6 +259,7 @@
    "group": "Primitive",
    "task": "PushButton",
    "video": "assets/videos/model-driven/DexVerse-PushButton.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -281,6 +286,7 @@
    "group": "Primitive",
    "task": "OpenFaucet",
    "video": "assets/videos/model-driven/DexVerse-OpenFaucet.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -307,6 +313,7 @@
    "group": "Primitive",
    "task": "TurnOnSwitch",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitch.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -333,6 +340,7 @@
    "group": "Primitive",
    "task": "PickCube",
    "video": "assets/videos/model-driven/DexVerse-PickCube.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -359,6 +367,7 @@
    "group": "Primitive",
    "task": "StackCube",
    "video": "assets/videos/model-driven/DexVerse-StackCube.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -385,6 +394,7 @@
    "group": "Primitive",
    "task": "PickUpStick",
    "video": "assets/videos/model-driven/DexVerse-PickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -411,6 +421,7 @@
    "group": "Functional",
    "task": "GraspBleach",
    "video": "assets/videos/model-driven/DexVerse-GraspBleach.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     48
@@ -437,6 +448,7 @@
    "group": "Functional",
    "task": "FunctionalPourMug",
    "video": "assets/videos/model-driven/DexVerse-FunctionalPourMug.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -463,6 +475,7 @@
    "group": "Functional",
    "task": "FunctionalDrillApply",
    "video": "assets/videos/model-driven/DexVerse-FunctionalDrillApply.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -489,6 +502,7 @@
    "group": "Functional",
    "task": "LiftBucket",
    "video": "assets/videos/model-driven/DexVerse-LiftBucket.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -515,6 +529,7 @@
    "group": "Functional",
    "task": "GraspPan",
    "video": "assets/videos/model-driven/DexVerse-GraspPan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -541,6 +556,7 @@
    "group": "Functional",
    "task": "RemoveCupFromRack",
    "video": "assets/videos/model-driven/DexVerse-RemoveCupFromRack.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -567,6 +583,7 @@
    "group": "Functional",
    "task": "GraspCup",
    "video": "assets/videos/model-driven/DexVerse-GraspCup.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -593,6 +610,7 @@
    "group": "Functional",
    "task": "GraspKettle",
    "video": "assets/videos/model-driven/DexVerse-GraspKettle.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -619,6 +637,7 @@
    "group": "Functional",
    "task": "FunctionalPourCan",
    "video": "assets/videos/model-driven/DexVerse-FunctionalPourCan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     35,
     34
@@ -645,6 +664,7 @@
    "group": "Articulation",
    "task": "UnscrewCap",
    "video": "assets/videos/model-driven/DexVerse-UnscrewCap.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     40,
     38
@@ -671,6 +691,7 @@
    "group": "Articulation",
    "task": "OpenFlatFolder",
    "video": "assets/videos/model-driven/DexVerse-OpenFlatFolder.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     46,
     42
@@ -697,6 +718,7 @@
    "group": "Articulation",
    "task": "SqueezeScissors",
    "video": "assets/videos/model-driven/DexVerse-SqueezeScissors.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     49
@@ -723,6 +745,7 @@
    "group": "Articulation",
    "task": "LiftBasketHandle",
    "video": "assets/videos/model-driven/DexVerse-LiftBasketHandle.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     47,
     48
@@ -748,7 +771,8 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "OpenHuaweiPhone",
-   "video": null,
+   "video": "assets/videos/model-driven/DexVerse-OpenHuaweiPhone.mp4",
+   "video_outcome": "failure",
    "heldout_repeats": null,
    "episodes": 50,
    "model_driven": {
@@ -772,6 +796,7 @@
    "group": "Articulation",
    "task": "LiftLid",
    "video": "assets/videos/model-driven/DexVerse-LiftLid.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -797,7 +822,8 @@
    "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "OpenGlasses",
-   "video": null,
+   "video": "assets/videos/model-driven/DexVerse-OpenGlasses.mp4",
+   "video_outcome": "failure",
    "heldout_repeats": null,
    "episodes": 50,
    "model_driven": {
@@ -821,6 +847,7 @@
    "group": "Articulation",
    "task": "OpenLaptop",
    "video": "assets/videos/model-driven/DexVerse-OpenLaptop.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -847,6 +874,7 @@
    "group": "Articulation",
    "task": "OpenMicrowave",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowave.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -873,6 +901,7 @@
    "group": "Articulation",
    "task": "GraspPot",
    "video": "assets/videos/model-driven/DexVerse-GraspPot.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -899,6 +928,7 @@
    "group": "Articulation",
    "task": "SlideUtilityKnife",
    "video": "assets/videos/model-driven/DexVerse-SlideUtilityKnife.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     46,
     47
@@ -925,6 +955,7 @@
    "group": "Articulation",
    "task": "GraspBucket",
    "video": "assets/videos/model-driven/DexVerse-GraspBucket.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -951,6 +982,7 @@
    "group": "Articulation",
    "task": "RotateKnob",
    "video": null,
+   "video_outcome": null,
    "heldout_repeats": [
     50,
     50
@@ -977,6 +1009,7 @@
    "group": "Bimanual",
    "task": "BimanualLiftBasket",
    "video": "assets/videos/model-driven/DexVerse-BimanualLiftBasket.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     43,
     44
@@ -1003,6 +1036,7 @@
    "group": "Bimanual",
    "task": "BimanualLiftDutchOven",
    "video": "assets/videos/model-driven/DexVerse-BimanualLiftDutchOven.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     49,
     50
@@ -1029,6 +1063,7 @@
    "group": "Bimanual",
    "task": "BimanualLiftCarton",
    "video": "assets/videos/model-driven/DexVerse-BimanualLiftCarton.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1055,6 +1090,7 @@
    "group": "Multi-goal",
    "task": "PourMugPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-PourMugPickUpCan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     45,
     46
@@ -1081,6 +1117,7 @@
    "group": "Multi-goal",
    "task": "OpenDrawerPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-OpenDrawerPickUpCan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1107,6 +1144,7 @@
    "group": "Multi-goal",
    "task": "LiftLidPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-LiftLidPickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1133,6 +1171,7 @@
    "group": "Multi-goal",
    "task": "PourMugPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-PourMugPickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     39,
     39
@@ -1159,6 +1198,7 @@
    "group": "Multi-goal",
    "task": "GraspBucketPourMug",
    "video": "assets/videos/model-driven/DexVerse-GraspBucketPourMug.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1185,6 +1225,7 @@
    "group": "Multi-goal",
    "task": "GraspPotRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-GraspPotRelocateSphere.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1211,6 +1252,7 @@
    "group": "Multi-goal",
    "task": "GraspBucketPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-GraspBucketPickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1237,6 +1279,7 @@
    "group": "Multi-goal",
    "task": "LiftLidPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-LiftLidPickUpCan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1263,6 +1306,7 @@
    "group": "Multi-goal",
    "task": "RotateKnobRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-RotateKnobRelocateSphere.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1289,6 +1333,7 @@
    "group": "Multi-goal",
    "task": "LiftLidPourMug",
    "video": "assets/videos/model-driven/DexVerse-LiftLidPourMug.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1315,6 +1360,7 @@
    "group": "Multi-goal",
    "task": "OpenDrawerPourMug",
    "video": "assets/videos/model-driven/DexVerse-OpenDrawerPourMug.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1341,6 +1387,7 @@
    "group": "Multi-goal",
    "task": "PushButtonRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-PushButtonRelocateSphere.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1367,6 +1414,7 @@
    "group": "Multi-goal",
    "task": "GraspPotPourMug",
    "video": "assets/videos/model-driven/DexVerse-GraspPotPourMug.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1393,6 +1441,7 @@
    "group": "Multi-goal",
    "task": "OpenMicrowavePourMug",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowavePourMug.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1419,6 +1468,7 @@
    "group": "Multi-goal",
    "task": "RotateKnobPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-RotateKnobPickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1445,6 +1495,7 @@
    "group": "Multi-goal",
    "task": "LiftLidRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-LiftLidRelocateSphere.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1471,6 +1522,7 @@
    "group": "Multi-goal",
    "task": "GraspPotPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-GraspPotPickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1497,6 +1549,7 @@
    "group": "Multi-goal",
    "task": "PourMugRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-PourMugRelocateSphere.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     48,
     50
@@ -1523,6 +1576,7 @@
    "group": "Multi-goal",
    "task": "PushButtonPourMug",
    "video": "assets/videos/model-driven/DexVerse-PushButtonPourMug.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1549,6 +1603,7 @@
    "group": "Multi-goal",
    "task": "OpenMicrowavePickUpStick",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowavePickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1575,6 +1630,7 @@
    "group": "Multi-goal",
    "task": "PushButtonPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-PushButtonPickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1601,6 +1657,7 @@
    "group": "Multi-goal",
    "task": "RotateKnobPourMug",
    "video": "assets/videos/model-driven/DexVerse-RotateKnobPourMug.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1627,6 +1684,7 @@
    "group": "Multi-goal",
    "task": "TurnOnSwitchPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchPickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1653,6 +1711,7 @@
    "group": "Multi-goal",
    "task": "OpenDrawerRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-OpenDrawerRelocateSphere.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1679,6 +1738,7 @@
    "group": "Multi-goal",
    "task": "RotateKnobPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-RotateKnobPickUpCan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1705,6 +1765,7 @@
    "group": "Multi-goal",
    "task": "TurnOnSwitchPourMug",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchPourMug.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1731,6 +1792,7 @@
    "group": "Multi-goal",
    "task": "TurnOnSwitchRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchRelocateSphere.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1757,6 +1819,7 @@
    "group": "Multi-goal",
    "task": "OpenMicrowaveRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowaveRelocateSphere.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     49,
     50
@@ -1783,6 +1846,7 @@
    "group": "Multi-goal",
    "task": "PushButtonPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-PushButtonPickUpCan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1809,6 +1873,7 @@
    "group": "Multi-goal",
    "task": "GraspPotPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-GraspPotPickUpCan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1835,6 +1900,7 @@
    "group": "Multi-goal",
    "task": "OpenDrawerPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-OpenDrawerPickUpStick.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1861,6 +1927,7 @@
    "group": "Multi-goal",
    "task": "OpenMicrowavePickUpCan",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowavePickUpCan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     49
@@ -1887,6 +1954,7 @@
    "group": "Multi-goal",
    "task": "TurnOnSwitchPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchPickUpCan.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50
@@ -1913,6 +1981,7 @@
    "group": "Multi-goal",
    "task": "GraspBucketRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-GraspBucketRelocateSphere.mp4",
+   "video_outcome": "success",
    "heldout_repeats": [
     50,
     50

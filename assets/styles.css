@@ -33,3 +33,4 @@
 @media(max-width:760px){.idea-copy .idea-subhead{font-size:24px;margin-top:28px}}
 
 .citation-code pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.gc-failed{position:absolute;right:0;bottom:0;font:9px var(--mono);letter-spacing:.8px;color:var(--white);background:var(--rust);padding:3px 7px}.gallery-card.is-failed{border-color:#d9b7a6}
