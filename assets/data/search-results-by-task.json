@@ -2242,31 +2242,6 @@
   {
    "benchmark": "DexVerse",
    "group": "Long-horizon",
-   "task": "LongHorizon-CookFoods",
-   "video": null,
-   "video_outcome": null,
-   "video_arm": null,
-   "heldout_repeats": null,
-   "episodes": 50,
-   "model_driven": {
-    "accepted": false,
-    "search_rollouts": 908,
-    "resets": 52,
-    "total_rollouts": 960,
-    "heldout_percent": 0.0
-   },
-   "cem": {
-    "accepted": true,
-    "search_rollouts": 906,
-    "resets": 98,
-    "total_rollouts": 1004,
-    "heldout_percent": 84.0
-   },
-   "baseline": null
-  },
-  {
-   "benchmark": "DexVerse",
-   "group": "Long-horizon",
    "task": "LongHorizon-OvenBakeSalmon",
    "video": "assets/videos/model-driven/DexVerse-LongHorizon-OvenBakeSalmon.mp4",
    "video_outcome": "failure",
@@ -2342,6 +2317,31 @@
     "resets": 83,
     "total_rollouts": 83,
     "heldout_percent": 79.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
+   "group": "Long-horizon",
+   "task": "LongHorizon-CookFoods",
+   "video": null,
+   "video_outcome": null,
+   "video_arm": null,
+   "heldout_repeats": null,
+   "episodes": 50,
+   "model_driven": {
+    "accepted": false,
+    "search_rollouts": 908,
+    "resets": 52,
+    "total_rollouts": 960,
+    "heldout_percent": 0.0
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 906,
+    "resets": 98,
+    "total_rollouts": 1004,
+    "heldout_percent": 84.0
    },
    "baseline": null
   }

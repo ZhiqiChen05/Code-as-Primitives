@@ -90,7 +90,8 @@ def main():
     (ROOT / "assets/videos/model-driven").mkdir(parents=True, exist_ok=True)
     tasks = []
     order = {g: i for i, g in enumerate(["Adroit"] + CATEGORIES)}
-    for r in sorted(adroit + dex + e1, key=lambda r: order[r["group"]]):  # stable: E1 tasks end each group
+    # stable: E1 tasks end each group, except CookFoods (no replay) goes after them
+    for r in sorted(adroit + dex + e1, key=lambda r: (order[r["group"]], r["task"] == "LongHorizon-CookFoods")):
         group = r["group"]
         bench = "Adroit" if group == "Adroit" else "DexVerse"
         src, outcome, video_arm = VIDEOS / f"{bench}-{r['task']}.mp4", "success", "model_driven"
