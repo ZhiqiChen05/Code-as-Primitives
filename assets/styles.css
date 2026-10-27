@@ -38,20 +38,29 @@
 /* Paper identity and authors accompany the original Adroit video hero. */
 .hero-split{grid-template-columns:.94fr 1.06fr;gap:58px;padding-top:60px;padding-bottom:60px;max-width:1320px}
 .hero h1{font-size:clamp(64px,6.4vw,88px);margin-top:0}
-.hero-subtitle{font-size:clamp(22px,2.15vw,28px);line-height:1.35;max-width:530px}
-.project-authors{margin:26px 0 0;padding:0;color:#c4cfc3;font-size:14px;line-height:1.8}
-.project-authors p{margin:0 0 6px}.project-authors .author-names{display:flex;flex-direction:column;gap:7px 16px;color:#f6f3eb;font-size:16px;margin-bottom:12px}.author-row{display:flex;align-items:baseline;column-gap:inherit}
-.author-names span{min-width:0}.author-names sup{font-size:10px;margin-left:3px;color:#b9c3ba;letter-spacing:.5px;white-space:nowrap}
-.project-authors .author-roles{font-size:12px;color:#a2b19f;margin-top:8px}.affiliation-gap{display:inline-block;margin-left:18px}
+.hero-subtitle{font-size:clamp(28px,2.4vw,32px);line-height:1.35;max-width:530px}
+.project-authors{margin:26px 0 0;padding:0;color:#c4cfc3;font-size:16px;line-height:1.8}
+.project-authors p{margin:0 0 6px}.project-authors .author-names{color:#f6f3eb;font-size:18px;line-height:1.9;margin-bottom:12px}
+.author-names>span{display:inline-block;white-space:nowrap;margin-right:12px}.author-names>span:last-child{margin-right:0}.author-names sup{font-size:11px;margin-left:3px;color:#b9c3ba;letter-spacing:.5px;white-space:nowrap}
+.project-authors .author-roles{font-size:14px;color:#a2b19f;margin-top:8px}.affiliation-gap{display:inline-block;margin-left:18px}
 .results-subhead{margin:48px 0 18px;scroll-margin-top:45px}
 .result-nav{display:flex;flex-wrap:wrap;gap:10px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;font-size:12px;margin:0 0 30px}
 .result-nav a{text-decoration:none}.prose>.result-nav+h3{margin-top:0}
 #results tbody th,#results tfoot th{font:600 12px/1.6 var(--sans);text-transform:none;letter-spacing:0;background:var(--white);color:var(--ink);white-space:normal;min-width:130px}
 #results tfoot{border-top:2px solid var(--line)}
-@media(max-width:1100px) and (min-width:761px){.hero-split{padding:45px 32px;gap:30px}.hero h1{font-size:67px}.hero-subtitle{font-size:23px}.project-authors .author-names{font-size:15px;gap:7px 12px}.affiliation-gap{display:block;margin-left:0}}
-@media(max-width:760px){.hero-split{display:block;padding:40px 21px 32px}.hero h1{font-size:clamp(54px,18vw,72px)}.hero-subtitle{font-size:24px}.project-authors{font-size:13px;margin-top:24px}.project-authors .author-names{font-size:14px;gap:8px 10px}.project-authors .author-roles{font-size:11px}.affiliation-gap{margin-left:0;display:block}.results-subhead{margin-top:36px}.result-nav{gap:10px 18px}.metrics .metric-name{font-size:9px;line-height:1.6}}
+@media(max-width:1100px) and (min-width:761px){.hero-split{padding:45px 32px;gap:30px}.hero h1{font-size:67px}.hero-subtitle{font-size:27px}.project-authors .author-names{font-size:17px}.affiliation-gap{display:block;margin-left:0}}
+@media(max-width:760px){.hero-split{display:block;padding:40px 21px 32px}.hero h1{font-size:clamp(54px,18vw,72px)}.hero-subtitle{font-size:28px}.project-authors{font-size:15px;margin-top:24px}.project-authors .author-names{font-size:16px}.project-authors .author-roles{font-size:13px}.affiliation-gap{margin-left:0;display:block}.results-subhead{margin-top:36px}.result-nav{gap:10px 18px}.metrics .metric-name{font-size:9px;line-height:1.6}}
 @media print{.project-authors,.project-authors .author-names,.project-authors .author-roles,.author-names sup{color:#242620}.project-authors{margin-top:18px}.hero-split{padding:0;display:block}.result-nav{display:none}}
 
 /* Let white paper-figure backgrounds reveal the page without altering source artwork. */
 .figure-transparent .figure-frame{background:transparent;border:0}
 .figure-transparent .figure-fullsize{mix-blend-mode:multiply}
+
+/* Larger opening text; the project wordmark and main title keep their sizes. */
+.header-links{font-size:14px}.header-links .draft-label{font-size:12px}
+.hero{min-width:0}.hero .button{font-size:14px}.hero .button .arrow{font-size:20px}.hero-meta{font-size:12px}
+.hero-media .reel-label{font-size:13px}.hero-media .reel-label span:last-child{font-size:11px}
+.hero-media .reel-caption,.hero-media .reel-control{font-size:12px}
+.hero-metrics-wrap .metric-value{font-size:43px}.hero-metrics-wrap .metric-name{font-size:13px}
+@media(max-width:1100px) and (min-width:761px){.hero .button{font-size:13px}.hero-meta{font-size:11px}}
+@media(max-width:760px){.header-links{font-size:13px;gap:12px}.hero-meta{font-size:11px}.hero-media .reel-label{font-size:12px}.hero-media .reel-caption,.hero-media .reel-control{font-size:11px}.hero-metrics-wrap .metric-value{font-size:33px}.hero-metrics-wrap .metric-name{font-size:11px}.author-names>span{margin-right:10px}}
