@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Export per-task results for Figures 7-9 to assets/data/search-results-by-task.json.
+"""Export per-task results for Figures 6-7 to assets/data/search-results-by-task.json.
 
 The page calls the two campaigns Agentic search (campaign L3PG) and CEM search (campaign A0).
 
 Reads the same campaign reports as DexVerse/docs/figs/l3pg_dexverse_adroit/make_baseline_figures.py
 (heldout_success_main.png, total_rollouts_main.png) and copies the L3PG held-out success videos
-from DexVerse/docs/videos/l3pg_heldout_success unchanged. Adroit Pen and DexVerse Long-horizon are
-left out (Section 4). Needs the source checkouts; run with the CaP-X venv, which has matplotlib:
+from DexVerse/docs/videos/l3pg_heldout_success unchanged. The gallery (Figure 7) lists every task; the
+summary rows behind the Adroit/category charts leave out Adroit Pen and DexVerse Long-horizon (Section 4). Needs the source checkouts; run with the CaP-X venv, which has matplotlib:
 
   /home/djengof/CaP-X/cap-x/.venv/bin/python -I scripts/export_search_tasks.py
 """
@@ -19,18 +19,29 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FIGS = Path("/home/djengof/DexVerse/docs/figs/l3pg_dexverse_adroit")
 VIDEOS = Path("/home/djengof/DexVerse/docs/videos/l3pg_heldout_success")
-# Renders made for the blog where the folder above has none: a failed held-out episode (seed 9000)
-# of the last submitted policy for the two tasks with no accepted policy. RotateKnob has none: its
-# replays diverge from the saved evaluation at step 24 and time out. task -> (file, outcome)
+# Renders made for the blog where the folder above has none, all on held-out seed 9000. With no accepted
+# Agentic policy, a card shows CEM's accepted policy if a replay of it succeeds, otherwise a failed episode
+# of the last submitted Agentic policy. None for RotateKnob (replays diverge from the saved evaluation at
+# step 24 and time out) or CookFoods (CEM replays of seeds 9000, 9002 and 9010 all time out; 55 of its 84
+# logged held-out successes end after 10 actions). task -> (file, outcome, arm)
 EXTRA = Path("/home/djengof/DexVerse/Schema-Robo-dexverse/experiment_results/videos/blog_gallery_extra")
-EXTRA_VIDEOS = {"OpenHuaweiPhone": ("OpenHuaweiPhone.mp4", "failure"),
-                "OpenGlasses": ("OpenGlasses.mp4", "failure")}
+EXTRA_VIDEOS = {"OpenHuaweiPhone": ("OpenHuaweiPhone.mp4", "failure", "model_driven"),
+                "OpenGlasses": ("OpenGlasses.mp4", "failure", "model_driven"),
+                "LongHorizon-OvenBakeSalmon": ("OvenBakeSalmon.mp4", "failure", "model_driven")}
+# The six E1 tasks (pooled 10 training positions) come from their own campaigns, e1_pool10_L3PG and
+# e1_pool10_A0; they join the gallery but not the summary rows behind Figure 6.
+E1_TASKS = ["BimanualLiftTray", "FunctionalHammerStrike", "GraspBucketPickUpCan",
+            "LongHorizon-MicrowaveRetrievePlace", "OpenDrawer", "RelocateSphere"]
+EXTRA_VIDEOS.update({t: (f"{t}.mp4", "success", "model_driven") for t in E1_TASKS})
 sys.path.insert(0, str(FIGS))
-from make_baseline_figures import A0_ADROIT, A0_DEX, BASELINE  # noqa: E402
+from make_baseline_figures import A0_ADROIT, A0_DEX, BASELINE, load_e1  # noqa: E402
 import make_figures  # noqa: E402
 from make_figures import CATEGORIES, DEX_REPORT, HOME, by_category, load_adroit, load_dexverse, rate  # noqa: E402
 
-SKIP = {"Pen", "Long-horizon"}
+SKIP = {"Pen", "Long-horizon"}  # left out of the summary charts only
+# make_figures picks the newest finished Adroit run per task; the page reports the first runs (Hammer and
+# Relocate have later r2 runs), so pin them here to keep the published Adroit numbers stable.
+make_figures.ADROIT_RUNS = [(task, runs[-1:]) for task, runs in make_figures.ADROIT_RUNS]
 
 
 def a0_tasks():
@@ -54,7 +65,8 @@ def a0_tasks():
                 continue
             state = json.loads((campaign / "chains" / chain["key"] / "stage_01/state.json").read_text())
             r = dict(group=category[task], accepted=chain["accepted"], search=chain["search_rollouts"],
-                     resets=state["reset_count"], heldout=chain["heldout_repeats"] if chain["accepted"] else None, n=50)
+                     resets=state["reset_count"], heldout=chain["heldout_repeats"] if chain["accepted"] else None, n=50,
+                     evals=0, requests=0)  # by_category averages these too; nothing here reads them
             r["rate"] = rate(r)
             out[task] = r
     return out
@@ -72,27 +84,29 @@ def summary(r):
 
 def main():
     adroit, dex, a0 = load_adroit(), load_dexverse(), a0_tasks()
+    e1 = load_e1("L3PG")
+    a0.update({r["task"]: r for r in load_e1("A0")})
+    assert sorted(r["task"] for r in e1) == sorted(E1_TASKS)
     (ROOT / "assets/videos/model-driven").mkdir(parents=True, exist_ok=True)
     tasks = []
-    for r in adroit + dex:
+    order = {g: i for i, g in enumerate(["Adroit"] + CATEGORIES)}
+    for r in sorted(adroit + dex + e1, key=lambda r: order[r["group"]]):  # stable: E1 tasks end each group
         group = r["group"]
-        if r["task"] in SKIP or group in SKIP:
-            continue
         bench = "Adroit" if group == "Adroit" else "DexVerse"
-        src, outcome = VIDEOS / f"{bench}-{r['task']}.mp4", "success"
+        src, outcome, video_arm = VIDEOS / f"{bench}-{r['task']}.mp4", "success", "model_driven"
         if r["task"] in EXTRA_VIDEOS:
-            name, outcome = EXTRA_VIDEOS[r["task"]]
+            name, outcome, video_arm = EXTRA_VIDEOS[r["task"]]
             src = EXTRA / name
         video = None
         if src.exists():
             video = f"assets/videos/model-driven/{bench}-{r['task']}.mp4"
             shutil.copy2(src, ROOT / video)
         tasks.append(dict(benchmark=bench, group=group, task=r["task"], video=video,
-                          video_outcome=outcome if video else None,
+                          video_outcome=outcome if video else None, video_arm=video_arm if video else None,
                           heldout_repeats=r["heldout"], episodes=r["n"],
                           model_driven=arm(r), cem=arm(a0[r["task"]]), baseline=None))
     groups = [dict(group="Adroit", task=t["task"], model_driven=summary(next(r for r in adroit if r["task"] == t["task"])),
-                   cem=summary(a0[t["task"]]), baseline=None) for t in tasks if t["benchmark"] == "Adroit"]
+                   cem=summary(a0[t["task"]]), baseline=None) for t in tasks if t["benchmark"] == "Adroit" and t["task"] not in SKIP]
     dex = [r for r in dex if r["group"] not in SKIP]
     make_figures.CATEGORIES = [c for c in CATEGORIES if c not in SKIP]  # by_category divides by task count
     l3_cats = by_category(dex)
@@ -108,7 +122,7 @@ def main():
         "heldout_metric": "Adroit: frozen policy on 30 unseen starts, one run. DexVerse: 50 unseen starts, mean of two "
                           "repeats. Unaccepted tasks count as 0%.",
         "rollouts_metric": "Total rollouts = parameter-search rollouts + policy-design resets.",
-        "video_note": "One held-out episode per task from model-driven search: a success, or for the two tasks with no accepted policy a failed episode of the last submitted policy (video_outcome: failure); tasks with no recorded success video show none.",
+        "video_note": "One held-out episode per task, from Agentic search (video_arm: model_driven) unless noted: a success, or where Agentic search has no accepted policy, CEM search's accepted policy (video_arm: cem) or else a failed episode of the last submitted Agentic policy (video_outcome: failure); tasks with no recorded video show none.",
         "baseline_note": "Baseline values are null until the runs exist; " + ("all BASELINE entries are None"
                          if all(v["rollouts"] is None and v["rate"] is None for v in BASELINE.values()) else "see source"),
         "summary": groups,

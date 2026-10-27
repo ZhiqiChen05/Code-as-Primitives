@@ -18,7 +18,7 @@ Primary paper sources: `ExtendedAbstract/main.tex` and `ExtendedAbstract/figs/he
 - The supplied L3PG archive covers 69 tasks and lacks the six E1 tasks. The fixed paper supplies the added comparison values for BimanualLiftTray (92%) and FunctionalHammerStrike (100%) and complete category aggregates. A full paper-Agentic campaign identity or all six added raw chains cannot be verified from the supplied archive. The new JSON therefore keeps paper-reported data separate from archive crosschecks instead of substituting the earlier L3P campaign or inventing per-repeat counts.
 - The earlier `L3+papers` campaign remains available as a separate 75-task result: 73/75 accepted and 94.32% mean success, versus A0's 73/75 and 94.52%. Its six-category success and parameter-search table uses `assets/data/dexverse-results.json`. Unaccepted tasks count as zero.
 - The earlier three-arm E2 comparison remains in `assets/data/dexverse-comparison-e2.json` and `assets/figures/dexverse-comparison-e2.svg`: on 69 tasks, A0 is 94.4%, L3+papers 94.1% and L3PG 91.6%. These are the archived E2 results, not the paper's remaining-60 split.
-- The original detailed gallery is preserved in `assets/data/search-results-by-task.json`: 66 DexVerse tasks from that L3PG E2 cohort after excluding its three long-horizon tasks, plus three separate Opus Adroit tasks. On the 66 DexVerse tasks, the means are 94.3788% for L3PG and 96.0303% for A0, displayed as 94.4% and 96.0%. The 97.3% value is the accepted-only mean over 64 L3PG policies (97.328125%); OpenHuaweiPhone and OpenGlasses are the two unaccepted tasks. The earlier “70 tasks” label does not describe this denominator.
+- The original detailed gallery is preserved in `assets/data/search-results-by-task.json`: 66 DexVerse tasks from that L3PG E2 cohort after excluding its three long-horizon tasks, plus three separate Opus Adroit tasks. The gallery also lists Adroit Pen and the three long-horizon tasks (CookFoods, OvenBakeSalmon and MakeCoffee; only MakeCoffee has an accepted L3PG policy and replay), but the `summary` rows behind Figure 6 still exclude them. The six E1 tasks (BimanualLiftTray, FunctionalHammerStrike, GraspBucketPickUpCan, LongHorizon-MicrowaveRetrievePlace, OpenDrawer, RelocateSphere) come from `e1_pool10_L3PG` and `e1_pool10_A0` (Claude Opus 5.5, pooled 10 training positions), completed after the L3PG archive above; they also join the gallery only. Their Agentic held-out values match the paper where it lists them (BimanualLiftTray 92%, FunctionalHammerStrike 100%). The export pins each Adroit task to its first run (`r1`), the one the page reports; later `r2` runs exist for Hammer and Relocate. On the 66 DexVerse tasks, the means are 94.3788% for L3PG and 96.0303% for A0, displayed as 94.4% and 96.0%. The 97.3% value is the accepted-only mean over 64 L3PG policies (97.328125%); OpenHuaweiPhone and OpenGlasses are the two unaccepted tasks. The earlier “70 tasks” label does not describe this denominator.
 - `L3PG` adds task-general grasp-aware controller guidance to the Agentic search tools. The page uses “Agentic search” with the campaign identified in context; existing internal `model_driven` keys and media filenames are retained. `L3+papers`, `L3PG` and the Astra random-reset campaign must not be silently merged.
 - The 75 valid tasks are filtered from the 100 registered DexVerse tasks in the source checkout. These are simulator-state results, not vision-only or real-robot results. Long-horizon composition and costs remain in `docs/dexverse-long-horizon.json`; a successful single-seed replay alone does not establish accepted-policy status.
 
@@ -34,7 +34,7 @@ Observation interfaces differ by method. Appendix B specifies RGB and language f
 
 The earlier 75-task A0/L3+papers results support **mean parameter-search rollouts per task below 150 in four of six categories in each arm**. Those counts exclude learning episodes, training evaluations, held-out tests and uncounted interrupted work; they are not a claim of total interaction below 150.
 
-Figures 6–8 use the original gallery's different metric: parameter-search rollouts plus policy-design resets. Training validation and held-out evaluations are excluded.
+Figures 6–7 use the original gallery's different metric: parameter-search rollouts plus policy-design resets. Training validation and held-out evaluations are excluded.
 
 ## Adroit
 
@@ -68,9 +68,9 @@ The page originally drew layout and interaction inspiration from [Schema Harness
 | 3 | Existing eight-step loop in `assets/loop.js` and `assets/loop.css`, combining three mechanism steps with five recorded Astra Pen artifacts. Scroll/Back/Next mechanics are preserved. Four original paper Pen images supplement the final held-out panel. |
 | 4 | `assets/figures/paper-heldout-pair.png`: unchanged copy of the paper's Figure 2; 15 per-task baseline comparisons and six category means over the remaining 60 tasks. |
 | 5 | `assets/figures/adroit-curriculum.svg`: descriptive fixed-start versus random-reset campaign comparison. |
-| 6 | `assets/figures/evidence-heldout.svg`: original Opus three-Adroit/66-DexVerse success comparison. |
-| 7 | `assets/figures/evidence-rollouts.svg`: original Opus search-plus-reset accounting. |
-| 8 | `assets/evidence.js` gallery: all 69 original task cards, with per-task results and available recorded replays. |
+| — | `assets/figures/evidence-heldout.svg` (no longer shown on the page): original Opus three-Adroit/66-DexVerse success comparison. |
+| 6 | `assets/figures/evidence-rollouts.svg`: original Opus search-plus-reset accounting. |
+| 7 | `assets/evidence.js` gallery (Section 5): 79 task cards (4 Adroit including Pen; all 75 DexVerse, including the four long-horizon tasks and the six E1 tasks), with per-task results and available recorded replays. |
 
 The Adroit section reports the four-task random-reset outcome and aggregate interaction costs in prose, with full per-task records and uncertainty estimates in `assets/data/adroit-protocol.json`. The original `assets/figures/adroit-heldout.svg` remains an archived source asset and is no longer displayed on the page.
 

@@ -6,7 +6,7 @@
   const filterEl = gallery.querySelector('.gallery-filter');
   const statEl = gallery.querySelector('.gallery-stat');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const GROUPS = ['Adroit', 'Primitive', 'Functional', 'Articulation', 'Bimanual', 'Multi-goal'];
+  const GROUPS = ['Adroit', 'Primitive', 'Functional', 'Articulation', 'Bimanual', 'Multi-goal', 'Long-horizon'];
   const ARMS = [['model_driven', 'Agentic', 'var(--green)'], ['cem', 'CEM', 'var(--rust)']];
   const RESETS = '#8db3a3';
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
@@ -44,16 +44,17 @@
   function card(t) {
     const label = `${t.benchmark} ${t.task}`;
     const failed = t.video_outcome === 'failure';
+    const arm = t.video_arm === 'cem' ? 'CEM search' : 'Agentic search';
     // The renders carry a burned-in caption band (task, campaign, seed); the crop classes frame it out.
     const media = t.video
-      ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: Agentic search held-out ${failed ? 'failure, the policy times out' : 'success'} replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
+      ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: ${arm} held-out ${failed ? 'failure, the last submitted policy' : 'success'} replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
       : `<div class="gc-empty">${t.model_driven.accepted ? 'No replay recorded' : 'No accepted Agentic policy'}</div>`;
     const summary = `${label}. Held-out success: Agentic search ${t.model_driven.heldout_percent}%, CEM search ${t.cem.heldout_percent}%. ` +
       `Total rollouts: Agentic search ${t.model_driven.total_rollouts}, CEM search ${t.cem.total_rollouts}.`;
     return `<article class="gallery-card${failed ? ' is-failed' : ''}" aria-label="${esc(summary)}"><div class="gc-media">${media}` +
       `<span class="gc-badge">${esc(t.benchmark === 'Adroit' ? 'ADROIT' : t.group.toUpperCase())}</span>` +
       (failed ? '<span class="gc-failed">FAILED · not accepted</span>' : '') + '</div>' +
-      `<div class="gc-name">${esc(t.task)}</div>${chart(t)}</article>`;
+      `<div class="gc-name">${esc(t.task.replace(/^LongHorizon-/, ''))}</div>${chart(t)}</article>`;
   }
 
   const mean = (ts, key) => ts.reduce((s, t) => s + t[key].heldout_percent, 0) / ts.length;

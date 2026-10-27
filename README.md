@@ -31,8 +31,8 @@ On larger desktop viewports, scrolling drives the sticky figure; Back/Next also 
 | 3 | Interactive learning loop and Pen evidence | `docs/pen-case-study.json`; existing scroll and Back/Next behavior |
 | 4 | Paper DexVerse comparison: 15 baseline tasks and the remaining 60 | `assets/figures/paper-heldout-pair.png`, `assets/data/paper-dexverse-results.json` |
 | 5 | Earlier fixed-start versus random-reset Adroit campaigns | `assets/data/adroit-curriculum.json` |
-| 6–7 | Original Opus held-out success and rollout costs | `assets/data/search-results-by-task.json` |
-| 8 | Original 3-Adroit + 66-DexVerse task gallery | Same task data; `assets/evidence.js` and `assets/videos/model-driven/` |
+| 6 | Original Opus rollout costs | `assets/data/search-results-by-task.json` |
+| 7 | Task gallery, “Visualization of all 79 tasks” (Section 5): 4 Adroit + 75 DexVerse tasks | Same task data; `assets/evidence.js` and `assets/videos/model-driven/` |
 
 The paper reports Agentic/CEM success of 95.9%/96.7% on 15 tasks, compared with a 46.0% mean of the best imitation-learning result on each task. On the remaining 60 tasks the means are 90.7%/94.0%. The earlier 75-task `L3+papers` campaign (94.3%, versus CEM 94.5%) remains a separate expandable result. The original gallery retains its grasp-aware `L3PG` cohort: 66 DexVerse tasks at 94.4%, versus CEM 96.0%, plus three Opus Adroit tasks. Its 97.3% figure applies only to the 64 accepted DexVerse policies. The independent Astra random-reset Adroit result is 119/120, or 99.2%. Its per-task success and aggregate interaction costs are summarized in the Adroit section text, with full records in `assets/data/adroit-protocol.json`.
 

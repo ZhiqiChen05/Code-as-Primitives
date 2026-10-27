@@ -133,3 +133,4 @@
  .table-scroll .result-number--table{font-size:17px}
  .table-scroll .result-number--table.result-number--major{font-size:20px}
 }
+.article .fn-ref{font-size:.7em;line-height:0;margin-left:1px}.article .fn-ref a{text-decoration:none;border:0;color:var(--green);font-weight:700}.article p.footnote{font-size:12px;line-height:1.65;color:var(--muted);margin:22px 0 0;padding-top:10px;border-top:1px solid var(--line);max-width:715px}.article p.footnote sup{font-size:.8em}.article p.footnote:target{background:var(--green-soft)}#fn-imitation{scroll-margin-top:90px}

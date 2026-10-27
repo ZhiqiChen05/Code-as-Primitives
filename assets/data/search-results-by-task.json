@@ -2,13 +2,13 @@
  "model": "claude-opus-5-5",
  "source": "DexVerse campaign report.json files, read by scripts/export_search_tasks.py; videos are the recorded held-out success renders, copied unchanged",
  "arms": {
-  "model_driven": "Model-driven search",
+  "model_driven": "Agentic search",
   "cem": "CEM search",
   "baseline": "Baseline (policy search), not yet run"
  },
  "heldout_metric": "Adroit: frozen policy on 30 unseen starts, one run. DexVerse: 50 unseen starts, mean of two repeats. Unaccepted tasks count as 0%.",
  "rollouts_metric": "Total rollouts = parameter-search rollouts + policy-design resets.",
- "video_note": "One held-out episode per task from model-driven search: a success, or for the two tasks with no accepted policy a failed episode of the last submitted policy (video_outcome: failure); tasks with no recorded success video show none.",
+ "video_note": "One held-out episode per task, from Agentic search (video_arm: model_driven) unless noted: a success, or where Agentic search has no accepted policy, CEM search's accepted policy (video_arm: cem) or else a failed episode of the last submitted Agentic policy (video_outcome: failure); tasks with no recorded video show none.",
  "baseline_note": "Baseline values are null until the runs exist; all BASELINE entries are None",
  "summary": [
   {
@@ -152,9 +152,37 @@
   {
    "benchmark": "Adroit",
    "group": "Adroit",
+   "task": "Pen",
+   "video": "assets/videos/model-driven/Adroit-Pen.mp4",
+   "video_outcome": "success",
+   "video_arm": "model_driven",
+   "heldout_repeats": [
+    17
+   ],
+   "episodes": 30,
+   "model_driven": {
+    "accepted": true,
+    "search_rollouts": 4192,
+    "resets": 32,
+    "total_rollouts": 4224,
+    "heldout_percent": 56.7
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 25699,
+    "resets": 89,
+    "total_rollouts": 25788,
+    "heldout_percent": 33.3
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "Adroit",
+   "group": "Adroit",
    "task": "Door",
    "video": "assets/videos/model-driven/Adroit-Door.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     30
    ],
@@ -181,6 +209,7 @@
    "task": "Hammer",
    "video": "assets/videos/model-driven/Adroit-Hammer.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     28
    ],
@@ -207,6 +236,7 @@
    "task": "Relocate",
    "video": "assets/videos/model-driven/Adroit-Relocate.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     20
    ],
@@ -233,6 +263,7 @@
    "task": "RelocateObject",
    "video": "assets/videos/model-driven/DexVerse-RelocateObject.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     29,
     29
@@ -260,6 +291,7 @@
    "task": "PushButton",
    "video": "assets/videos/model-driven/DexVerse-PushButton.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -287,6 +319,7 @@
    "task": "OpenFaucet",
    "video": "assets/videos/model-driven/DexVerse-OpenFaucet.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -314,6 +347,7 @@
    "task": "TurnOnSwitch",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitch.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -341,6 +375,7 @@
    "task": "PickCube",
    "video": "assets/videos/model-driven/DexVerse-PickCube.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -368,6 +403,7 @@
    "task": "StackCube",
    "video": "assets/videos/model-driven/DexVerse-StackCube.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -395,6 +431,7 @@
    "task": "PickUpStick",
    "video": "assets/videos/model-driven/DexVerse-PickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -418,10 +455,39 @@
   },
   {
    "benchmark": "DexVerse",
+   "group": "Primitive",
+   "task": "RelocateSphere",
+   "video": "assets/videos/model-driven/DexVerse-RelocateSphere.mp4",
+   "video_outcome": "success",
+   "video_arm": "model_driven",
+   "heldout_repeats": [
+    50,
+    50
+   ],
+   "episodes": 50,
+   "model_driven": {
+    "accepted": true,
+    "search_rollouts": 429,
+    "resets": 0,
+    "total_rollouts": 429,
+    "heldout_percent": 100.0
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 0,
+    "resets": 2,
+    "total_rollouts": 2,
+    "heldout_percent": 100.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
    "group": "Functional",
    "task": "GraspBleach",
    "video": "assets/videos/model-driven/DexVerse-GraspBleach.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     48
@@ -449,6 +515,7 @@
    "task": "FunctionalPourMug",
    "video": "assets/videos/model-driven/DexVerse-FunctionalPourMug.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -476,6 +543,7 @@
    "task": "FunctionalDrillApply",
    "video": "assets/videos/model-driven/DexVerse-FunctionalDrillApply.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -503,6 +571,7 @@
    "task": "LiftBucket",
    "video": "assets/videos/model-driven/DexVerse-LiftBucket.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -530,6 +599,7 @@
    "task": "GraspPan",
    "video": "assets/videos/model-driven/DexVerse-GraspPan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -557,6 +627,7 @@
    "task": "RemoveCupFromRack",
    "video": "assets/videos/model-driven/DexVerse-RemoveCupFromRack.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -584,6 +655,7 @@
    "task": "GraspCup",
    "video": "assets/videos/model-driven/DexVerse-GraspCup.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -611,6 +683,7 @@
    "task": "GraspKettle",
    "video": "assets/videos/model-driven/DexVerse-GraspKettle.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -638,6 +711,7 @@
    "task": "FunctionalPourCan",
    "video": "assets/videos/model-driven/DexVerse-FunctionalPourCan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     35,
     34
@@ -661,10 +735,39 @@
   },
   {
    "benchmark": "DexVerse",
+   "group": "Functional",
+   "task": "FunctionalHammerStrike",
+   "video": "assets/videos/model-driven/DexVerse-FunctionalHammerStrike.mp4",
+   "video_outcome": "success",
+   "video_arm": "model_driven",
+   "heldout_repeats": [
+    50,
+    50
+   ],
+   "episodes": 50,
+   "model_driven": {
+    "accepted": true,
+    "search_rollouts": 285,
+    "resets": 14,
+    "total_rollouts": 299,
+    "heldout_percent": 100.0
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 0,
+    "resets": 6,
+    "total_rollouts": 6,
+    "heldout_percent": 100.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
    "group": "Articulation",
    "task": "UnscrewCap",
    "video": "assets/videos/model-driven/DexVerse-UnscrewCap.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     40,
     38
@@ -692,6 +795,7 @@
    "task": "OpenFlatFolder",
    "video": "assets/videos/model-driven/DexVerse-OpenFlatFolder.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     46,
     42
@@ -719,6 +823,7 @@
    "task": "SqueezeScissors",
    "video": "assets/videos/model-driven/DexVerse-SqueezeScissors.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     49
@@ -746,6 +851,7 @@
    "task": "LiftBasketHandle",
    "video": "assets/videos/model-driven/DexVerse-LiftBasketHandle.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     47,
     48
@@ -773,6 +879,7 @@
    "task": "OpenHuaweiPhone",
    "video": "assets/videos/model-driven/DexVerse-OpenHuaweiPhone.mp4",
    "video_outcome": "failure",
+   "video_arm": "model_driven",
    "heldout_repeats": null,
    "episodes": 50,
    "model_driven": {
@@ -797,6 +904,7 @@
    "task": "LiftLid",
    "video": "assets/videos/model-driven/DexVerse-LiftLid.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -824,6 +932,7 @@
    "task": "OpenGlasses",
    "video": "assets/videos/model-driven/DexVerse-OpenGlasses.mp4",
    "video_outcome": "failure",
+   "video_arm": "model_driven",
    "heldout_repeats": null,
    "episodes": 50,
    "model_driven": {
@@ -848,6 +957,7 @@
    "task": "OpenLaptop",
    "video": "assets/videos/model-driven/DexVerse-OpenLaptop.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -875,6 +985,7 @@
    "task": "OpenMicrowave",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowave.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -902,6 +1013,7 @@
    "task": "GraspPot",
    "video": "assets/videos/model-driven/DexVerse-GraspPot.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -929,6 +1041,7 @@
    "task": "SlideUtilityKnife",
    "video": "assets/videos/model-driven/DexVerse-SlideUtilityKnife.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     46,
     47
@@ -956,6 +1069,7 @@
    "task": "GraspBucket",
    "video": "assets/videos/model-driven/DexVerse-GraspBucket.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -983,6 +1097,7 @@
    "task": "RotateKnob",
    "video": null,
    "video_outcome": null,
+   "video_arm": null,
    "heldout_repeats": [
     50,
     50
@@ -1006,10 +1121,39 @@
   },
   {
    "benchmark": "DexVerse",
+   "group": "Articulation",
+   "task": "OpenDrawer",
+   "video": "assets/videos/model-driven/DexVerse-OpenDrawer.mp4",
+   "video_outcome": "success",
+   "video_arm": "model_driven",
+   "heldout_repeats": [
+    50,
+    50
+   ],
+   "episodes": 50,
+   "model_driven": {
+    "accepted": true,
+    "search_rollouts": 137,
+    "resets": 0,
+    "total_rollouts": 137,
+    "heldout_percent": 100.0
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 0,
+    "resets": 2,
+    "total_rollouts": 2,
+    "heldout_percent": 100.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
    "group": "Bimanual",
    "task": "BimanualLiftBasket",
    "video": "assets/videos/model-driven/DexVerse-BimanualLiftBasket.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     43,
     44
@@ -1037,6 +1181,7 @@
    "task": "BimanualLiftDutchOven",
    "video": "assets/videos/model-driven/DexVerse-BimanualLiftDutchOven.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     49,
     50
@@ -1064,6 +1209,7 @@
    "task": "BimanualLiftCarton",
    "video": "assets/videos/model-driven/DexVerse-BimanualLiftCarton.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1087,10 +1233,39 @@
   },
   {
    "benchmark": "DexVerse",
+   "group": "Bimanual",
+   "task": "BimanualLiftTray",
+   "video": "assets/videos/model-driven/DexVerse-BimanualLiftTray.mp4",
+   "video_outcome": "success",
+   "video_arm": "model_driven",
+   "heldout_repeats": [
+    46,
+    46
+   ],
+   "episodes": 50,
+   "model_driven": {
+    "accepted": true,
+    "search_rollouts": 88,
+    "resets": 0,
+    "total_rollouts": 88,
+    "heldout_percent": 92.0
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 0,
+    "resets": 8,
+    "total_rollouts": 8,
+    "heldout_percent": 98.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
    "group": "Multi-goal",
    "task": "PourMugPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-PourMugPickUpCan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     45,
     46
@@ -1118,6 +1293,7 @@
    "task": "OpenDrawerPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-OpenDrawerPickUpCan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1145,6 +1321,7 @@
    "task": "LiftLidPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-LiftLidPickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1172,6 +1349,7 @@
    "task": "PourMugPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-PourMugPickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     39,
     39
@@ -1199,6 +1377,7 @@
    "task": "GraspBucketPourMug",
    "video": "assets/videos/model-driven/DexVerse-GraspBucketPourMug.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1226,6 +1405,7 @@
    "task": "GraspPotRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-GraspPotRelocateSphere.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1253,6 +1433,7 @@
    "task": "GraspBucketPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-GraspBucketPickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1280,6 +1461,7 @@
    "task": "LiftLidPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-LiftLidPickUpCan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1307,6 +1489,7 @@
    "task": "RotateKnobRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-RotateKnobRelocateSphere.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1334,6 +1517,7 @@
    "task": "LiftLidPourMug",
    "video": "assets/videos/model-driven/DexVerse-LiftLidPourMug.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1361,6 +1545,7 @@
    "task": "OpenDrawerPourMug",
    "video": "assets/videos/model-driven/DexVerse-OpenDrawerPourMug.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1388,6 +1573,7 @@
    "task": "PushButtonRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-PushButtonRelocateSphere.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1415,6 +1601,7 @@
    "task": "GraspPotPourMug",
    "video": "assets/videos/model-driven/DexVerse-GraspPotPourMug.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1442,6 +1629,7 @@
    "task": "OpenMicrowavePourMug",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowavePourMug.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1469,6 +1657,7 @@
    "task": "RotateKnobPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-RotateKnobPickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1496,6 +1685,7 @@
    "task": "LiftLidRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-LiftLidRelocateSphere.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1523,6 +1713,7 @@
    "task": "GraspPotPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-GraspPotPickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1550,6 +1741,7 @@
    "task": "PourMugRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-PourMugRelocateSphere.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     48,
     50
@@ -1577,6 +1769,7 @@
    "task": "PushButtonPourMug",
    "video": "assets/videos/model-driven/DexVerse-PushButtonPourMug.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1604,6 +1797,7 @@
    "task": "OpenMicrowavePickUpStick",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowavePickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1631,6 +1825,7 @@
    "task": "PushButtonPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-PushButtonPickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1658,6 +1853,7 @@
    "task": "RotateKnobPourMug",
    "video": "assets/videos/model-driven/DexVerse-RotateKnobPourMug.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1685,6 +1881,7 @@
    "task": "TurnOnSwitchPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchPickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1712,6 +1909,7 @@
    "task": "OpenDrawerRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-OpenDrawerRelocateSphere.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1739,6 +1937,7 @@
    "task": "RotateKnobPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-RotateKnobPickUpCan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1766,6 +1965,7 @@
    "task": "TurnOnSwitchPourMug",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchPourMug.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1793,6 +1993,7 @@
    "task": "TurnOnSwitchRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchRelocateSphere.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1820,6 +2021,7 @@
    "task": "OpenMicrowaveRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowaveRelocateSphere.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     49,
     50
@@ -1847,6 +2049,7 @@
    "task": "PushButtonPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-PushButtonPickUpCan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1874,6 +2077,7 @@
    "task": "GraspPotPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-GraspPotPickUpCan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1901,6 +2105,7 @@
    "task": "OpenDrawerPickUpStick",
    "video": "assets/videos/model-driven/DexVerse-OpenDrawerPickUpStick.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1928,6 +2133,7 @@
    "task": "OpenMicrowavePickUpCan",
    "video": "assets/videos/model-driven/DexVerse-OpenMicrowavePickUpCan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     49
@@ -1955,6 +2161,7 @@
    "task": "TurnOnSwitchPickUpCan",
    "video": "assets/videos/model-driven/DexVerse-TurnOnSwitchPickUpCan.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -1982,6 +2189,7 @@
    "task": "GraspBucketRelocateSphere",
    "video": "assets/videos/model-driven/DexVerse-GraspBucketRelocateSphere.mp4",
    "video_outcome": "success",
+   "video_arm": "model_driven",
    "heldout_repeats": [
     50,
     50
@@ -2000,6 +2208,140 @@
     "resets": 5,
     "total_rollouts": 5,
     "heldout_percent": 100.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
+   "group": "Multi-goal",
+   "task": "GraspBucketPickUpCan",
+   "video": "assets/videos/model-driven/DexVerse-GraspBucketPickUpCan.mp4",
+   "video_outcome": "success",
+   "video_arm": "model_driven",
+   "heldout_repeats": [
+    50,
+    50
+   ],
+   "episodes": 50,
+   "model_driven": {
+    "accepted": true,
+    "search_rollouts": 80,
+    "resets": 0,
+    "total_rollouts": 80,
+    "heldout_percent": 100.0
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 0,
+    "resets": 2,
+    "total_rollouts": 2,
+    "heldout_percent": 100.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
+   "group": "Long-horizon",
+   "task": "LongHorizon-CookFoods",
+   "video": null,
+   "video_outcome": null,
+   "video_arm": null,
+   "heldout_repeats": null,
+   "episodes": 50,
+   "model_driven": {
+    "accepted": false,
+    "search_rollouts": 908,
+    "resets": 52,
+    "total_rollouts": 960,
+    "heldout_percent": 0.0
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 906,
+    "resets": 98,
+    "total_rollouts": 1004,
+    "heldout_percent": 84.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
+   "group": "Long-horizon",
+   "task": "LongHorizon-OvenBakeSalmon",
+   "video": "assets/videos/model-driven/DexVerse-LongHorizon-OvenBakeSalmon.mp4",
+   "video_outcome": "failure",
+   "video_arm": "model_driven",
+   "heldout_repeats": null,
+   "episodes": 50,
+   "model_driven": {
+    "accepted": false,
+    "search_rollouts": 827,
+    "resets": 17,
+    "total_rollouts": 844,
+    "heldout_percent": 0.0
+   },
+   "cem": {
+    "accepted": false,
+    "search_rollouts": 136,
+    "resets": 104,
+    "total_rollouts": 240,
+    "heldout_percent": 0.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
+   "group": "Long-horizon",
+   "task": "LongHorizon-MakeCoffee",
+   "video": "assets/videos/model-driven/DexVerse-LongHorizon-MakeCoffee.mp4",
+   "video_outcome": "success",
+   "video_arm": "model_driven",
+   "heldout_repeats": [
+    44,
+    44
+   ],
+   "episodes": 50,
+   "model_driven": {
+    "accepted": true,
+    "search_rollouts": 78,
+    "resets": 36,
+    "total_rollouts": 114,
+    "heldout_percent": 88.0
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 1214,
+    "resets": 27,
+    "total_rollouts": 1241,
+    "heldout_percent": 90.0
+   },
+   "baseline": null
+  },
+  {
+   "benchmark": "DexVerse",
+   "group": "Long-horizon",
+   "task": "LongHorizon-MicrowaveRetrievePlace",
+   "video": "assets/videos/model-driven/DexVerse-LongHorizon-MicrowaveRetrievePlace.mp4",
+   "video_outcome": "success",
+   "video_arm": "model_driven",
+   "heldout_repeats": [
+    37,
+    34
+   ],
+   "episodes": 50,
+   "model_driven": {
+    "accepted": true,
+    "search_rollouts": 1802,
+    "resets": 2,
+    "total_rollouts": 1804,
+    "heldout_percent": 71.0
+   },
+   "cem": {
+    "accepted": true,
+    "search_rollouts": 0,
+    "resets": 83,
+    "total_rollouts": 83,
+    "heldout_percent": 79.0
    },
    "baseline": null
   }

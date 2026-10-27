@@ -142,7 +142,7 @@ def comparison_chart(data):
 
 
 def search_comparison_chart(data, rollouts=False):
-    """Figures 7 and 8: Agentic search vs. CEM search per Adroit task and DexVerse category."""
+    """Figure 6 (rollouts) and the retired held-out chart: Agentic search vs. CEM search per Adroit task and DexVerse category."""
     title = "Total rollouts to an accepted policy" if rollouts else "Held-out success of the frozen policy"
     subtitle = ("Parameter-search rollouts + policy-design resets · DexVerse: mean per task" if rollouts
                 else "Unseen starts · DexVerse: mean per task, unaccepted tasks count as zero")
