@@ -34,7 +34,7 @@ Observation interfaces differ by method. Appendix B specifies RGB and language f
 
 The earlier 75-task A0/L3+papers results support **mean parameter-search rollouts per task below 150 in four of six categories in each arm**. Those counts exclude learning episodes, training evaluations, held-out tests and uncounted interrupted work; they are not a claim of total interaction below 150.
 
-Figures 7–9 use the original gallery's different metric: parameter-search rollouts plus policy-design resets. Training validation and held-out evaluations are excluded.
+Figures 6–8 use the original gallery's different metric: parameter-search rollouts plus policy-design resets. Training validation and held-out evaluations are excluded.
 
 ## Adroit
 
@@ -67,11 +67,12 @@ The page originally drew layout and interaction inspiration from [Schema Harness
 | 2 | Inline controller-synthesis and parameter-search diagram; recorded Pen controller excerpt. |
 | 3 | Existing eight-step loop in `assets/loop.js` and `assets/loop.css`, combining three mechanism steps with five recorded Astra Pen artifacts. Scroll/Back/Next mechanics are preserved. Four original paper Pen images supplement the final held-out panel. |
 | 4 | `assets/figures/paper-heldout-pair.png`: unchanged copy of the paper's Figure 2; 15 per-task baseline comparisons and six category means over the remaining 60 tasks. |
-| 5 | `assets/figures/adroit-heldout.svg`: four-task random-reset Astra result and seed-level 95% Wilson intervals. |
-| 6 | `assets/figures/adroit-curriculum.svg`: descriptive fixed-start versus random-reset campaign comparison. |
-| 7 | `assets/figures/evidence-heldout.svg`: original Opus three-Adroit/66-DexVerse success comparison. |
-| 8 | `assets/figures/evidence-rollouts.svg`: original Opus search-plus-reset accounting. |
-| 9 | `assets/evidence.js` gallery: all 69 original task cards, with per-task results and available recorded replays. |
+| 5 | `assets/figures/adroit-curriculum.svg`: descriptive fixed-start versus random-reset campaign comparison. |
+| 6 | `assets/figures/evidence-heldout.svg`: original Opus three-Adroit/66-DexVerse success comparison. |
+| 7 | `assets/figures/evidence-rollouts.svg`: original Opus search-plus-reset accounting. |
+| 8 | `assets/evidence.js` gallery: all 69 original task cards, with per-task results and available recorded replays. |
+
+The Adroit section reports the four-task random-reset outcome and aggregate interaction costs in prose, with full per-task records and uncertainty estimates in `assets/data/adroit-protocol.json`. The original `assets/figures/adroit-heldout.svg` remains an archived source asset and is no longer displayed on the page.
 
 `assets/figures/paper-assets.json` records source and output SHA-256 hashes, dimensions, PDF image identifiers and extraction details. `scripts/prepare_paper_figures.py --source-dir ../ExtendedAbstract` requires PyMuPDF and Pillow. It copies the overview PDF and results PNG byte for byte, rasterizes the overview to 2400×1217, and extracts four original 300×224 JPEGs without cropping or recompression. The overview source PDF's SHA-256 is `921e64e5b2be8d011233430c5bacb2a8a72698584af31719aaaf39e7f5f9c5f1`; the copied results PNG is `7f6c59470456e90bce6b186813a8ebbc06f4cb5ab3858f7bc631e17fa8e00e24`. The rendered overview and extracted-image hashes are in the manifest.
 
