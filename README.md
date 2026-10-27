@@ -18,7 +18,7 @@ python3 -m http.server 8000 --bind 127.0.0.1
 
 Open <http://127.0.0.1:8000/>. Edit `index.html` for article content, `assets/styles.css` for layout, and `assets/site.js` for video previews and reading progress. Reduced-motion preferences disable automatic previews.
 
-The hero uses the manuscript's overview figure. Section 2 explains controller synthesis and simulation-guided refinement. Figure 3 (`assets/loop.js`, `assets/loop.css`) preserves the eight-step interactive sequence: three mechanism steps and five recorded Pen artifacts. Its final panel also shows the four original Pen images extracted from the paper figure.
+The hero pairs the project title and authors with a 2×2 Adroit video reel. Section 1 introduces the project with the manuscript's overview figure. Section 2 explains controller synthesis and simulation-guided refinement. Figure 3 (`assets/loop.js`, `assets/loop.css`) preserves the eight-step interactive sequence: three mechanism steps and five recorded Pen artifacts. Its final panel also shows the four original Pen images extracted from the paper figure.
 
 On larger desktop viewports, scrolling drives the sticky figure; Back/Next also select steps. With focus on those controls, Left/Right move one step and Home/End select the first/last step. At widths up to 1,240 px or heights below 740 px, manual navigation replaces the scroll layout. Without JavaScript, and in print, the artifacts remain visible alongside the static SVG and step descriptions.
 
@@ -26,7 +26,7 @@ On larger desktop viewports, scrolling drives the sticky figure; Back/Next also 
 
 | Figure | Content | Data or source |
 |---|---|---|
-| 1 | Paper overview in the hero | `assets/figures/paper-overview.png`, with the original PDF available |
+| 1 | Paper overview in Section 1 | `assets/figures/paper-overview.png`, with the original PDF available |
 | 2 | Controller synthesis and parameter search | Inline diagram and the recorded stage-one Pen controller |
 | 3 | Interactive learning loop and Pen evidence | `docs/pen-case-study.json`; existing scroll and Back/Next behavior |
 | 4 | Paper DexVerse comparison: 15 baseline tasks and the remaining 60 | `assets/figures/paper-heldout-pair.png`, `assets/data/paper-dexverse-results.json` |

@@ -63,7 +63,7 @@ The page originally drew layout and interaction inspiration from [Schema Harness
 
 | Figure | Asset and evidence |
 |---|---|
-| 1 | Hero overview: `assets/figures/paper-overview.png`, rasterized from the fixed manuscript's `figs/fig1_pen_v3-1.pdf`; original PDF linked. The pictured 30/30 concerns the Pen example. Letter writing is an illustration of skill composition, not another measured task. |
+| 1 | Section 1 project overview: `assets/figures/paper-overview.png`, rasterized from the fixed manuscript's `figs/fig1_pen_v3-1.pdf`; original PDF linked. The pictured 30/30 concerns the Pen example. Letter writing is an illustration of skill composition, not another measured task. |
 | 2 | Inline controller-synthesis and parameter-search diagram; recorded Pen controller excerpt. |
 | 3 | Existing eight-step loop in `assets/loop.js` and `assets/loop.css`, combining three mechanism steps with five recorded Astra Pen artifacts. Scroll/Back/Next mechanics are preserved. Four original paper Pen images supplement the final held-out panel. |
 | 4 | `assets/figures/paper-heldout-pair.png`: unchanged copy of the paper's Figure 2; 15 per-task baseline comparisons and six category means over the remaining 60 tasks. |
