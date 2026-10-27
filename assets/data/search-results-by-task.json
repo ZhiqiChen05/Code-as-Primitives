@@ -2324,9 +2324,9 @@
    "benchmark": "DexVerse",
    "group": "Long-horizon",
    "task": "LongHorizon-CookFoods",
-   "video": null,
-   "video_outcome": null,
-   "video_arm": null,
+   "video": "assets/videos/model-driven/DexVerse-LongHorizon-CookFoods.mp4",
+   "video_outcome": "failure",
+   "video_arm": "cem",
    "heldout_repeats": null,
    "episodes": 50,
    "model_driven": {

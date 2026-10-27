@@ -47,13 +47,13 @@
     const arm = t.video_arm === 'cem' ? 'CEM search' : 'Agentic search';
     // The renders carry a burned-in caption band (task, campaign, seed); the crop classes frame it out.
     const media = t.video
-      ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: ${arm} held-out ${failed ? 'failure, the last submitted policy' : 'success'} replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
+      ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: ${arm} held-out ${failed ? (t.video_arm === 'cem' ? 'failure' : 'failure, the last submitted policy') : 'success'} replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
       : `<div class="gc-empty">${t.model_driven.accepted ? 'No replay recorded' : 'No accepted Agentic policy'}</div>`;
     const summary = `${label}. Held-out success: Agentic search ${t.model_driven.heldout_percent}%, CEM search ${t.cem.heldout_percent}%. ` +
       `Total rollouts: Agentic search ${t.model_driven.total_rollouts}, CEM search ${t.cem.total_rollouts}.`;
     return `<article class="gallery-card${failed ? ' is-failed' : ''}" aria-label="${esc(summary)}"><div class="gc-media">${media}` +
       `<span class="gc-badge">${esc(t.benchmark === 'Adroit' ? 'ADROIT' : t.group.toUpperCase())}</span>` +
-      (failed ? '<span class="gc-failed">FAILED · not accepted</span>' : '') + '</div>' +
+      (failed ? `<span class="gc-failed">${t.video_arm === 'cem' ? 'FAILED · CEM search' : 'FAILED · not accepted'}</span>` : '') + '</div>' +
       `<div class="gc-name">${esc(t.task.replace(/^LongHorizon-/, ''))}</div>${chart(t)}</article>`;
   }
 

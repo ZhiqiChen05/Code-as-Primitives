@@ -27,7 +27,9 @@ VIDEOS = Path("/home/djengof/DexVerse/docs/videos/l3pg_heldout_success")
 EXTRA = Path("/home/djengof/DexVerse/Schema-Robo-dexverse/experiment_results/videos/blog_gallery_extra")
 EXTRA_VIDEOS = {"OpenHuaweiPhone": ("OpenHuaweiPhone.mp4", "failure", "model_driven"),
                 "OpenGlasses": ("OpenGlasses.mp4", "failure", "model_driven"),
-                "LongHorizon-OvenBakeSalmon": ("OvenBakeSalmon.mp4", "failure", "model_driven")}
+                "LongHorizon-OvenBakeSalmon": ("OvenBakeSalmon.mp4", "failure", "model_driven"),
+                # CEM replays of seeds its eval logged as successes time out (9000 shown)
+                "LongHorizon-CookFoods": ("CookFoods.mp4", "failure", "cem")}
 # The six E1 tasks (pooled 10 training positions) come from their own campaigns, e1_pool10_L3PG and
 # e1_pool10_A0; they join the gallery but not the summary rows behind Figure 6.
 E1_TASKS = ["BimanualLiftTray", "FunctionalHammerStrike", "GraspBucketPickUpCan",
