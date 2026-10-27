@@ -39,17 +39,17 @@
 .hero-split{grid-template-columns:.94fr 1.06fr;gap:58px;padding-top:60px;padding-bottom:60px;max-width:1320px}
 .hero h1{font-size:clamp(64px,6.4vw,88px);margin-top:0}
 .hero-subtitle{font-size:clamp(22px,2.15vw,28px);line-height:1.35;max-width:530px}
-.project-authors{margin:26px 0 0;padding:0;color:#c4cfc3;font-size:12px;line-height:1.8}
-.project-authors p{margin:0 0 6px}.project-authors .author-names{display:flex;gap:5px 18px;flex-wrap:wrap;color:#f6f3eb;font-size:14px;margin-bottom:10px}
-.author-names span{white-space:nowrap}.author-names sup{font-size:9px;margin-left:3px;color:#b9c3ba;letter-spacing:.5px}
-.project-authors .author-roles{font-size:10px;color:#a2b19f;margin-top:7px}.affiliation-gap{display:inline-block;margin-left:18px}
+.project-authors{margin:26px 0 0;padding:0;color:#c4cfc3;font-size:14px;line-height:1.8}
+.project-authors p{margin:0 0 6px}.project-authors .author-names{display:grid;grid-template-columns:repeat(3,auto);gap:7px 16px;color:#f6f3eb;font-size:16px;margin-bottom:12px}
+.author-names span{min-width:0}.author-names sup{font-size:10px;margin-left:3px;color:#b9c3ba;letter-spacing:.5px;white-space:nowrap}
+.project-authors .author-roles{font-size:12px;color:#a2b19f;margin-top:8px}.affiliation-gap{display:inline-block;margin-left:18px}
 .results-subhead{margin:48px 0 18px;scroll-margin-top:45px}
 .result-nav{display:flex;flex-wrap:wrap;gap:10px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;font-size:12px;margin:0 0 30px}
 .result-nav a{text-decoration:none}.prose>.result-nav+h3{margin-top:0}
 #results tbody th,#results tfoot th{font:600 12px/1.6 var(--sans);text-transform:none;letter-spacing:0;background:var(--white);color:var(--ink);white-space:normal;min-width:130px}
 #results tfoot{border-top:2px solid var(--line)}
-@media(max-width:1100px) and (min-width:761px){.hero-split{padding:45px 32px;gap:30px}.hero h1{font-size:67px}.hero-subtitle{font-size:23px}.project-authors .author-names{font-size:13px;gap:5px 14px}.affiliation-gap{display:block;margin-left:0}}
-@media(max-width:760px){.hero-split{display:block;padding:40px 21px 32px}.hero h1{font-size:clamp(54px,18vw,72px)}.hero-subtitle{font-size:24px}.project-authors{font-size:11px;margin-top:24px}.project-authors .author-names{font-size:13px;gap:6px 15px}.project-authors .author-roles{font-size:10px}.affiliation-gap{margin-left:0;display:block}.results-subhead{margin-top:36px}.result-nav{gap:10px 18px}.metrics .metric-name{font-size:9px;line-height:1.6}}
+@media(max-width:1100px) and (min-width:761px){.hero-split{padding:45px 32px;gap:30px}.hero h1{font-size:67px}.hero-subtitle{font-size:23px}.project-authors .author-names{font-size:15px;gap:7px 12px}.affiliation-gap{display:block;margin-left:0}}
+@media(max-width:760px){.hero-split{display:block;padding:40px 21px 32px}.hero h1{font-size:clamp(54px,18vw,72px)}.hero-subtitle{font-size:24px}.project-authors{font-size:13px;margin-top:24px}.project-authors .author-names{font-size:14px;gap:8px 10px}.project-authors .author-roles{font-size:11px}.affiliation-gap{margin-left:0;display:block}.results-subhead{margin-top:36px}.result-nav{gap:10px 18px}.metrics .metric-name{font-size:9px;line-height:1.6}}
 @media print{.project-authors,.project-authors .author-names,.project-authors .author-roles,.author-names sup{color:#242620}.project-authors{margin-top:18px}.hero-split{padding:0;display:block}.result-nav{display:none}}
 
 /* Let white paper-figure backgrounds reveal the page without altering source artwork. */
