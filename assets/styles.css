@@ -40,7 +40,7 @@
 .hero h1{font-size:clamp(64px,6.4vw,88px);margin-top:0}
 .hero-subtitle{font-size:clamp(22px,2.15vw,28px);line-height:1.35;max-width:530px}
 .project-authors{margin:26px 0 0;padding:0;color:#c4cfc3;font-size:14px;line-height:1.8}
-.project-authors p{margin:0 0 6px}.project-authors .author-names{display:grid;grid-template-columns:repeat(3,auto);gap:7px 16px;color:#f6f3eb;font-size:16px;margin-bottom:12px}
+.project-authors p{margin:0 0 6px}.project-authors .author-names{display:flex;flex-direction:column;gap:7px 16px;color:#f6f3eb;font-size:16px;margin-bottom:12px}.author-row{display:flex;align-items:baseline;column-gap:inherit}
 .author-names span{min-width:0}.author-names sup{font-size:10px;margin-left:3px;color:#b9c3ba;letter-spacing:.5px;white-space:nowrap}
 .project-authors .author-roles{font-size:12px;color:#a2b19f;margin-top:8px}.affiliation-gap{display:inline-block;margin-left:18px}
 .results-subhead{margin:48px 0 18px;scroll-margin-top:45px}
