@@ -141,14 +141,13 @@ def comparison_chart(data):
     return svg(foot + 130, title, f"{subtitle}. {values}. {data['metric']}", p)
 
 
-def search_vs_baseline_chart(data, rollouts=False, title=None):
-    """Figures 7 and 8, plus the archived opening comparison: Agentic search, CEM search and the pending baseline per Adroit task and DexVerse category."""
-    title = title or ("Total rollouts to an accepted policy" if rollouts else "Held-out success of the frozen policy")
+def search_comparison_chart(data, rollouts=False):
+    """Figures 7 and 8: Agentic search vs. CEM search per Adroit task and DexVerse category."""
+    title = "Total rollouts to an accepted policy" if rollouts else "Held-out success of the frozen policy"
     subtitle = ("Parameter-search rollouts + policy-design resets · DexVerse: mean per task" if rollouts
                 else "Unseen starts · DexVerse: mean per task, unaccepted tasks count as zero")
     reset_color = "#8db3a3"
-    arms = [("model_driven", "Agentic search", "forest"), ("cem", "CEM search", "orange"),
-            ("baseline", "Baseline (policy search)", "muted")]
+    arms = [("model_driven", "Agentic search", "forest"), ("cem", "CEM search", "orange")]
     p = [
         text(50, 44, "ADROIT + DEXVERSE  /  CLAUDE OPUS 5.5", 16, "forest", letter_spacing=2),
         text(50, 91, title, 33, serif=True),
@@ -165,7 +164,7 @@ def search_vs_baseline_chart(data, rollouts=False, title=None):
     dex = [g for g in data["summary"] if g["group"] != "Adroit"]
     panels = [("ADROIT", [(g["task"], "30 unseen starts", g) for g in adroit], 1500 if rollouts else 100),
               ("DEXVERSE", [(g["group"], f'{g["tasks"]} tasks', g) for g in dex], 600 if rollouts else 100)]
-    x0, x1, bar, pitch = 270, 960, 15, 76
+    x0, x1, bar, pitch = 270, 960, 15, 62
     y = 222
     fmt_total = lambda v: f"{v:,.0f}" if float(v).is_integer() else f"{v:,.1f}"
     for name, rows, xmax in panels:
@@ -184,9 +183,6 @@ def search_vs_baseline_chart(data, rollouts=False, title=None):
             for j, (key, _, color) in enumerate(arms):
                 by = cy + j * (bar + 4)
                 value = g[key]
-                if value is None:
-                    p.append(text(x0 + 6, by + 12, "TBD", 14, "muted", font_style="italic"))
-                    continue
                 if rollouts:
                     total = value["total_rollouts"]
                     if key == "model_driven":
@@ -207,10 +203,10 @@ def search_vs_baseline_chart(data, rollouts=False, title=None):
     p.extend([
         line(50, foot, 1050, foot),
         text(50, foot + 34, note, 18),
-        text(50, foot + 62, "One training chain per task and arm. Adroit Pen and DexVerse Long-horizon are in Section 4. Baseline pending.", 17, "muted"),
+        text(50, foot + 62, "One training chain per task and arm. Adroit Pen and DexVerse Long-horizon are in Section 4.", 17, "muted"),
     ])
     key = "total_rollouts" if rollouts else "heldout_percent"
-    values = "; ".join(f'{g.get("task", g["group"]) if g["group"] == "Adroit" else g["group"]}: Agentic search {g["model_driven"][key]}, CEM search {g["cem"][key]}, baseline TBD'
+    values = "; ".join(f'{g.get("task", g["group"]) if g["group"] == "Adroit" else g["group"]}: Agentic search {g["model_driven"][key]}, CEM search {g["cem"][key]}'
                        for g in data["summary"])
     return svg(foot + 92, title, f"{subtitle}. {values}.", p)
 
@@ -222,9 +218,8 @@ def main():
     tasks = json.loads((ROOT / "assets/data/search-results-by-task.json").read_text())
     outputs = {
         "dexverse-comparison-e2.svg": comparison_chart(comparison),
-        "heldout-main-baseline.svg": search_vs_baseline_chart(tasks, title="Held-out success: parameter search vs. baseline"),
-        "evidence-heldout.svg": search_vs_baseline_chart(tasks),
-        "evidence-rollouts.svg": search_vs_baseline_chart(tasks, rollouts=True),
+        "evidence-heldout.svg": search_comparison_chart(tasks),
+        "evidence-rollouts.svg": search_comparison_chart(tasks, rollouts=True),
         "dexverse-heldout.svg": category_chart(dexverse),
         "dexverse-search-rollouts.svg": category_chart(dexverse, search=True),
         "adroit-curriculum.svg": curriculum_chart(adroit),

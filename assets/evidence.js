@@ -7,7 +7,7 @@
   const statEl = gallery.querySelector('.gallery-stat');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const GROUPS = ['Adroit', 'Primitive', 'Functional', 'Articulation', 'Bimanual', 'Multi-goal'];
-  const ARMS = [['model_driven', 'Agentic', 'var(--green)'], ['cem', 'CEM', 'var(--rust)'], ['baseline', 'Base', 'var(--muted)']];
+  const ARMS = [['model_driven', 'Agentic', 'var(--green)'], ['cem', 'CEM', 'var(--rust)']];
   const RESETS = '#8db3a3';
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   const num = v => (Number.isInteger(v) ? v.toLocaleString('en-US') : v.toFixed(1));
@@ -23,10 +23,6 @@
         const y = y0 + 7 + i * pitch;
         rows.push(`<text x="0" y="${y + 9.5}" class="gc-arm">${name}</text>`);
         const arm = t[key];
-        if (!arm) {
-          rows.push(`<text x="${x0 + 2}" y="${y + 9.5}" class="gc-tbd">TBD</text>`);
-          return;
-        }
         const w = v => (x1 - x0) * Math.min(v, scale) / scale;
         const v = value(arm);
         if (key === 'model_driven' && label === 'rollouts') {
@@ -40,9 +36,9 @@
       });
     };
     block('HELD-OUT SUCCESS', 10, a => a.heldout_percent, 100, 'heldout');
-    const scale = Math.max(1, ...ARMS.map(([k]) => (t[k] ? t[k].total_rollouts : 0)));
-    block('TOTAL ROLLOUTS', 78, a => a.total_rollouts, scale, 'rollouts');
-    return `<svg viewBox="0 0 210 134" class="gc-chart" aria-hidden="true">${rows.join('')}</svg>`;
+    const scale = Math.max(1, ...ARMS.map(([k]) => t[k].total_rollouts));
+    block('TOTAL ROLLOUTS', 62, a => a.total_rollouts, scale, 'rollouts');
+    return `<svg viewBox="0 0 210 102" class="gc-chart" aria-hidden="true">${rows.join('')}</svg>`;
   }
 
   function card(t) {
@@ -52,8 +48,8 @@
     const media = t.video
       ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: Agentic search held-out ${failed ? 'failure, the policy times out' : 'success'} replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
       : `<div class="gc-empty">${t.model_driven.accepted ? 'No replay recorded' : 'No accepted Agentic policy'}</div>`;
-    const summary = `${label}. Held-out success: Agentic search ${t.model_driven.heldout_percent}%, CEM search ${t.cem.heldout_percent}%, baseline TBD. ` +
-      `Total rollouts: Agentic search ${t.model_driven.total_rollouts}, CEM search ${t.cem.total_rollouts}, baseline TBD.`;
+    const summary = `${label}. Held-out success: Agentic search ${t.model_driven.heldout_percent}%, CEM search ${t.cem.heldout_percent}%. ` +
+      `Total rollouts: Agentic search ${t.model_driven.total_rollouts}, CEM search ${t.cem.total_rollouts}.`;
     return `<article class="gallery-card${failed ? ' is-failed' : ''}" aria-label="${esc(summary)}"><div class="gc-media">${media}` +
       `<span class="gc-badge">${esc(t.benchmark === 'Adroit' ? 'ADROIT' : t.group.toUpperCase())}</span>` +
       (failed ? '<span class="gc-failed">FAILED · not accepted</span>' : '') + '</div>' +

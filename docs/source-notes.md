@@ -34,7 +34,7 @@ Observation interfaces differ by method. Appendix B specifies RGB and language f
 
 The earlier 75-task A0/L3+papers results support **mean parameter-search rollouts per task below 150 in four of six categories in each arm**. Those counts exclude learning episodes, training evaluations, held-out tests and uncounted interrupted work; they are not a claim of total interaction below 150.
 
-Figures 7–9 use the original gallery's different metric: parameter-search rollouts plus policy-design resets. Training validation and held-out evaluations are excluded. The optional “Baseline (policy search)” remains unrun and has null values; it is distinct from the published imitation-learning results.
+Figures 7–9 use the original gallery's different metric: parameter-search rollouts plus policy-design resets. Training validation and held-out evaluations are excluded.
 
 ## Adroit
 
