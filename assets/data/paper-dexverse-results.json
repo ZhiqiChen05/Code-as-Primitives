@@ -1,0 +1,4215 @@
+{
+  "title": "Fixed-paper DexVerse results with separate archive crosschecks",
+  "authority": "The active text in ExtendedAbstract/main.tex and Figure 2 (figs/heldout_pair.png). Commented-out prose is not treated as an active paper claim.",
+  "metric": "Mean per-task held-out success percent; unaccepted tasks count as zero in the archived protocol.",
+  "protocol": {
+    "benchmark_tasks": 75,
+    "categories": 6,
+    "long_horizon_tasks": 4,
+    "observation": "state",
+    "expert_demonstrations_for_synthesis": 0,
+    "heldout_start_configurations_per_task": 50,
+    "heldout_repeats": 2,
+    "repeats_note": "The source protocol uses the same 50 unseen configurations in both repeats, not 100 distinct configurations.",
+    "frozen_controllers": true,
+    "model_calls_during_execution": false
+  },
+  "summary": {
+    "imitation_comparison_15": {
+      "tasks": 15,
+      "agentic_percent": 95.9,
+      "cem_percent": 96.7,
+      "best_imitation_percent": 46.0,
+      "source": "paper_text",
+      "exact_mean_from_figure_task_rows": {
+        "agentic_percent": 95.93333333333334,
+        "cem_percent": 96.66666666666667,
+        "best_imitation_percent": 46.0
+      }
+    },
+    "remaining_60": {
+      "tasks": 60,
+      "agentic_percent": 90.7,
+      "cem_percent": 94.0,
+      "best_imitation_percent": null,
+      "source": "paper_text"
+    },
+    "all_75": {
+      "tasks": 75,
+      "paper_reported_numeric_mean": null,
+      "approximate_mean_weighted_from_rounded_paper_subgroups": {
+        "agentic_percent": 91.74,
+        "cem_percent": 94.54
+      },
+      "recommended_display_if_needed": {
+        "agentic_percent": "approximately 91.7%",
+        "cem_percent": "approximately 94.5%"
+      },
+      "note": "The active paper says more than 90% across the full benchmark. Its two subgroup means are rounded. Do not present their weighted average as an exact raw-campaign result. A0 archive independently verifies CEM at 94.52%."
+    }
+  },
+  "comparison_tasks": [
+    {
+      "task": "BimanualLiftCarton",
+      "figure_task_label": "BimanualLiftCarton",
+      "environment_id": "Dexverse-BimanualLiftCarton-v0",
+      "comparison_group": "Pick-and-Lift",
+      "benchmark_category": "Bimanual",
+      "agentic_percent": 100,
+      "cem_percent": 100,
+      "best_imitation_percent": 100,
+      "imitation_policy_percent": {
+        "pi0.5": 100,
+        "OpenVLA": 60,
+        "DP3": 90,
+        "DP": 94
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave2_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "BimanualLiftTray",
+      "figure_task_label": "BimanualLiftTray",
+      "environment_id": "Dexverse-BimanualLiftTray-v0",
+      "comparison_group": "Pick-and-Lift",
+      "benchmark_category": "Bimanual",
+      "agentic_percent": 92,
+      "cem_percent": 98,
+      "best_imitation_percent": 84,
+      "imitation_policy_percent": {
+        "pi0.5": 84,
+        "OpenVLA": 72,
+        "DP3": 56,
+        "DP": 60
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e1_pool10_A0",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": null,
+        "campaign": null,
+        "heldout_successes_per_repeat": null,
+        "matches_paper_figure": null,
+        "note": "Shown in the fixed paper figure; no corresponding L3PG chain exists in the supplied 69-task archive."
+      }
+    },
+    {
+      "task": "GraspBleach",
+      "figure_task_label": "GraspBleach",
+      "environment_id": "Dexverse-GraspBleach-v0",
+      "comparison_group": "Pick-and-Lift",
+      "benchmark_category": "Functional",
+      "agentic_percent": 98,
+      "cem_percent": 100,
+      "best_imitation_percent": 32,
+      "imitation_policy_percent": {
+        "pi0.5": 10,
+        "OpenVLA": 6,
+        "DP3": 32,
+        "DP": 10
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave2_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          48
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "GraspCup",
+      "figure_task_label": "GraspCup",
+      "environment_id": "Dexverse-GraspCup-v0",
+      "comparison_group": "Pick-and-Lift",
+      "benchmark_category": "Functional",
+      "agentic_percent": 100,
+      "cem_percent": 100,
+      "best_imitation_percent": 50,
+      "imitation_policy_percent": {
+        "pi0.5": 16,
+        "OpenVLA": 8,
+        "DP3": 22,
+        "DP": 50
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave2_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "GraspKettle",
+      "figure_task_label": "GraspKettle",
+      "environment_id": "Dexverse-GraspKettle-v0",
+      "comparison_group": "Pick-and-Lift",
+      "benchmark_category": "Functional",
+      "agentic_percent": 100,
+      "cem_percent": 100,
+      "best_imitation_percent": 90,
+      "imitation_policy_percent": {
+        "pi0.5": 58,
+        "OpenVLA": 16,
+        "DP3": 80,
+        "DP": 90
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave2_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "GraspPan",
+      "figure_task_label": "GraspPan",
+      "environment_id": "Dexverse-GraspPan-v0",
+      "comparison_group": "Pick-and-Lift",
+      "benchmark_category": "Functional",
+      "agentic_percent": 100,
+      "cem_percent": 100,
+      "best_imitation_percent": 52,
+      "imitation_policy_percent": {
+        "pi0.5": 6,
+        "OpenVLA": 2,
+        "DP3": 16,
+        "DP": 52
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave2_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "RemoveCupFromRack",
+      "figure_task_label": "RetrieveCup",
+      "environment_id": "Dexverse-RemoveCupFromRack-v0",
+      "comparison_group": "Pick-and-Lift",
+      "benchmark_category": "Functional",
+      "agentic_percent": 100,
+      "cem_percent": 87,
+      "best_imitation_percent": 6,
+      "imitation_policy_percent": {
+        "pi0.5": 2,
+        "OpenVLA": 2,
+        "DP3": 6,
+        "DP": 4
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave2_A0",
+        "heldout_successes_per_repeat": [
+          46,
+          41
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "OpenFaucet",
+      "figure_task_label": "OpenFaucet",
+      "environment_id": "Dexverse-OpenFaucet-v0",
+      "comparison_group": "Articulated",
+      "benchmark_category": "Primitive",
+      "agentic_percent": 100,
+      "cem_percent": 100,
+      "best_imitation_percent": 84,
+      "imitation_policy_percent": {
+        "pi0.5": 84,
+        "OpenVLA": 36,
+        "DP3": 76,
+        "DP": 28
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave2_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "OpenFlatFolder",
+      "figure_task_label": "OpenFlatFolder",
+      "environment_id": "Dexverse-OpenFlatFolder-v0",
+      "comparison_group": "Articulated",
+      "benchmark_category": "Articulation",
+      "agentic_percent": 88,
+      "cem_percent": 99,
+      "best_imitation_percent": 18,
+      "imitation_policy_percent": {
+        "pi0.5": 0,
+        "OpenVLA": 0,
+        "DP3": 18,
+        "DP": 16
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave1_A0",
+        "heldout_successes_per_repeat": [
+          49,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          46,
+          42
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "OpenLaptop",
+      "figure_task_label": "OpenLaptop",
+      "environment_id": "Dexverse-OpenLaptop-v0",
+      "comparison_group": "Articulated",
+      "benchmark_category": "Articulation",
+      "agentic_percent": 100,
+      "cem_percent": 98,
+      "best_imitation_percent": 10,
+      "imitation_policy_percent": {
+        "pi0.5": 4,
+        "OpenVLA": 2,
+        "DP3": 2,
+        "DP": 10
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave1_A0",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "SlideUtilityKnife",
+      "figure_task_label": "SlideUtilityKnife",
+      "environment_id": "Dexverse-SlideUtilityKnife-v0",
+      "comparison_group": "Articulated",
+      "benchmark_category": "Articulation",
+      "agentic_percent": 93,
+      "cem_percent": 100,
+      "best_imitation_percent": 0,
+      "imitation_policy_percent": {
+        "pi0.5": 0,
+        "OpenVLA": 0,
+        "DP3": 0,
+        "DP": 0
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave1_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          46,
+          47
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "SqueezeScissors",
+      "figure_task_label": "SqueezeScissors",
+      "environment_id": "Dexverse-SqueezeScissors-v0",
+      "comparison_group": "Articulated",
+      "benchmark_category": "Articulation",
+      "agentic_percent": 99,
+      "cem_percent": 68,
+      "best_imitation_percent": 36,
+      "imitation_policy_percent": {
+        "pi0.5": 36,
+        "OpenVLA": 22,
+        "DP3": 20,
+        "DP": 0
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave1_A0",
+        "heldout_successes_per_repeat": [
+          34,
+          34
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          49
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "FunctionalHammerStrike",
+      "figure_task_label": "FunctionalHammerStrike",
+      "environment_id": "Dexverse-FunctionalHammerStrike-v0",
+      "comparison_group": "Tool Use",
+      "benchmark_category": "Functional",
+      "agentic_percent": 100,
+      "cem_percent": 100,
+      "best_imitation_percent": 26,
+      "imitation_policy_percent": {
+        "pi0.5": 22,
+        "OpenVLA": 18,
+        "DP3": 26,
+        "DP": 0
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e1_pool10_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": null,
+        "campaign": null,
+        "heldout_successes_per_repeat": null,
+        "matches_paper_figure": null,
+        "note": "Shown in the fixed paper figure; no corresponding L3PG chain exists in the supplied 69-task archive."
+      }
+    },
+    {
+      "task": "FunctionalPourCan",
+      "figure_task_label": "FunctionalPourCan",
+      "environment_id": "Dexverse-FunctionalPourCan-v0",
+      "comparison_group": "Tool Use",
+      "benchmark_category": "Functional",
+      "agentic_percent": 69,
+      "cem_percent": 100,
+      "best_imitation_percent": 38,
+      "imitation_policy_percent": {
+        "pi0.5": 4,
+        "OpenVLA": 10,
+        "DP3": 14,
+        "DP": 38
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave1_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          35,
+          34
+        ],
+        "matches_paper_figure": true
+      }
+    },
+    {
+      "task": "FunctionalPourMug",
+      "figure_task_label": "FunctionalPourMug",
+      "environment_id": "Dexverse-FunctionalPourMug-v0",
+      "comparison_group": "Tool Use",
+      "benchmark_category": "Functional",
+      "agentic_percent": 100,
+      "cem_percent": 100,
+      "best_imitation_percent": 64,
+      "imitation_policy_percent": {
+        "pi0.5": 52,
+        "OpenVLA": 16,
+        "DP3": 64,
+        "DP": 26
+      },
+      "source": "paper_figure_2a",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "campaign": "e2_wave1_A0",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      },
+      "agentic_archive_crosscheck": {
+        "source": "archive_L3PG",
+        "campaign": "e2_L3PG",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "matches_paper_figure": true
+      }
+    }
+  ],
+  "remaining_categories": [
+    {
+      "category": "Primitive",
+      "tasks": 7,
+      "task_names": [
+        "PickCube",
+        "PickUpStick",
+        "PushButton",
+        "RelocateObject",
+        "RelocateSphere",
+        "StackCube",
+        "TurnOnSwitch"
+      ],
+      "agentic_percent": 94.0,
+      "cem_percent": 95.6,
+      "source": "paper_figure_2b",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "successes_across_repeats": 669,
+        "scored_episode_slots": 700,
+        "exact_mean_percent": 95.57142857142857
+      },
+      "agentic_per_task_source": "The fixed figure supplies a category aggregate. Do not treat the earlier L3PG per-task rows as a verified complete paper campaign."
+    },
+    {
+      "category": "Functional",
+      "tasks": 2,
+      "task_names": [
+        "FunctionalDrillApply",
+        "LiftBucket"
+      ],
+      "agentic_percent": 100.0,
+      "cem_percent": 100.0,
+      "source": "paper_figure_2b",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "successes_across_repeats": 200,
+        "scored_episode_slots": 200,
+        "exact_mean_percent": 100.0
+      },
+      "agentic_per_task_source": "The fixed figure supplies a category aggregate. Do not treat the earlier L3PG per-task rows as a verified complete paper campaign."
+    },
+    {
+      "category": "Articulation",
+      "tasks": 10,
+      "task_names": [
+        "GraspBucket",
+        "GraspPot",
+        "LiftBasketHandle",
+        "LiftLid",
+        "OpenDrawer",
+        "OpenGlasses",
+        "OpenHuaweiPhone",
+        "OpenMicrowave",
+        "RotateKnob",
+        "UnscrewCap"
+      ],
+      "agentic_percent": 77.3,
+      "cem_percent": 86.2,
+      "source": "paper_figure_2b",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "successes_across_repeats": 862,
+        "scored_episode_slots": 1000,
+        "exact_mean_percent": 86.2
+      },
+      "agentic_per_task_source": "The fixed figure supplies a category aggregate. Do not treat the earlier L3PG per-task rows as a verified complete paper campaign."
+    },
+    {
+      "category": "Bimanual",
+      "tasks": 2,
+      "task_names": [
+        "BimanualLiftBasket",
+        "BimanualLiftDutchOven"
+      ],
+      "agentic_percent": 93.0,
+      "cem_percent": 96.5,
+      "source": "paper_figure_2b",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "successes_across_repeats": 193,
+        "scored_episode_slots": 200,
+        "exact_mean_percent": 96.5
+      },
+      "agentic_per_task_source": "The fixed figure supplies a category aggregate. Do not treat the earlier L3PG per-task rows as a verified complete paper campaign."
+    },
+    {
+      "category": "Multi-goal",
+      "tasks": 35,
+      "task_names": [
+        "GraspBucketPickUpCan",
+        "GraspBucketPickUpStick",
+        "GraspBucketPourMug",
+        "GraspBucketRelocateSphere",
+        "GraspPotPickUpCan",
+        "GraspPotPickUpStick",
+        "GraspPotPourMug",
+        "GraspPotRelocateSphere",
+        "LiftLidPickUpCan",
+        "LiftLidPickUpStick",
+        "LiftLidPourMug",
+        "LiftLidRelocateSphere",
+        "OpenDrawerPickUpCan",
+        "OpenDrawerPickUpStick",
+        "OpenDrawerPourMug",
+        "OpenDrawerRelocateSphere",
+        "OpenMicrowavePickUpCan",
+        "OpenMicrowavePickUpStick",
+        "OpenMicrowavePourMug",
+        "OpenMicrowaveRelocateSphere",
+        "PourMugPickUpCan",
+        "PourMugPickUpStick",
+        "PourMugRelocateSphere",
+        "PushButtonPickUpCan",
+        "PushButtonPickUpStick",
+        "PushButtonPourMug",
+        "PushButtonRelocateSphere",
+        "RotateKnobPickUpCan",
+        "RotateKnobPickUpStick",
+        "RotateKnobPourMug",
+        "RotateKnobRelocateSphere",
+        "TurnOnSwitchPickUpCan",
+        "TurnOnSwitchPickUpStick",
+        "TurnOnSwitchPourMug",
+        "TurnOnSwitchRelocateSphere"
+      ],
+      "agentic_percent": 99.0,
+      "cem_percent": 98.9,
+      "source": "paper_figure_2b",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "successes_across_repeats": 3462,
+        "scored_episode_slots": 3500,
+        "exact_mean_percent": 98.91428571428571
+      },
+      "agentic_per_task_source": "The fixed figure supplies a category aggregate. Do not treat the earlier L3PG per-task rows as a verified complete paper campaign."
+    },
+    {
+      "category": "Long-horizon",
+      "tasks": 4,
+      "task_names": [
+        "LongHorizon-CookFoods",
+        "LongHorizon-MakeCoffee",
+        "LongHorizon-MicrowaveRetrievePlace",
+        "LongHorizon-OvenBakeSalmon"
+      ],
+      "agentic_percent": 39.8,
+      "cem_percent": 63.2,
+      "source": "paper_figure_2b",
+      "cem_archive_crosscheck": {
+        "source": "archive_A0",
+        "successes_across_repeats": 253,
+        "scored_episode_slots": 400,
+        "exact_mean_percent": 63.25
+      },
+      "agentic_per_task_source": "The fixed figure supplies a category aggregate. Do not treat the earlier L3PG per-task rows as a verified complete paper campaign."
+    }
+  ],
+  "comparison_interpretation": {
+    "best_imitation_definition": "For each task, take the highest success rate among pi0.5, OpenVLA, DP3 and DP; then average those 15 per-task maxima. The 46.0% value is not the mean of one fixed imitation policy.",
+    "imitation_training": "All four methods were trained using the same 950 teleoperation episodes (19 tasks \u00d7 50 episodes per task). Observation interfaces differ by method; see DexVerse Section 4.1 and Appendix B.",
+    "program_synthesis_setting": "The synthesized controllers use state observations and simulator feedback without expert demonstrations.",
+    "comparison_scope": "The comparison covers the same 15 tasks; the training resources and observation interfaces differ.",
+    "imitation_observations_by_method": {
+      "pi0.5": "RGB images and language; proprioceptive-state input disabled.",
+      "OpenVLA": "RGB images, joint positions and language.",
+      "DP": "Normalized proprioceptive state, without visual input.",
+      "DP3": "Point clouds and proprioception, without RGB or language input."
+    },
+    "primary_source_url": "https://arxiv.org/html/2607.08751"
+  },
+  "campaign_mapping": {
+    "cem": "The paper CEM results cross-check exactly against the 75 valid A0 rows from e1_pool10_A0, e2_wave1_A0 and e2_wave2_A0.",
+    "paper_agentic": "The fixed paper calls this Agentic search. Its 13 rows shared with the supplied L3PG archive match exactly. The paper additionally shows BimanualLiftTray at 92% and FunctionalHammerStrike at 100%, and full-category aggregates over all 75 tasks. The supplied archive has no L3PG chains for the six E1 tasks, so a complete campaign mapping is unavailable.",
+    "earlier_L3P": "The earlier 75-task L3+papers archive has 94.32% overall. It is a separate existing result and must not be substituted for paper Agentic search.",
+    "earlier_L3PG": "The earlier 69-task L3PG archive has 91.55072463768116% overall. The original blog omits its three long-horizon tasks, leaving 66 tasks at 94.37878787878788%.",
+    "missing_agentic_archive_task_names": [
+      "BimanualLiftTray",
+      "FunctionalHammerStrike",
+      "GraspBucketPickUpCan",
+      "LongHorizon-MicrowaveRetrievePlace",
+      "OpenDrawer",
+      "RelocateSphere"
+    ],
+    "public_archive_check": {
+      "url": "https://huggingface.co/datasets/b09501048/dexverse-opus-5.5-runs",
+      "checked_utc_date": "2026-10-27",
+      "directories": [
+        "e1_pool10_A0",
+        "e1_pool10_L3P",
+        "e2_L3PG",
+        "e2_wave1_A0",
+        "e2_wave1_L3P",
+        "e2_wave2_A0",
+        "e2_wave2_L3P",
+        "videos"
+      ],
+      "finding": "Public archive lists the same earlier campaigns; no E1 L3PG campaign is listed."
+    }
+  },
+  "existing_blog_66_task_cohort": {
+    "tasks": 66,
+    "definition": "The original blog uses the 69-task L3PG E2 cohort excluding its three long-horizon tasks. It is not the paper remainder of 60 tasks.",
+    "source": "existing_blog_search_results",
+    "model_driven_campaign": "L3PG",
+    "cem_campaign": "A0",
+    "model_driven_exact_mean_percent": 94.37878787878788,
+    "cem_exact_mean_percent": 96.03030303030303,
+    "model_driven_100_percent_tasks": 49,
+    "cem_100_percent_tasks": 48,
+    "task_names": [
+      "BimanualLiftBasket",
+      "BimanualLiftCarton",
+      "BimanualLiftDutchOven",
+      "FunctionalDrillApply",
+      "FunctionalPourCan",
+      "FunctionalPourMug",
+      "GraspBleach",
+      "GraspBucket",
+      "GraspBucketPickUpStick",
+      "GraspBucketPourMug",
+      "GraspBucketRelocateSphere",
+      "GraspCup",
+      "GraspKettle",
+      "GraspPan",
+      "GraspPot",
+      "GraspPotPickUpCan",
+      "GraspPotPickUpStick",
+      "GraspPotPourMug",
+      "GraspPotRelocateSphere",
+      "LiftBasketHandle",
+      "LiftBucket",
+      "LiftLid",
+      "LiftLidPickUpCan",
+      "LiftLidPickUpStick",
+      "LiftLidPourMug",
+      "LiftLidRelocateSphere",
+      "OpenDrawerPickUpCan",
+      "OpenDrawerPickUpStick",
+      "OpenDrawerPourMug",
+      "OpenDrawerRelocateSphere",
+      "OpenFaucet",
+      "OpenFlatFolder",
+      "OpenGlasses",
+      "OpenHuaweiPhone",
+      "OpenLaptop",
+      "OpenMicrowave",
+      "OpenMicrowavePickUpCan",
+      "OpenMicrowavePickUpStick",
+      "OpenMicrowavePourMug",
+      "OpenMicrowaveRelocateSphere",
+      "PickCube",
+      "PickUpStick",
+      "PourMugPickUpCan",
+      "PourMugPickUpStick",
+      "PourMugRelocateSphere",
+      "PushButton",
+      "PushButtonPickUpCan",
+      "PushButtonPickUpStick",
+      "PushButtonPourMug",
+      "PushButtonRelocateSphere",
+      "RelocateObject",
+      "RemoveCupFromRack",
+      "RotateKnob",
+      "RotateKnobPickUpCan",
+      "RotateKnobPickUpStick",
+      "RotateKnobPourMug",
+      "RotateKnobRelocateSphere",
+      "SlideUtilityKnife",
+      "SqueezeScissors",
+      "StackCube",
+      "TurnOnSwitch",
+      "TurnOnSwitchPickUpCan",
+      "TurnOnSwitchPickUpStick",
+      "TurnOnSwitchPourMug",
+      "TurnOnSwitchRelocateSphere",
+      "UnscrewCap"
+    ],
+    "model_driven_accepted_tasks": 64,
+    "model_driven_accepted_only_mean_percent": 97.328125,
+    "model_driven_unaccepted_task_names": [
+      "OpenHuaweiPhone",
+      "OpenGlasses"
+    ],
+    "old_hero_note": "The previous 97.3% hero value can be reproduced as the mean over 64 accepted L3PG policies in the 66-task cohort. Its previous label, 70 tasks across 5 domains, is not supported by this denominator; do not reuse that label."
+  },
+  "archive_results_by_task": [
+    {
+      "task": "OpenFaucet",
+      "environment_id": "Dexverse-OpenFaucet-v0",
+      "category": "Primitive",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "OpenFaucet_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 41,
+        "policy_design_resets": 7
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "OpenFaucet_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 120,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenFaucet_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 59,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "PickCube",
+      "environment_id": "Dexverse-PickCube-v0",
+      "category": "Primitive",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "PickCube_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "PickCube_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PickCube_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 50,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "PickUpStick",
+      "environment_id": "Dexverse-PickUpStick-v0",
+      "category": "Primitive",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "PickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 4
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "PickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 19,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 7
+      }
+    },
+    {
+      "task": "PushButton",
+      "environment_id": "Dexverse-PushButton-v0",
+      "category": "Primitive",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "PushButton_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "PushButton_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 61,
+        "policy_design_resets": 3
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PushButton_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 76,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "RelocateObject",
+      "environment_id": "Dexverse-RelocateObject-v0",
+      "category": "Primitive",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "RelocateObject_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          34,
+          35
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 69.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 28
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "RelocateObject_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          31,
+          29
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 60.0,
+        "search_rollouts": 314,
+        "policy_design_resets": 2
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "RelocateObject_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          29,
+          29
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 57.99999999999999,
+        "search_rollouts": 580,
+        "policy_design_resets": 2
+      }
+    },
+    {
+      "task": "RelocateSphere",
+      "environment_id": "Dexverse-RelocateSphere-v0",
+      "category": "Primitive",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e1_pool10_A0",
+        "key": "RelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e1_pool10_L3P",
+        "key": "RelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 105,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": null
+    },
+    {
+      "task": "StackCube",
+      "environment_id": "Dexverse-StackCube-v0",
+      "category": "Primitive",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "StackCube_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "StackCube_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 52,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "StackCube_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 22,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "TurnOnSwitch",
+      "environment_id": "Dexverse-TurnOnSwitch-v0",
+      "category": "Primitive",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "TurnOnSwitch_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 0
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "TurnOnSwitch_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "TurnOnSwitch_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 52,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "FunctionalDrillApply",
+      "environment_id": "Dexverse-FunctionalDrillApply-v0",
+      "category": "Functional",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "FunctionalDrillApply_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 12
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "FunctionalDrillApply_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 123,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "FunctionalDrillApply_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 90,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "FunctionalHammerStrike",
+      "environment_id": "Dexverse-FunctionalHammerStrike-v0",
+      "category": "Functional",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e1_pool10_A0",
+        "key": "FunctionalHammerStrike_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 6
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e1_pool10_L3P",
+        "key": "FunctionalHammerStrike_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 213,
+        "policy_design_resets": 6
+      },
+      "earlier_grasp_aware_L3PG": null
+    },
+    {
+      "task": "FunctionalPourCan",
+      "environment_id": "Dexverse-FunctionalPourCan-v0",
+      "category": "Functional",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "FunctionalPourCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 25,
+        "policy_design_resets": 18
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "FunctionalPourCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 108,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "FunctionalPourCan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          35,
+          34
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 69.0,
+        "search_rollouts": 19,
+        "policy_design_resets": 2
+      }
+    },
+    {
+      "task": "FunctionalPourMug",
+      "environment_id": "Dexverse-FunctionalPourMug-v0",
+      "category": "Functional",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "FunctionalPourMug_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 9
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "FunctionalPourMug_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 120,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "FunctionalPourMug_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 176,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "GraspBleach",
+      "environment_id": "Dexverse-GraspBleach-v0",
+      "category": "Functional",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspBleach_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 723,
+        "policy_design_resets": 62
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspBleach_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 199,
+        "policy_design_resets": 6
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspBleach_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          48
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 368,
+        "policy_design_resets": 16
+      }
+    },
+    {
+      "task": "GraspCup",
+      "environment_id": "Dexverse-GraspCup-v0",
+      "category": "Functional",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspCup_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 4
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspCup_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 81,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspCup_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 50,
+        "policy_design_resets": 7
+      }
+    },
+    {
+      "task": "GraspKettle",
+      "environment_id": "Dexverse-GraspKettle-v0",
+      "category": "Functional",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspKettle_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspKettle_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 7,
+        "policy_design_resets": 5
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspKettle_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 40,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "GraspPan",
+      "environment_id": "Dexverse-GraspPan-v0",
+      "category": "Functional",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspPan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 5
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspPan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          48,
+          45
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 93.0,
+        "search_rollouts": 53,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspPan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 80,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "LiftBucket",
+      "environment_id": "Dexverse-LiftBucket-v0",
+      "category": "Functional",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "LiftBucket_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 9
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "LiftBucket_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 31,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LiftBucket_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 88,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "RemoveCupFromRack",
+      "environment_id": "Dexverse-RemoveCupFromRack-v0",
+      "category": "Functional",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "RemoveCupFromRack_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          46,
+          41
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 87.0,
+        "search_rollouts": 91,
+        "policy_design_resets": 25
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "RemoveCupFromRack_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 287,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "RemoveCupFromRack_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 61,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "GraspBucket",
+      "environment_id": "Dexverse-GraspBucket-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspBucket_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 1
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspBucket_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 54,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspBucket_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 86,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "GraspPot",
+      "environment_id": "Dexverse-GraspPot-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspPot_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspPot_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 297,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspPot_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 95,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "LiftBasketHandle",
+      "environment_id": "Dexverse-LiftBasketHandle-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "LiftBasketHandle_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          45,
+          43
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 88.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 14
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "LiftBasketHandle_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          41,
+          39
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 80.0,
+        "search_rollouts": 405,
+        "policy_design_resets": 3
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LiftBasketHandle_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          47,
+          48
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 95.0,
+        "search_rollouts": 860,
+        "policy_design_resets": 13
+      }
+    },
+    {
+      "task": "LiftLid",
+      "environment_id": "Dexverse-LiftLid-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "LiftLid_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 7
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "LiftLid_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 68,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LiftLid_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 168,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "OpenDrawer",
+      "environment_id": "Dexverse-OpenDrawer-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e1_pool10_A0",
+        "key": "OpenDrawer_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e1_pool10_L3P",
+        "key": "OpenDrawer_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 77,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": null
+    },
+    {
+      "task": "OpenFlatFolder",
+      "environment_id": "Dexverse-OpenFlatFolder-v0",
+      "category": "Articulation",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "OpenFlatFolder_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 99.0,
+        "search_rollouts": 403,
+        "policy_design_resets": 71
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "OpenFlatFolder_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 28,
+        "policy_design_resets": 12
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenFlatFolder_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          46,
+          42
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 88.0,
+        "search_rollouts": 1055,
+        "policy_design_resets": 22
+      }
+    },
+    {
+      "task": "OpenGlasses",
+      "environment_id": "Dexverse-OpenGlasses-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "OpenGlasses_A0",
+        "status": "not_accepted",
+        "heldout_successes_per_repeat": null,
+        "heldout_episodes_per_repeat": null,
+        "heldout_percent": 0.0,
+        "search_rollouts": 280,
+        "policy_design_resets": 74
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "OpenGlasses_L3P",
+        "status": "not_accepted",
+        "heldout_successes_per_repeat": null,
+        "heldout_episodes_per_repeat": null,
+        "heldout_percent": 0.0,
+        "search_rollouts": 1716,
+        "policy_design_resets": 16
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenGlasses_L3PG",
+        "status": "not_accepted",
+        "heldout_successes_per_repeat": null,
+        "heldout_episodes_per_repeat": null,
+        "heldout_percent": 0.0,
+        "search_rollouts": 130,
+        "policy_design_resets": 17
+      }
+    },
+    {
+      "task": "OpenHuaweiPhone",
+      "environment_id": "Dexverse-OpenHuaweiPhone-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "OpenHuaweiPhone_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          36,
+          38
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 74.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 24
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "OpenHuaweiPhone_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          33,
+          30
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 63.0,
+        "search_rollouts": 963,
+        "policy_design_resets": 10
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenHuaweiPhone_L3PG",
+        "status": "not_accepted",
+        "heldout_successes_per_repeat": null,
+        "heldout_episodes_per_repeat": null,
+        "heldout_percent": 0.0,
+        "search_rollouts": 594,
+        "policy_design_resets": 12
+      }
+    },
+    {
+      "task": "OpenLaptop",
+      "environment_id": "Dexverse-OpenLaptop-v0",
+      "category": "Articulation",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "OpenLaptop_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 76,
+        "policy_design_resets": 26
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "OpenLaptop_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 99.0,
+        "search_rollouts": 214,
+        "policy_design_resets": 3
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenLaptop_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 139,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "OpenMicrowave",
+      "environment_id": "Dexverse-OpenMicrowave-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "OpenMicrowave_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 6
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "OpenMicrowave_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 54,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenMicrowave_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 102,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "RotateKnob",
+      "environment_id": "Dexverse-RotateKnob-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "RotateKnob_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 1
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "RotateKnob_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 140,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "RotateKnob_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      }
+    },
+    {
+      "task": "SlideUtilityKnife",
+      "environment_id": "Dexverse-SlideUtilityKnife-v0",
+      "category": "Articulation",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "SlideUtilityKnife_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 54,
+        "policy_design_resets": 19
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "SlideUtilityKnife_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          47,
+          48
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 95.0,
+        "search_rollouts": 112,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "SlideUtilityKnife_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          46,
+          47
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 93.0,
+        "search_rollouts": 92,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "SqueezeScissors",
+      "environment_id": "Dexverse-SqueezeScissors-v0",
+      "category": "Articulation",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "SqueezeScissors_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          34,
+          34
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 68.0,
+        "search_rollouts": 1689,
+        "policy_design_resets": 67
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "SqueezeScissors_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          46,
+          43
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 89.0,
+        "search_rollouts": 1532,
+        "policy_design_resets": 16
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "SqueezeScissors_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 99.0,
+        "search_rollouts": 962,
+        "policy_design_resets": 4
+      }
+    },
+    {
+      "task": "UnscrewCap",
+      "environment_id": "Dexverse-UnscrewCap-v0",
+      "category": "Articulation",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "UnscrewCap_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 8
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "UnscrewCap_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 256,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "UnscrewCap_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          40,
+          38
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 78.0,
+        "search_rollouts": 1144,
+        "policy_design_resets": 10
+      }
+    },
+    {
+      "task": "BimanualLiftBasket",
+      "environment_id": "Dexverse-BimanualLiftBasket-v0",
+      "category": "Bimanual",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "BimanualLiftBasket_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 6
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "BimanualLiftBasket_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 123,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "BimanualLiftBasket_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          43,
+          44
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 87.0,
+        "search_rollouts": 223,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "BimanualLiftCarton",
+      "environment_id": "Dexverse-BimanualLiftCarton-v0",
+      "category": "Bimanual",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "BimanualLiftCarton_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "BimanualLiftCarton_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 49,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "BimanualLiftCarton_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 84,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "BimanualLiftDutchOven",
+      "environment_id": "Dexverse-BimanualLiftDutchOven-v0",
+      "category": "Bimanual",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "BimanualLiftDutchOven_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          48,
+          47
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 95.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 14
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "BimanualLiftDutchOven_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          46,
+          47
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 93.0,
+        "search_rollouts": 91,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "BimanualLiftDutchOven_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 99.0,
+        "search_rollouts": 97,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "BimanualLiftTray",
+      "environment_id": "Dexverse-BimanualLiftTray-v0",
+      "category": "Bimanual",
+      "paper_cohort": "imitation_comparison_15",
+      "cem_A0": {
+        "campaign": "e1_pool10_A0",
+        "key": "BimanualLiftTray_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 8
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e1_pool10_L3P",
+        "key": "BimanualLiftTray_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 99.0,
+        "search_rollouts": 69,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": null
+    },
+    {
+      "task": "GraspBucketPickUpCan",
+      "environment_id": "Dexverse-GraspBucketPickUpCan-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e1_pool10_A0",
+        "key": "GraspBucketPickUpCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e1_pool10_L3P",
+        "key": "GraspBucketPickUpCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 172,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": null
+    },
+    {
+      "task": "GraspBucketPickUpStick",
+      "environment_id": "Dexverse-GraspBucketPickUpStick-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspBucketPickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspBucketPickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 76,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspBucketPickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 119,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "GraspBucketPourMug",
+      "environment_id": "Dexverse-GraspBucketPourMug-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspBucketPourMug_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 49,
+        "policy_design_resets": 4
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspBucketPourMug_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 129,
+        "policy_design_resets": 3
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspBucketPourMug_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 121,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "GraspBucketRelocateSphere",
+      "environment_id": "Dexverse-GraspBucketRelocateSphere-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspBucketRelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 5
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspBucketRelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 71,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspBucketRelocateSphere_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "GraspPotPickUpCan",
+      "environment_id": "Dexverse-GraspPotPickUpCan-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspPotPickUpCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 5
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspPotPickUpCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 85,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspPotPickUpCan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 6
+      }
+    },
+    {
+      "task": "GraspPotPickUpStick",
+      "environment_id": "Dexverse-GraspPotPickUpStick-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspPotPickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspPotPickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 193,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspPotPickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 72,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "GraspPotPourMug",
+      "environment_id": "Dexverse-GraspPotPourMug-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspPotPourMug_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspPotPourMug_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 1,
+        "policy_design_resets": 8
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspPotPourMug_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 82,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "GraspPotRelocateSphere",
+      "environment_id": "Dexverse-GraspPotRelocateSphere-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "GraspPotRelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 25,
+        "policy_design_resets": 7
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "GraspPotRelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 133,
+        "policy_design_resets": 3
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "GraspPotRelocateSphere_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 120,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "LiftLidPickUpCan",
+      "environment_id": "Dexverse-LiftLidPickUpCan-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "LiftLidPickUpCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 11
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "LiftLidPickUpCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 172,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LiftLidPickUpCan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 117,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "LiftLidPickUpStick",
+      "environment_id": "Dexverse-LiftLidPickUpStick-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "LiftLidPickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 19
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "LiftLidPickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 83,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LiftLidPickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 127,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "LiftLidPourMug",
+      "environment_id": "Dexverse-LiftLidPourMug-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "LiftLidPourMug_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 7
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "LiftLidPourMug_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 32,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LiftLidPourMug_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 107,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "LiftLidRelocateSphere",
+      "environment_id": "Dexverse-LiftLidRelocateSphere-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "LiftLidRelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "LiftLidRelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 68,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LiftLidRelocateSphere_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 74,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "OpenDrawerPickUpCan",
+      "environment_id": "Dexverse-OpenDrawerPickUpCan-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "OpenDrawerPickUpCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "OpenDrawerPickUpCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 12,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenDrawerPickUpCan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 130,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "OpenDrawerPickUpStick",
+      "environment_id": "Dexverse-OpenDrawerPickUpStick-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "OpenDrawerPickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "OpenDrawerPickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 134,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenDrawerPickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 6
+      }
+    },
+    {
+      "task": "OpenDrawerPourMug",
+      "environment_id": "Dexverse-OpenDrawerPourMug-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "OpenDrawerPourMug_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 4
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "OpenDrawerPourMug_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 65,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenDrawerPourMug_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 107,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "OpenDrawerRelocateSphere",
+      "environment_id": "Dexverse-OpenDrawerRelocateSphere-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "OpenDrawerRelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "OpenDrawerRelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 28,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenDrawerRelocateSphere_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 50,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "OpenMicrowavePickUpCan",
+      "environment_id": "Dexverse-OpenMicrowavePickUpCan-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "OpenMicrowavePickUpCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 170,
+        "policy_design_resets": 10
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "OpenMicrowavePickUpCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          45,
+          48
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 93.0,
+        "search_rollouts": 107,
+        "policy_design_resets": 2
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenMicrowavePickUpCan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 99.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 5
+      }
+    },
+    {
+      "task": "OpenMicrowavePickUpStick",
+      "environment_id": "Dexverse-OpenMicrowavePickUpStick-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "OpenMicrowavePickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 4
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "OpenMicrowavePickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 44,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenMicrowavePickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 61,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "OpenMicrowavePourMug",
+      "environment_id": "Dexverse-OpenMicrowavePourMug-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "OpenMicrowavePourMug_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "OpenMicrowavePourMug_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 79,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenMicrowavePourMug_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 79,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "OpenMicrowaveRelocateSphere",
+      "environment_id": "Dexverse-OpenMicrowaveRelocateSphere-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "OpenMicrowaveRelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          47,
+          48
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 95.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 10
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "OpenMicrowaveRelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          48,
+          48
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 96.0,
+        "search_rollouts": 115,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "OpenMicrowaveRelocateSphere_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 99.0,
+        "search_rollouts": 32,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "PourMugPickUpCan",
+      "environment_id": "Dexverse-PourMugPickUpCan-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "PourMugPickUpCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          47,
+          48
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 95.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 7
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "PourMugPickUpCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          46,
+          46
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 92.0,
+        "search_rollouts": 506,
+        "policy_design_resets": 13
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PourMugPickUpCan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          45,
+          46
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 91.0,
+        "search_rollouts": 182,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "PourMugPickUpStick",
+      "environment_id": "Dexverse-PourMugPickUpStick-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "PourMugPickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          44,
+          45
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 89.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 12
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "PourMugPickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          44,
+          43
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 87.0,
+        "search_rollouts": 168,
+        "policy_design_resets": 5
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PourMugPickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          39,
+          39
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 78.0,
+        "search_rollouts": 117,
+        "policy_design_resets": 5
+      }
+    },
+    {
+      "task": "PourMugRelocateSphere",
+      "environment_id": "Dexverse-PourMugRelocateSphere-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "PourMugRelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 13
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "PourMugRelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 99.0,
+        "search_rollouts": 77,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PourMugRelocateSphere_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          48,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 66,
+        "policy_design_resets": 6
+      }
+    },
+    {
+      "task": "PushButtonPickUpCan",
+      "environment_id": "Dexverse-PushButtonPickUpCan-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "PushButtonPickUpCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 1
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "PushButtonPickUpCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 55,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PushButtonPickUpCan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 32,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "PushButtonPickUpStick",
+      "environment_id": "Dexverse-PushButtonPickUpStick-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "PushButtonPickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "PushButtonPickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 55,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PushButtonPickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 61,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "PushButtonPourMug",
+      "environment_id": "Dexverse-PushButtonPourMug-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "PushButtonPourMug_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "PushButtonPourMug_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 181,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PushButtonPourMug_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 63,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "PushButtonRelocateSphere",
+      "environment_id": "Dexverse-PushButtonRelocateSphere-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "PushButtonRelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 0
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "PushButtonRelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 71,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "PushButtonRelocateSphere_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 89,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "RotateKnobPickUpCan",
+      "environment_id": "Dexverse-RotateKnobPickUpCan-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "RotateKnobPickUpCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 11
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "RotateKnobPickUpCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 121,
+        "policy_design_resets": 3
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "RotateKnobPickUpCan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 43,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "RotateKnobPickUpStick",
+      "environment_id": "Dexverse-RotateKnobPickUpStick-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "RotateKnobPickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 1
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "RotateKnobPickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 63,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "RotateKnobPickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 76,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "RotateKnobPourMug",
+      "environment_id": "Dexverse-RotateKnobPourMug-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "RotateKnobPourMug_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          48
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 97.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 10
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "RotateKnobPourMug_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 93,
+        "policy_design_resets": 2
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "RotateKnobPourMug_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 52,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "RotateKnobRelocateSphere",
+      "environment_id": "Dexverse-RotateKnobRelocateSphere-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "RotateKnobRelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "RotateKnobRelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          48
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 97.0,
+        "search_rollouts": 22,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "RotateKnobRelocateSphere_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 114,
+        "policy_design_resets": 1
+      }
+    },
+    {
+      "task": "TurnOnSwitchPickUpCan",
+      "environment_id": "Dexverse-TurnOnSwitchPickUpCan-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "TurnOnSwitchPickUpCan_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 4
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "TurnOnSwitchPickUpCan_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 50,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "TurnOnSwitchPickUpCan_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      }
+    },
+    {
+      "task": "TurnOnSwitchPickUpStick",
+      "environment_id": "Dexverse-TurnOnSwitchPickUpStick-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "TurnOnSwitchPickUpStick_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 2
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "TurnOnSwitchPickUpStick_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 80,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "TurnOnSwitchPickUpStick_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 49,
+        "policy_design_resets": 4
+      }
+    },
+    {
+      "task": "TurnOnSwitchPourMug",
+      "environment_id": "Dexverse-TurnOnSwitchPourMug-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "TurnOnSwitchPourMug_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 9
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "TurnOnSwitchPourMug_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 103,
+        "policy_design_resets": 1
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "TurnOnSwitchPourMug_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 41,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "TurnOnSwitchRelocateSphere",
+      "environment_id": "Dexverse-TurnOnSwitchRelocateSphere-v0",
+      "category": "Multi-goal",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave2_A0",
+        "key": "TurnOnSwitchRelocateSphere_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          46,
+          46
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 92.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 3
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave2_L3P",
+        "key": "TurnOnSwitchRelocateSphere_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          49,
+          49
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 98.0,
+        "search_rollouts": 99,
+        "policy_design_resets": 0
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "TurnOnSwitchRelocateSphere_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          50,
+          50
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 100.0,
+        "search_rollouts": 39,
+        "policy_design_resets": 0
+      }
+    },
+    {
+      "task": "LongHorizon-CookFoods",
+      "environment_id": "Dexverse-LongHorizon-CookFoods-v0",
+      "category": "Long-horizon",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "LongHorizon-CookFoods_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          37,
+          47
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 84.0,
+        "search_rollouts": 906,
+        "policy_design_resets": 98
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "LongHorizon-CookFoods_L3P",
+        "status": "not_accepted",
+        "heldout_successes_per_repeat": null,
+        "heldout_episodes_per_repeat": null,
+        "heldout_percent": 0.0,
+        "search_rollouts": 1994,
+        "policy_design_resets": 44
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LongHorizon-CookFoods_L3PG",
+        "status": "not_accepted",
+        "heldout_successes_per_repeat": null,
+        "heldout_episodes_per_repeat": null,
+        "heldout_percent": 0.0,
+        "search_rollouts": 908,
+        "policy_design_resets": 52
+      }
+    },
+    {
+      "task": "LongHorizon-MakeCoffee",
+      "environment_id": "Dexverse-LongHorizon-MakeCoffee-v0",
+      "category": "Long-horizon",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "LongHorizon-MakeCoffee_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          44,
+          46
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 90.0,
+        "search_rollouts": 1214,
+        "policy_design_resets": 27
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "LongHorizon-MakeCoffee_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          47,
+          46
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 93.0,
+        "search_rollouts": 936,
+        "policy_design_resets": 10
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LongHorizon-MakeCoffee_L3PG",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          44,
+          44
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 88.0,
+        "search_rollouts": 78,
+        "policy_design_resets": 36
+      }
+    },
+    {
+      "task": "LongHorizon-MicrowaveRetrievePlace",
+      "environment_id": "Dexverse-LongHorizon-MicrowaveRetrievePlace-v0",
+      "category": "Long-horizon",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e1_pool10_A0",
+        "key": "LongHorizon-MicrowaveRetrievePlace_A0",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          40,
+          39
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 79.0,
+        "search_rollouts": 0,
+        "policy_design_resets": 83
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e1_pool10_L3P",
+        "key": "LongHorizon-MicrowaveRetrievePlace_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          39,
+          41
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 80.0,
+        "search_rollouts": 1973,
+        "policy_design_resets": 43
+      },
+      "earlier_grasp_aware_L3PG": null
+    },
+    {
+      "task": "LongHorizon-OvenBakeSalmon",
+      "environment_id": "Dexverse-LongHorizon-OvenBakeSalmon-v0",
+      "category": "Long-horizon",
+      "paper_cohort": "remaining_60",
+      "cem_A0": {
+        "campaign": "e2_wave1_A0",
+        "key": "LongHorizon-OvenBakeSalmon_A0",
+        "status": "not_accepted",
+        "heldout_successes_per_repeat": null,
+        "heldout_episodes_per_repeat": null,
+        "heldout_percent": 0.0,
+        "search_rollouts": 136,
+        "policy_design_resets": 104
+      },
+      "earlier_agentic_L3P": {
+        "campaign": "e2_wave1_L3P",
+        "key": "LongHorizon-OvenBakeSalmon_L3P",
+        "status": "accepted",
+        "heldout_successes_per_repeat": [
+          32,
+          38
+        ],
+        "heldout_episodes_per_repeat": 50,
+        "heldout_percent": 70.0,
+        "search_rollouts": 633,
+        "policy_design_resets": 68
+      },
+      "earlier_grasp_aware_L3PG": {
+        "campaign": "e2_L3PG",
+        "key": "LongHorizon-OvenBakeSalmon_L3PG",
+        "status": "not_accepted",
+        "heldout_successes_per_repeat": null,
+        "heldout_episodes_per_repeat": null,
+        "heldout_percent": 0.0,
+        "search_rollouts": 827,
+        "policy_design_resets": 17
+      }
+    }
+  ],
+  "provenance": {
+    "paper_text": {
+      "repository": "ExtendedAbstract",
+      "path": "main.tex",
+      "sha256": "44fc333ba68ec18decdd02444389eae0db7d96a578793117522575e282bf1012"
+    },
+    "paper_figure_2": {
+      "repository": "ExtendedAbstract",
+      "path": "figs/heldout_pair.png",
+      "sha256": "7f6c59470456e90bce6b186813a8ebbc06f4cb5ab3858f7bc631e17fa8e00e24"
+    },
+    "archive_A0": {
+      "repository": "dexverse-llm-policy-search",
+      "path": "results/opus-5.5/summary/A0.json",
+      "sha256": "3244bd16cd2b2bd9d34aa6e49fdc556b62faa1fe9fc7a16c1b6d23efcfb74e1a"
+    },
+    "archive_L3P": {
+      "repository": "dexverse-llm-policy-search",
+      "path": "results/opus-5.5/summary/L3P.json",
+      "sha256": "288b744d2f773b50c54f513c21edf1a049b4a06c6d8d7f2525305c4eee7a4858"
+    },
+    "archive_L3PG": {
+      "repository": "dexverse-llm-policy-search",
+      "path": "results/opus-5.5/summary/L3PG.json",
+      "sha256": "e7a6c6d270000682f3e2065deb7cda34ce1bb40e56e89c57503e2928ef0ee469"
+    },
+    "imitation_baseline_transcription": {
+      "repository": "dexverse-llm-policy-search",
+      "path": "scripts/compare_dexverse_table3.py",
+      "sha256": "931835c6692de81cddf23bbbf6b310667e321c7abf0ed5a6ef07237501f44710"
+    },
+    "archive_protocol": {
+      "repository": "dexverse-llm-policy-search",
+      "path": "docs/method.md",
+      "sha256": "64ab68b6c0224012f71fd203b857d2b8e910c0c4ac8ab2dd1ff7583d51a1151f"
+    },
+    "archive_e1_tasks": {
+      "repository": "dexverse-llm-policy-search",
+      "path": "configs/tasks/e1.txt",
+      "sha256": "1adf6e937f17a02990eb846e060c4ea1b5efb748d5ebdf5b3d6f719263e01792"
+    },
+    "archive_e2_tasks": {
+      "repository": "dexverse-llm-policy-search",
+      "path": "configs/tasks/e2.txt",
+      "sha256": "5ce293b80f503b19d6507126c9f377790bdc6e4a6ec78b3c47985ad743db1b71"
+    },
+    "existing_blog_search_results": {
+      "repository": "Code-as-Primitives",
+      "path": "assets/data/search-results-by-task.json",
+      "sha256": "260be16cc385ec6795eb5287a77210e0b7d3333e3134bcc41c6c8fb826fe736b"
+    },
+    "paper_figure_2a": {
+      "parent": "paper_figure_2",
+      "panel": "a",
+      "transcription": "Values were read from the fixed paper figure; all CEM values and 13 of the 15 Agentic values cross-check against the supplied archives."
+    },
+    "paper_figure_2b": {
+      "parent": "paper_figure_2",
+      "panel": "b",
+      "transcription": "Category values were read from the fixed paper figure; CEM aggregates cross-check against the supplied A0 archive. Agentic category values remain paper-reported, not reconstructed campaign summaries."
+    },
+    "imitation_baseline_primary_source": {
+      "title": "DexVerse: A Modular Benchmark for Multi-Task, Multi-Embodiment Dexterous Manipulation",
+      "url": "https://arxiv.org/html/2607.08751",
+      "version": "arXiv:2607.08751v1",
+      "verified_utc_date": "2026-10-27",
+      "sections": {
+        "Table 3": "Per-task success rates for pi0.5, OpenVLA, DP3 and DP.",
+        "Section 4.1": "All four methods use the same 950 training episodes, comprising 19 tasks with 50 teleoperation episodes each.",
+        "Appendix B": "Method-specific observation interfaces; the local comparison script simplifies these interfaces too broadly."
+      }
+    }
+  },
+  "preservation_note": "This is an added data file. Earlier blog data, task gallery, videos, costs and Adroit results remain separate and unchanged."
+}

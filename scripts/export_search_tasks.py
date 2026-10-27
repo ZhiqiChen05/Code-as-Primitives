@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Export per-task results for Figures 1 and 4-6 to assets/data/search-results-by-task.json.
+"""Export per-task results for Figures 7-9 to assets/data/search-results-by-task.json.
 
-The page calls the two campaigns model-driven search (campaign L3PG) and CEM search (campaign A0).
+The page calls the two campaigns Agentic search (campaign L3PG) and CEM search (campaign A0).
 
 Reads the same campaign reports as DexVerse/docs/figs/l3pg_dexverse_adroit/make_baseline_figures.py
 (heldout_success_main.png, total_rollouts_main.png) and copies the L3PG held-out success videos
@@ -104,7 +104,7 @@ def main():
         "model": "claude-opus-5-5",
         "source": "DexVerse campaign report.json files, read by scripts/export_search_tasks.py; videos are the "
                   "recorded held-out success renders, copied unchanged",
-        "arms": {"model_driven": "Model-driven search", "cem": "CEM search", "baseline": "Baseline (policy search), not yet run"},
+        "arms": {"model_driven": "Agentic search", "cem": "CEM search", "baseline": "Baseline (policy search), not yet run"},
         "heldout_metric": "Adroit: frozen policy on 30 unseen starts, one run. DexVerse: 50 unseen starts, mean of two "
                           "repeats. Unaccepted tasks count as 0%.",
         "rollouts_metric": "Total rollouts = parameter-search rollouts + policy-design resets.",

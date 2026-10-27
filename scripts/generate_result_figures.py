@@ -142,12 +142,12 @@ def comparison_chart(data):
 
 
 def search_vs_baseline_chart(data, rollouts=False, title=None):
-    """Figures 1, 4 and 5: model-driven search, CEM search and the pending baseline per Adroit task and DexVerse category."""
+    """Figures 7 and 8, plus the archived opening comparison: Agentic search, CEM search and the pending baseline per Adroit task and DexVerse category."""
     title = title or ("Total rollouts to an accepted policy" if rollouts else "Held-out success of the frozen policy")
     subtitle = ("Parameter-search rollouts + policy-design resets · DexVerse: mean per task" if rollouts
                 else "Unseen starts · DexVerse: mean per task, unaccepted tasks count as zero")
     reset_color = "#8db3a3"
-    arms = [("model_driven", "Model-driven search", "forest"), ("cem", "CEM search", "orange"),
+    arms = [("model_driven", "Agentic search", "forest"), ("cem", "CEM search", "orange"),
             ("baseline", "Baseline (policy search)", "muted")]
     p = [
         text(50, 44, "ADROIT + DEXVERSE  /  CLAUDE OPUS 5.5", 16, "forest", letter_spacing=2),
@@ -156,7 +156,7 @@ def search_vs_baseline_chart(data, rollouts=False, title=None):
     ]
     legend = [(label, color) for _, label, color in arms]
     if rollouts:
-        legend.insert(1, ("Model-driven resets", reset_color))
+        legend.insert(1, ("Agentic resets", reset_color))
     lx = 50
     for label, color in legend:
         p += [f'<rect x="{lx}" y="158" width="16" height="16" fill="{PALETTE.get(color, color)}"/>', text(lx + 24, 172, label, 17)]
@@ -210,7 +210,7 @@ def search_vs_baseline_chart(data, rollouts=False, title=None):
         text(50, foot + 62, "One training chain per task and arm. Adroit Pen and DexVerse Long-horizon are in Section 4. Baseline pending.", 17, "muted"),
     ])
     key = "total_rollouts" if rollouts else "heldout_percent"
-    values = "; ".join(f'{g.get("task", g["group"]) if g["group"] == "Adroit" else g["group"]}: model-driven search {g["model_driven"][key]}, CEM search {g["cem"][key]}, baseline TBD'
+    values = "; ".join(f'{g.get("task", g["group"]) if g["group"] == "Adroit" else g["group"]}: Agentic search {g["model_driven"][key]}, CEM search {g["cem"][key]}, baseline TBD'
                        for g in data["summary"])
     return svg(foot + 92, title, f"{subtitle}. {values}.", p)
 

@@ -58,7 +58,7 @@ def overview():
         rect(50, 130, 250, 132),
         rect(425, 130, 250, 132, "wash", "forest"),
         rect(800, 130, 250, 132),
-        text(175, 177, "Foundation model", 25, anchor="middle", serif=True),
+        text(175, 177, "Frontier model", 25, anchor="middle", serif=True),
         text(175, 211, "Reason about the task", 18, "muted", "middle"),
         text(175, 238, "Design and revise code", 18, "muted", "middle"),
         text(550, 177, "Python policy", 25, "forest", "middle", True),

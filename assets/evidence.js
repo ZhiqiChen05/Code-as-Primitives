@@ -7,7 +7,7 @@
   const statEl = gallery.querySelector('.gallery-stat');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const GROUPS = ['Adroit', 'Primitive', 'Functional', 'Articulation', 'Bimanual', 'Multi-goal'];
-  const ARMS = [['model_driven', 'Model-driven', 'var(--green)'], ['cem', 'CEM', 'var(--rust)'], ['baseline', 'Base', 'var(--muted)']];
+  const ARMS = [['model_driven', 'Agentic', 'var(--green)'], ['cem', 'CEM', 'var(--rust)'], ['baseline', 'Base', 'var(--muted)']];
   const RESETS = '#8db3a3';
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   const num = v => (Number.isInteger(v) ? v.toLocaleString('en-US') : v.toFixed(1));
@@ -50,10 +50,10 @@
     const failed = t.video_outcome === 'failure';
     // The renders carry a burned-in caption band (task, campaign, seed); the crop classes frame it out.
     const media = t.video
-      ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: model-driven search held-out ${failed ? 'failure, the policy times out' : 'success'} replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
-      : `<div class="gc-empty">${t.model_driven.accepted ? 'No replay recorded' : 'No accepted model-driven policy'}</div>`;
-    const summary = `${label}. Held-out success: model-driven search ${t.model_driven.heldout_percent}%, CEM search ${t.cem.heldout_percent}%, baseline TBD. ` +
-      `Total rollouts: model-driven search ${t.model_driven.total_rollouts}, CEM search ${t.cem.total_rollouts}, baseline TBD.`;
+      ? `<video class="${t.benchmark === 'Adroit' ? 'gc-crop-square' : 'gc-crop-wide'}" muted loop playsinline preload="none" aria-label="${esc(label)}: Agentic search held-out ${failed ? 'failure, the policy times out' : 'success'} replay"><source src="${esc(t.video)}" type="video/mp4"></video>`
+      : `<div class="gc-empty">${t.model_driven.accepted ? 'No replay recorded' : 'No accepted Agentic policy'}</div>`;
+    const summary = `${label}. Held-out success: Agentic search ${t.model_driven.heldout_percent}%, CEM search ${t.cem.heldout_percent}%, baseline TBD. ` +
+      `Total rollouts: Agentic search ${t.model_driven.total_rollouts}, CEM search ${t.cem.total_rollouts}, baseline TBD.`;
     return `<article class="gallery-card${failed ? ' is-failed' : ''}" aria-label="${esc(summary)}"><div class="gc-media">${media}` +
       `<span class="gc-badge">${esc(t.benchmark === 'Adroit' ? 'ADROIT' : t.group.toUpperCase())}</span>` +
       (failed ? '<span class="gc-failed">FAILED · not accepted</span>' : '') + '</div>' +
@@ -67,11 +67,11 @@
     rowsEl.innerHTML = groups.map(g => {
       const ts = data.tasks.filter(t => t.group === g);
       return `<div class="gallery-group"><div class="gallery-group-head"><span>${esc(g)}</span>` +
-        `<span>${ts.length} task${ts.length > 1 ? 's' : ''} · held-out: model-driven ${mean(ts, 'model_driven').toFixed(1)}% · CEM ${mean(ts, 'cem').toFixed(1)}%</span></div>` +
+        `<span>${ts.length} task${ts.length > 1 ? 's' : ''} · held-out: Agentic ${mean(ts, 'model_driven').toFixed(1)}% · CEM ${mean(ts, 'cem').toFixed(1)}%</span></div>` +
         `<div class="gallery-track" tabindex="0" aria-label="${esc(g)} tasks, scroll sideways"><div class="gallery-strip">${ts.map(card).join('')}</div></div></div>`;
     }).join('');
     const ts = data.tasks.filter(t => groups.includes(t.group));
-    statEl.textContent = `Mean held-out · model-driven ${mean(ts, 'model_driven').toFixed(1)}% · CEM ${mean(ts, 'cem').toFixed(1)}%`;
+    statEl.textContent = `Mean held-out · Agentic ${mean(ts, 'model_driven').toFixed(1)}% · CEM ${mean(ts, 'cem').toFixed(1)}%`;
     filterEl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.group === selected)));
     rowsEl.querySelectorAll('.gallery-track').forEach(dragScroll);
     watchVideos();

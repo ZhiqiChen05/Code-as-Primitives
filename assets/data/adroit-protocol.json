@@ -1,0 +1,660 @@
+{
+  "schema_version": 1,
+  "title": "Adroit random-reset curriculum: protocol, held-out evidence, and literature context",
+  "experiment": "adroit_seq10_l3pr",
+  "observed_utc": "2026-10-21T07:25:44.150828+00:00",
+  "model": {
+    "name": "gpt-6-astra",
+    "display_name": "GPT-6 Astra",
+    "reasoning": "max",
+    "provider": "codex"
+  },
+  "headline": {
+    "successes": 119,
+    "episodes": 120,
+    "success_percent": 99.16666666666667,
+    "training_chains_per_task": 1,
+    "training_stages_per_chain": 10,
+    "accepted_stages": 40,
+    "provider_calls_during_heldout": 0,
+    "expert_demonstrations": 0
+  },
+  "protocol": {
+    "harness": "policy_only",
+    "search": "Agentic, model-driven candidate evaluation with task reference papers; the model authors the policy class and search procedure.",
+    "observations": "Native simulator state vectors; state dimensions are per task. No images are needed by the frozen policy.",
+    "actions": "Full native normalized absolute actuator-position targets in [-1, 1], with no synergy reduction or additional action repeat.",
+    "control_hz": 100,
+    "physics_hz": 500,
+    "physics_substeps_per_action": 5,
+    "episode_horizon_actions": 200,
+    "training_resets": "Every initial learning episode, learning reset, independent search rollout, and training-validation episode uses a fresh host-sampled native reset seed.",
+    "curriculum": "Ten stages. At stage k (1 to 10), one frozen policy must succeed on all k fresh validation episodes in a single submission. Only accepted stages advance.",
+    "retry_rule": "A failed training submission may be revised and resubmitted with fresh seeds while budgets remain. Learning and search successes alone do not accept a stage.",
+    "inheritance": "The next stage receives the previously accepted policy and eligible public evidence from successful prior stages, with a fresh stage context and budgets.",
+    "stopping": "Exhausting any stage budget ends that task chain. All four recorded chains accepted all ten stages.",
+    "success_aggregation": "At episode completion, count native per-step success flags: >25 successful frames for Door/Hammer/Relocate; >20 for Pen. Frames need not be consecutive.",
+    "per_step_success": {
+      "Door": "Hinge angle >=1.35 radians",
+      "Hammer": "Nail-to-goal distance <0.01 meters",
+      "Pen": "Position error <0.075 meters and axis dot product >0.95",
+      "Relocate": "Object-to-target distance <0.1 meters"
+    },
+    "heldout_selection": "The outgoing working checkpoint from accepted stage 10 was frozen for 30 additional episodes per task.",
+    "heldout_seeds": "Thirty seeds per task are reserved before adaptation, and a per-chain unique seed ledger prevents overlap with learning, search, or validation seeds. Full ordered seed lists appear in task records.",
+    "sampling": "Host-only deterministic SHA-256 seed allocation from sampling identity, episode purpose, sequence, and collision counter, reduced modulo 2**31; native simulator resets are seeded with the result.",
+    "test_constraints": "No code edits, adaptation, provider calls, errors, or interrupted replacements in the final 120 episodes. All episode policy hashes match their task checkpoint; all initial identities are verified.",
+    "incoming_transfer_tests": false,
+    "independent_heldout_evaluation_stages_1_to_9": false,
+    "nominal_limits_per_stage": {
+      "provider_requests": 300,
+      "tool_calls": 1000,
+      "learning_resets": 100,
+      "frozen_evaluation_submissions": 250,
+      "search_rollouts": 20000,
+      "wall_seconds": 43200
+    }
+  },
+  "tasks": [
+    {
+      "task": "Door",
+      "environment_id": "AdroitHandDoor-v1",
+      "state_dimensions": 39,
+      "action_dimensions": 28,
+      "successful_frame_count_must_exceed": 25,
+      "stages_passed": 10,
+      "successes": 29,
+      "heldout_episodes": 30,
+      "success_percent": 96.66666666666667,
+      "wilson95_percent": [
+        83.3,
+        99.4
+      ],
+      "policy_sha256": "f30213de4b4e4000985e05f5c8817df4fc1d30e13cd5ab29543981c16d727521",
+      "test_seed_list": [
+        1553058530,
+        1158562032,
+        1750783963,
+        1770328593,
+        1080288460,
+        1697665861,
+        25938956,
+        1881261618,
+        1920325757,
+        1178746531,
+        1060231106,
+        2079091128,
+        68779738,
+        320129816,
+        1786289133,
+        1421211536,
+        1251379027,
+        1336737745,
+        1315355154,
+        1293146046,
+        669397321,
+        489500068,
+        752938976,
+        2067367300,
+        1582954278,
+        1628218948,
+        977121298,
+        302539262,
+        1151060383,
+        1442245227
+      ],
+      "sampling_seed": 8100,
+      "seed_ledger_counts": {
+        "heldout": 30,
+        "learning": 16,
+        "search": 8858,
+        "validation": 85
+      },
+      "duplicate_seed_count": 0,
+      "heldout_adaptation_seed_overlap_count": 0,
+      "evaluation_submissions_by_stage": [
+        2,
+        1,
+        1,
+        3,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "stages_requiring_retries": [
+        1,
+        4,
+        6,
+        7,
+        8
+      ],
+      "costs": {
+        "provider_requests": 671,
+        "tool_calls": 787,
+        "reset_count": 6,
+        "eval_submissions": 16,
+        "search_rollouts": 8858,
+        "learning_actions": 1320,
+        "search_actions": 1771600,
+        "evaluation_actions": 17000,
+        "case_wall_seconds": 28758.331267300993,
+        "adaptation_environment_steps": 1789920,
+        "heldout_environment_steps": 6000,
+        "recorded_stage_hours": 7.99
+      },
+      "source_paths": {
+        "config": "experiment_results/adroit_seq10_l3pr/inputs/door_po_seq10_L3PR.json",
+        "heldout_evaluation": "experiment_results/adroit_seq10_l3pr/heldout/door_po_seq10_L3PR/evaluation.json",
+        "heldout_seed_list": "experiment_results/adroit_seq10_l3pr/inputs/door_po_seq10_L3PR_heldout.json",
+        "seed_ledger": "experiment_results/adroit_seq10_l3pr/runs/door_po_seq10_L3PR/runs/repetition_001/reset_seed_ledger.sqlite3"
+      }
+    },
+    {
+      "task": "Hammer",
+      "environment_id": "AdroitHandHammer-v1",
+      "state_dimensions": 46,
+      "action_dimensions": 26,
+      "successful_frame_count_must_exceed": 25,
+      "stages_passed": 10,
+      "successes": 30,
+      "heldout_episodes": 30,
+      "success_percent": 100.0,
+      "wilson95_percent": [
+        88.6,
+        100.0
+      ],
+      "policy_sha256": "3fcb3f623315c8a6574259121dc5eafee79230e947073ecd5fe1f6db1e3ad8a5",
+      "test_seed_list": [
+        176676348,
+        1785251698,
+        840202959,
+        1190545915,
+        1156179881,
+        95614575,
+        1421784268,
+        163716593,
+        1055661291,
+        2011715867,
+        1248117628,
+        846690378,
+        2129122244,
+        1766343238,
+        759630363,
+        1961501251,
+        1446389483,
+        1031172743,
+        1401675662,
+        415302929,
+        1827873332,
+        2083231325,
+        575281485,
+        1781644136,
+        1013092740,
+        682778654,
+        526422448,
+        791368385,
+        1240689100,
+        1402936028
+      ],
+      "sampling_seed": 8200,
+      "seed_ledger_counts": {
+        "heldout": 30,
+        "learning": 15,
+        "search": 875,
+        "validation": 55
+      },
+      "duplicate_seed_count": 0,
+      "heldout_adaptation_seed_overlap_count": 0,
+      "evaluation_submissions_by_stage": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "stages_requiring_retries": [],
+      "costs": {
+        "provider_requests": 165,
+        "tool_calls": 201,
+        "reset_count": 5,
+        "eval_submissions": 10,
+        "search_rollouts": 875,
+        "learning_actions": 910,
+        "search_actions": 175000,
+        "evaluation_actions": 11000,
+        "case_wall_seconds": 5011.93652369827,
+        "adaptation_environment_steps": 186910,
+        "heldout_environment_steps": 6000,
+        "recorded_stage_hours": 1.39
+      },
+      "source_paths": {
+        "config": "experiment_results/adroit_seq10_l3pr/inputs/hammer_po_seq10_L3PR.json",
+        "heldout_evaluation": "experiment_results/adroit_seq10_l3pr/heldout/hammer_po_seq10_L3PR/evaluation.json",
+        "heldout_seed_list": "experiment_results/adroit_seq10_l3pr/inputs/hammer_po_seq10_L3PR_heldout.json",
+        "seed_ledger": "experiment_results/adroit_seq10_l3pr/runs/hammer_po_seq10_L3PR/runs/repetition_001/reset_seed_ledger.sqlite3"
+      }
+    },
+    {
+      "task": "Pen",
+      "environment_id": "AdroitHandPen-v1",
+      "state_dimensions": 45,
+      "action_dimensions": 24,
+      "successful_frame_count_must_exceed": 20,
+      "stages_passed": 10,
+      "successes": 30,
+      "heldout_episodes": 30,
+      "success_percent": 100.0,
+      "wilson95_percent": [
+        88.6,
+        100.0
+      ],
+      "policy_sha256": "da7be9efa1bae65ee8636645c0474cc41bd2c0e91822ae21b89a914d8543f5e8",
+      "test_seed_list": [
+        823495863,
+        162387222,
+        1996936409,
+        1327112509,
+        1183182567,
+        2129693806,
+        1008525918,
+        1054367159,
+        302576602,
+        18488820,
+        2000110535,
+        223975586,
+        1870345301,
+        2001831905,
+        1898738570,
+        2040512444,
+        1575902131,
+        1553366726,
+        446982133,
+        1618784760,
+        290224970,
+        1077038824,
+        1320284256,
+        323844009,
+        801995973,
+        2001384339,
+        1589826067,
+        1135679657,
+        1585435805,
+        9150426
+      ],
+      "sampling_seed": 8300,
+      "seed_ledger_counts": {
+        "heldout": 30,
+        "learning": 14,
+        "search": 6095,
+        "validation": 68
+      },
+      "duplicate_seed_count": 0,
+      "heldout_adaptation_seed_overlap_count": 0,
+      "evaluation_submissions_by_stage": [
+        2,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1
+      ],
+      "stages_requiring_retries": [
+        1,
+        4,
+        8
+      ],
+      "costs": {
+        "provider_requests": 822,
+        "tool_calls": 1070,
+        "reset_count": 4,
+        "eval_submissions": 13,
+        "search_rollouts": 6095,
+        "learning_actions": 520,
+        "search_actions": 1219000,
+        "evaluation_actions": 13600,
+        "case_wall_seconds": 25371.484808661044,
+        "adaptation_environment_steps": 1233120,
+        "heldout_environment_steps": 6000,
+        "recorded_stage_hours": 7.05
+      },
+      "source_paths": {
+        "config": "experiment_results/adroit_seq10_l3pr/inputs/pen_po_seq10_L3PR.json",
+        "heldout_evaluation": "experiment_results/adroit_seq10_l3pr/heldout/pen_po_seq10_L3PR/evaluation.json",
+        "heldout_seed_list": "experiment_results/adroit_seq10_l3pr/inputs/pen_po_seq10_L3PR_heldout.json",
+        "seed_ledger": "experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/reset_seed_ledger.sqlite3"
+      }
+    },
+    {
+      "task": "Relocate",
+      "environment_id": "AdroitHandRelocate-v1",
+      "state_dimensions": 39,
+      "action_dimensions": 30,
+      "successful_frame_count_must_exceed": 25,
+      "stages_passed": 10,
+      "successes": 30,
+      "heldout_episodes": 30,
+      "success_percent": 100.0,
+      "wilson95_percent": [
+        88.6,
+        100.0
+      ],
+      "policy_sha256": "4c108d7e811fb8f315e5d7049ee85b6d34c52b3b8f936178949896daa70f4a37",
+      "test_seed_list": [
+        74511615,
+        1822284051,
+        611150816,
+        2000977596,
+        967715555,
+        83641630,
+        164473015,
+        288474413,
+        918614793,
+        1816903199,
+        259984009,
+        246645841,
+        173479555,
+        1583253052,
+        507352522,
+        744855142,
+        1533166970,
+        1208308814,
+        2083597299,
+        351864136,
+        830184226,
+        1218131861,
+        1693536518,
+        1465345595,
+        2101134061,
+        74812481,
+        2131661932,
+        513643158,
+        1955670939,
+        584497835
+      ],
+      "sampling_seed": 8400,
+      "seed_ledger_counts": {
+        "heldout": 30,
+        "learning": 18,
+        "search": 1312,
+        "validation": 55
+      },
+      "duplicate_seed_count": 0,
+      "heldout_adaptation_seed_overlap_count": 0,
+      "evaluation_submissions_by_stage": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "stages_requiring_retries": [],
+      "costs": {
+        "provider_requests": 229,
+        "tool_calls": 262,
+        "reset_count": 8,
+        "eval_submissions": 10,
+        "search_rollouts": 1312,
+        "learning_actions": 1825,
+        "search_actions": 262400,
+        "evaluation_actions": 11000,
+        "case_wall_seconds": 8002.901157554239,
+        "adaptation_environment_steps": 275225,
+        "heldout_environment_steps": 6000,
+        "recorded_stage_hours": 2.22
+      },
+      "source_paths": {
+        "config": "experiment_results/adroit_seq10_l3pr/inputs/relocate_po_seq10_L3PR.json",
+        "heldout_evaluation": "experiment_results/adroit_seq10_l3pr/heldout/relocate_po_seq10_L3PR/evaluation.json",
+        "heldout_seed_list": "experiment_results/adroit_seq10_l3pr/inputs/relocate_po_seq10_L3PR_heldout.json",
+        "seed_ledger": "experiment_results/adroit_seq10_l3pr/runs/relocate_po_seq10_L3PR/runs/repetition_001/reset_seed_ledger.sqlite3"
+      }
+    }
+  ],
+  "cost_totals": {
+    "provider_requests": 1887,
+    "search_rollouts": 17140,
+    "adaptation_environment_steps": 3485175,
+    "heldout_environment_steps": 24000
+  },
+  "sole_heldout_failure": {
+    "task": "Door",
+    "episode": 22,
+    "seed": 489500068,
+    "reason": "200-step time limit with zero native-success frames; task failure, not an execution error"
+  },
+  "cost_notes": [
+    "Adaptation environment steps include learning, search, and training validation, excluding the additional 6,000 held-out steps per task.",
+    "Recorded stage hours sum stage accounting; they are neither campaign elapsed time nor GPU compute time, and tasks ran concurrently.",
+    "Pen resumed after an operator pause with its policy, history, and consumed budgets preserved. The pause is not learning progress.",
+    "No dollar-cost estimate is supplied by this record."
+  ],
+  "fixed_start_context": {
+    "source": "assets/data/adroit-curriculum.json",
+    "model": "GPT-6 Astra, max",
+    "curriculum": "Ten fixed starts introduced sequentially; stage k must pass the cumulative fixed prefix.",
+    "fixed_start_successes": {
+      "Door": 14,
+      "Hammer": 25,
+      "Pen": 7,
+      "Relocate": 12
+    },
+    "episodes_per_task": 30,
+    "fixed_start_mean_percent": 48.333333333333336,
+    "random_reset_mean_percent": 99.16666666666667,
+    "interpretation": "Descriptive comparison only: reset protocol, guidance, held-out seed sets, and realized adaptation costs differ. Nominal stage limits match; neither replicated causal ablation nor a controlled reset-only comparison."
+  },
+  "other_blog_campaigns": {
+    "note": "The Claude Opus 5.5 model-driven-versus-CEM results elsewhere in this blog come from a separate campaign and must retain their own model, protocol, and task coverage. Do not substitute these Astra random-reset scores into that comparison."
+  },
+  "literature_context": {
+    "scope": "Published numerical context across different protocols, not a matched baseline experiment and not an exhaustive state-of-the-art claim.",
+    "verified_date_utc": "2026-10-27",
+    "four_task_averaging": "Unweighted arithmetic mean over Door, Hammer, Pen, Relocate; the means below are recomputed from the cited per-task numbers.",
+    "four_task_baselines": [
+      {
+        "method": "Geometry-aware Policy Imitation (GPI)",
+        "paper": "Geometry-aware Policy Imitation",
+        "url": "https://arxiv.org/html/2510.08787v1#S3.T2",
+        "source_table": "Table 2",
+        "year": 2025,
+        "success_percent": {
+          "Door": 100,
+          "Hammer": 88,
+          "Pen": 95,
+          "Relocate": 91
+        },
+        "four_task_mean_percent": 93.5,
+        "input": "State vectors: Door 39, Hammer 46, Pen 45, Relocate 39 dimensions.",
+        "demonstrations_per_task_reported": 5000,
+        "demonstration_count_note": "The source table labels this row Demonstrations; no conversion to transition or trajectory counts is made here.",
+        "training": "Non-parametric policy synthesis from demonstrations.",
+        "training_seed_count": null,
+        "test_episode_count": null,
+        "episode_horizon": null,
+        "protocol_note": "The accessible Adroit table and appendix do not specify these seed, episode-count, and horizon details. The explicit seeds 500-510/three policy seeds in Appendix C.1 concern PushT and must not be attributed to Adroit."
+      },
+      {
+        "method": "Diffusion Policy (DP), as evaluated by GPI",
+        "paper": "Geometry-aware Policy Imitation",
+        "url": "https://arxiv.org/html/2510.08787v1#S3.T2",
+        "source_table": "Table 2",
+        "year": 2025,
+        "success_percent": {
+          "Door": 100,
+          "Hammer": 83,
+          "Pen": 89,
+          "Relocate": 91
+        },
+        "four_task_mean_percent": 90.75,
+        "input": "State-based Adroit comparison in GPI Table 2.",
+        "demonstrations_per_task_reported": 5000,
+        "demonstration_count_note": "Value reproduced from the common Demonstrations row in Table 2.",
+        "training_seed_count": null,
+        "test_episode_count": null,
+        "episode_horizon": null,
+        "protocol_note": "A reported baseline from the GPI paper, not a rerun using our reset or evaluation protocol."
+      }
+    ],
+    "three_task_visual_baseline": {
+      "method": "3D Diffusion Policy (DP3)",
+      "paper": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
+      "url": "https://arxiv.org/html/2403.03954v7#S3.T2",
+      "setup_url": "https://arxiv.org/html/2403.03954v7#S4.SS1",
+      "source_table": "Table II (task scores), Table III (10 demonstrations), Section IV-A (evaluation)",
+      "year": 2024,
+      "success_percent": {
+        "Door": 62,
+        "Hammer": 100,
+        "Pen": 43,
+        "Relocate": null
+      },
+      "standard_deviation_percentage_points": {
+        "Door": 4,
+        "Hammer": 0,
+        "Pen": 6,
+        "Relocate": null
+      },
+      "reported_three_task_mean_percent": 68.3,
+      "four_task_mean_percent": null,
+      "our_same_three_tasks_percent": 98.88888888888889,
+      "input": "Single-camera depth-derived point clouds and robot state; visual imitation learning, unlike our native-state policy.",
+      "demonstrations_per_task": 10,
+      "demonstration_source": "Successful trajectories from VRL3-trained reinforcement-learning experts.",
+      "training_seeds": [
+        0,
+        1,
+        2
+      ],
+      "evaluation_episodes_per_checkpoint": 20,
+      "checkpoint_interval_training_epochs": 200,
+      "aggregation": "For each training seed, average the five highest checkpoint success rates; report mean and standard deviation over three seeds.",
+      "protocol_note": "Relocate is absent from this Adroit comparison, so no four-task mean or direct comparison to our four-task 99.2% is assigned."
+    },
+    "proposed_prose": "Our 99.2% four-task success rate exceeds the reported four-task averages of Geometry-aware Policy Imitation (93.5%) and its Diffusion Policy baseline (90.8%). These are comparisons across different protocols: GPI uses demonstrations, and its Adroit evaluation details are not fully specified. The numbers provide literature context rather than a matched experiment or an exhaustive state-of-the-art claim.",
+    "limits": [
+      "Door is 96.7% here versus 100% for GPI and its DP baseline. A higher four-task average does not imply superiority on every task.",
+      "Hammer is 100% here and in DP3, so the result ties DP3 on that task.",
+      "The local archived campaign report states that it ran no baseline comparison.",
+      "D4RL normalized-return scores must not be displayed as success percentages."
+    ]
+  },
+  "limitations": [
+    "One training chain per task. Wilson intervals concern held-out seeds for these frozen policies, not variability across independent training runs.",
+    "Native simulator reset-distribution generalization only; no arbitrary-perturbation or real-world robustness claim.",
+    "Adaptive stage acceptance is a training criterion. Independent test evidence exists only for the final checkpoint."
+  ],
+  "provenance": {
+    "repository": "Schema-Robo-v7-r1",
+    "sources": [
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/report.json",
+        "sha256": "48c88acbb9d130aad72909833bb9d12443d8a8b7d3e1d86ee7a6567ac3c7a64c"
+      },
+      {
+        "path": "docs/figures/adroit_seq10_l3pr/REPORT.md",
+        "sha256": "ba54c7c678055167388e231da036c20366b29cfa133d3a034db46ad4519678e4"
+      },
+      {
+        "path": "docs/environments.md",
+        "sha256": "9ca3ef7e7f2ff1f524b4a8184aa0170cbc8abc6211254f0bdf6c4972fb9c8d00"
+      },
+      {
+        "path": "docs/research.md",
+        "sha256": "617003b3c327cde0bcc001966165173ee665aed30826dbf7e3493ab474bd94e7"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/source_snapshot/schema_robo/reset_sampling.py",
+        "sha256": "b4db1d7d49ef040ba5a7b37156315158b28f6845674d8a3b7dc610543ccdb436"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/source_snapshot/schema_robo/random_reset.py",
+        "sha256": "d6e2728a8c52ccdb00419e097126e1da2c8b3a11568f11e66d665759369f804c"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/source_snapshot/schema_robo/sequential_fewshot.py",
+        "sha256": "420d057602e45e6034aca16e8472e91317f00b3ff2e0b06d1a346382f7e910a8"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/inputs/door_po_seq10_L3PR.json",
+        "sha256": "b33930e322e284bb9efabac23283382e76f6aaad7aa1cee47c14a4fa2c5db71a"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/heldout/door_po_seq10_L3PR/evaluation.json",
+        "sha256": "bf7cd9430369470d969de1420bb6bc0d7af78ffdceb89914c2f50a00e6aa3555"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/inputs/door_po_seq10_L3PR_heldout.json",
+        "sha256": "ecf91ed582afe511eb14584e9f45c74e3347ea231ef4261aeecb0811b7d3b4c0"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/runs/door_po_seq10_L3PR/runs/repetition_001/reset_seed_ledger.sqlite3",
+        "sha256": "1f57e22aded29c4e1fc9f7e5b471d80a01ffaf61fb1d24bdc495ff8c753f9110"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/inputs/hammer_po_seq10_L3PR.json",
+        "sha256": "94c7723791ec1f9b107b512d4251030a78a38e394710775bd7d83ad4f885b769"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/heldout/hammer_po_seq10_L3PR/evaluation.json",
+        "sha256": "4200d048f6a4b99d70246727492bb841632b8a6125a2de23db2a521fd72b41e3"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/inputs/hammer_po_seq10_L3PR_heldout.json",
+        "sha256": "799e34062f66f3db071626c149b6ea5d6553e48485a283edc9f4ffff8d579c0e"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/runs/hammer_po_seq10_L3PR/runs/repetition_001/reset_seed_ledger.sqlite3",
+        "sha256": "5a8d3de12192ee2c8bc5d4455ecc53ee56d5a18f94750ff22e6809c0862b510d"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/inputs/pen_po_seq10_L3PR.json",
+        "sha256": "876326eced9b7dc416a3aba051628fbdc99c5ee8bb7ed033d4e5f204f5669c07"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/heldout/pen_po_seq10_L3PR/evaluation.json",
+        "sha256": "66c9f96561a8e0691bdfab5d63e5c3562998affad374bf64ea78b69e446ee1b7"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/inputs/pen_po_seq10_L3PR_heldout.json",
+        "sha256": "07e0b55c7c233d293ae4e258df69453c10fae61603d84403f13f4aa1b7b32285"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/runs/pen_po_seq10_L3PR/runs/repetition_001/reset_seed_ledger.sqlite3",
+        "sha256": "8cde6f77185dfea0ed7e0e079f7c839c29ee29fb8ff64cea0f5341aada6bf0fa"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/inputs/relocate_po_seq10_L3PR.json",
+        "sha256": "904d8bb8ab3db6baeda9e05d9fe5d444d89dc1985b646e8d0465b72940f175f6"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/heldout/relocate_po_seq10_L3PR/evaluation.json",
+        "sha256": "a4e8cbd6e5bd42df3793e5e18c3d47b0471a8366f8cdbc6377a6667956fd7d57"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/inputs/relocate_po_seq10_L3PR_heldout.json",
+        "sha256": "0e421d6bccfe45c627579137f716d99855668b0b8e298af9713bbfab297460cb"
+      },
+      {
+        "path": "experiment_results/adroit_seq10_l3pr/runs/relocate_po_seq10_L3PR/runs/repetition_001/reset_seed_ledger.sqlite3",
+        "sha256": "560287f338fe1744f2e3458916f55b77d0ac39bb6513874634c848ed223b24c3"
+      }
+    ]
+  }
+}

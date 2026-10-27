@@ -164,3 +164,10 @@ body.lp-in-view .contents{opacity:0;pointer-events:none}
  .lp-root .lp-fallback{display:block}
 }
 @media(prefers-reduced-motion:reduce){.lp-root,.lp-root *{transition:none!important;animation:none!important}}
+
+/* Original Pen frames from the paper, alongside the final recorded replay. */
+.lp-paper-poses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:15px}
+.lp-paper-poses figure{margin:0;min-width:0}.lp-paper-poses img{width:100%;height:auto;border:1px solid var(--line)}
+.lp-paper-poses figcaption{font:inherit;color:var(--ink);margin-top:4px;text-align:center}
+.lp-evidence-panel .lp-pose-caption{margin-top:7px;color:var(--muted)}
+@media(max-width:420px){.lp-paper-poses{grid-template-columns:repeat(2,minmax(0,1fr))}}

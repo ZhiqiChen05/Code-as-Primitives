@@ -8,7 +8,7 @@
 <rect x="50" y="130" width="250" height="132" rx="8" fill="#f6f3eb" stroke="#d7d6ca" stroke-width="1.4"/>
 <rect x="425" y="130" width="250" height="132" rx="8" fill="#e8eee5" stroke="#276451" stroke-width="1.4"/>
 <rect x="800" y="130" width="250" height="132" rx="8" fill="#f6f3eb" stroke="#d7d6ca" stroke-width="1.4"/>
-<text x="175" y="177" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#242620" text-anchor="middle" >Foundation model</text>
+<text x="175" y="177" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#242620" text-anchor="middle" >Frontier model</text>
 <text x="175" y="211" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Reason about the task</text>
 <text x="175" y="238" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#63675d" text-anchor="middle" >Design and revise code</text>
 <text x="550" y="177" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#276451" text-anchor="middle" >Python policy</text>

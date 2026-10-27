@@ -1,0 +1,121 @@
+{
+  "source": "ExtendedAbstract/main.tex and its original figure assets",
+  "overview": {
+    "path": "assets/figures/paper-overview.png",
+    "width": 2400,
+    "height": 1217,
+    "bytes": 883897,
+    "sha256": "7cd151558b57271f600e1ee417f2009d14a79c7f2446d7feb08160844a1634ac",
+    "alt": "Code as Primitives overview: a high-level plan invokes a pen-rotation skill; a dexterous hand reorients the pen; a frontier model designs a controller, searches candidate policies through rollouts, and freezes the accepted policy.",
+    "caption": "Code as Primitives synthesizes the low-level skill itself. A frontier model designs a parameterized controller, searches its parameters with simulation rollouts, and freezes the resulting program for standalone execution.",
+    "source": "figs/fig1_pen_v3-1.pdf",
+    "source_sha256": "921e64e5b2be8d011233430c5bacb2a8a72698584af31719aaaf39e7f5f9c5f1",
+    "pdf_page": 1,
+    "pdf_page_size_points": [
+      858.0,
+      434.8800048828125
+    ],
+    "original_pdf": "assets/figures/paper-overview.pdf",
+    "original_pdf_bytes": 424928,
+    "note": "The 30/30 held-out successes shown in this figure refer to the illustrated Pen example, not the DexVerse evaluation protocol."
+  },
+  "heldout_results": {
+    "path": "assets/figures/paper-heldout-pair.png",
+    "width": 2148,
+    "height": 1110,
+    "bytes": 468692,
+    "sha256": "7f6c59470456e90bce6b186813a8ebbc06f4cb5ab3858f7bc631e17fa8e00e24",
+    "alt": "Two radar charts of held-out DexVerse success. Left: agentic and CEM search versus the strongest imitation-learning baseline on 15 tasks. Right: agentic and CEM search across six categories covering the remaining 60 tasks, with lower success on long-horizon tasks.",
+    "caption": "Held-out success on DexVerse. (a) Code as Primitives compared with the strongest result among pi0.5, OpenVLA, DP3, and DP on 15 tasks with published imitation-learning baselines. (b) Agentic and CEM search across the remaining 60 tasks.",
+    "source": "figs/heldout_pair.png",
+    "source_sha256": "7f6c59470456e90bce6b186813a8ebbc06f4cb5ab3858f7bc631e17fa8e00e24",
+    "processing": "Byte-for-byte copy of the original paper figure.",
+    "note": "Panel (b) is titled 'rest of DexVerse' and its category task counts sum to 60. The manuscript caption's 'full DexVerse benchmark' wording is broader than the panel's coverage."
+  },
+  "pen_frames": [
+    {
+      "path": "assets/images/paper-pen-initial.jpg",
+      "width": 300,
+      "height": 224,
+      "bytes": 18298,
+      "sha256": "f8a8f57d292d31292dac963149f0924e5dc5005bd84f76b48fcca91ced3eec46",
+      "stage": "initial",
+      "alt": "The dexterous hand holds the pen in its initial orientation.",
+      "source": "figs/fig1_pen_v3-1.pdf",
+      "pdf_page": 1,
+      "pdf_image_xref": 40,
+      "pdf_image_bboxes_points": [
+        [
+          90.12290954589844,
+          181.71719360351562,
+          212.51315307617188,
+          273.50811767578125
+        ]
+      ],
+      "processing": "Original embedded JPEG extraction; no crop or recompression."
+    },
+    {
+      "path": "assets/images/paper-pen-tilt.jpg",
+      "width": 300,
+      "height": 224,
+      "bytes": 17203,
+      "sha256": "5c129e7dbbe2318ce8a7ef3cc0e76cdd1e6f01938d8d8a07280eeb942b012f49",
+      "stage": "tilt",
+      "alt": "The dexterous hand tilts the pen during reorientation.",
+      "source": "figs/fig1_pen_v3-1.pdf",
+      "pdf_page": 1,
+      "pdf_image_xref": 42,
+      "pdf_image_bboxes_points": [
+        [
+          276.3580322265625,
+          181.71719360351562,
+          398.748291015625,
+          273.50811767578125
+        ]
+      ],
+      "processing": "Original embedded JPEG extraction; no crop or recompression."
+    },
+    {
+      "path": "assets/images/paper-pen-upright.jpg",
+      "width": 300,
+      "height": 224,
+      "bytes": 16664,
+      "sha256": "6341f099cd8f19380b91711c3313fb41d8a4a22bdcc4d16bbae163233f734cfb",
+      "stage": "upright",
+      "alt": "The dexterous hand brings the pen upright.",
+      "source": "figs/fig1_pen_v3-1.pdf",
+      "pdf_page": 1,
+      "pdf_image_xref": 43,
+      "pdf_image_bboxes_points": [
+        [
+          462.52142333984375,
+          181.71719360351562,
+          584.91162109375,
+          273.50811767578125
+        ]
+      ],
+      "processing": "Original embedded JPEG extraction; no crop or recompression."
+    },
+    {
+      "path": "assets/images/paper-pen-target.jpg",
+      "width": 300,
+      "height": 224,
+      "bytes": 16993,
+      "sha256": "9f4c8bfc61236e24dd4d6cc14b1744a0f4cd061493174feb6d5900c0e87cb176",
+      "stage": "target",
+      "alt": "The dexterous hand reaches the target pen orientation.",
+      "source": "figs/fig1_pen_v3-1.pdf",
+      "pdf_page": 1,
+      "pdf_image_xref": 44,
+      "pdf_image_bboxes_points": [
+        [
+          648.7565307617188,
+          181.71719360351562,
+          771.1467895507812,
+          273.50811767578125
+        ]
+      ],
+      "processing": "Original embedded JPEG extraction; no crop or recompression."
+    }
+  ]
+}

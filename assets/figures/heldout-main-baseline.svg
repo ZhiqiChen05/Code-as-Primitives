@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1078" viewBox="0 0 1100 1078" role="img" aria-labelledby="figure-title figure-desc">
 <title id="figure-title">Held-out success: parameter search vs. baseline</title>
-<desc id="figure-desc">Unseen starts · DexVerse: mean per task, unaccepted tasks count as zero. Door: model-driven search 100.0, CEM search 100.0, baseline TBD; Hammer: model-driven search 93.3, CEM search 100.0, baseline TBD; Relocate: model-driven search 66.7, CEM search 100.0, baseline TBD; Primitive: model-driven search 94.0, CEM search 95.6, baseline TBD; Functional: model-driven search 96.3, CEM search 98.6, baseline TBD; Articulation: model-driven search 81.0, CEM search 86.7, baseline TBD; Bimanual: model-driven search 95.3, CEM search 97.7, baseline TBD; Multi-goal: model-driven search 99.0, CEM search 98.9, baseline TBD.</desc>
+<desc id="figure-desc">Unseen starts · DexVerse: mean per task, unaccepted tasks count as zero. Door: Agentic search 100.0, CEM search 100.0, baseline TBD; Hammer: Agentic search 93.3, CEM search 100.0, baseline TBD; Relocate: Agentic search 66.7, CEM search 100.0, baseline TBD; Primitive: Agentic search 94.0, CEM search 95.6, baseline TBD; Functional: Agentic search 96.3, CEM search 98.6, baseline TBD; Articulation: Agentic search 81.0, CEM search 86.7, baseline TBD; Bimanual: Agentic search 95.3, CEM search 97.7, baseline TBD; Multi-goal: Agentic search 99.0, CEM search 98.9, baseline TBD.</desc>
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#276451"/></marker></defs>
 <rect width="1100" height="1078" fill="#f6f3eb"/>
 <text x="50" y="44" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#276451" text-anchor="start" letter-spacing="2">ADROIT + DEXVERSE  /  CLAUDE OPUS 5.5</text>
 <text x="50" y="91" font-family="Georgia, 'Times New Roman', serif" font-size="33" fill="#242620" text-anchor="start" >Held-out success: parameter search vs. baseline</text>
 <text x="50" y="126" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#63675d" text-anchor="start" >Unseen starts · DexVerse: mean per task, unaccepted tasks count as zero</text>
 <rect x="50" y="158" width="16" height="16" fill="#276451"/>
-<text x="74" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >Model-driven search</text>
+<text x="74" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >Agentic search</text>
 <rect x="269" y="158" width="16" height="16" fill="#be5d39"/>
 <text x="293" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#242620" text-anchor="start" >CEM search</text>
 <rect x="407" y="158" width="16" height="16" fill="#63675d"/>
