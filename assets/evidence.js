@@ -57,17 +57,21 @@
   }
 
   const mean = (ts, key) => ts.reduce((s, t) => s + t[key].heldout_percent, 0) / ts.length;
+  const successText = value => {
+    const label = `${value.toFixed(1)}%`;
+    return value >= 90 ? `<strong class="result-number result-number--support">${label}</strong>` : label;
+  };
 
   function render() {
     const groups = selected === 'All' ? GROUPS : [selected];
     rowsEl.innerHTML = groups.map(g => {
       const ts = data.tasks.filter(t => t.group === g);
       return `<div class="gallery-group"><div class="gallery-group-head"><span>${esc(g)}</span>` +
-        `<span>${ts.length} task${ts.length > 1 ? 's' : ''} · held-out: Agentic ${mean(ts, 'model_driven').toFixed(1)}% · CEM ${mean(ts, 'cem').toFixed(1)}%</span></div>` +
+        `<span>${ts.length} task${ts.length > 1 ? 's' : ''} · held-out: Agentic ${successText(mean(ts, 'model_driven'))} · CEM ${successText(mean(ts, 'cem'))}</span></div>` +
         `<div class="gallery-track" tabindex="0" aria-label="${esc(g)} tasks, scroll sideways"><div class="gallery-strip">${ts.map(card).join('')}</div></div></div>`;
     }).join('');
     const ts = data.tasks.filter(t => groups.includes(t.group));
-    statEl.textContent = `Mean held-out · Agentic ${mean(ts, 'model_driven').toFixed(1)}% · CEM ${mean(ts, 'cem').toFixed(1)}%`;
+    statEl.innerHTML = `Mean held-out · Agentic ${successText(mean(ts, 'model_driven'))} · CEM ${successText(mean(ts, 'cem'))}`;
     filterEl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.group === selected)));
     rowsEl.querySelectorAll('.gallery-track').forEach(dragScroll);
     watchVideos();
